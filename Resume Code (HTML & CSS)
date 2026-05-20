@@ -6,52 +6,55 @@
   <title>Sri Rajan | Resume</title>
   <style>
     :root {
-      --background: #f4f7fb;
+      --background: #eef3fb;
       --surface: #ffffff;
-      --accent: #0f3b72;
-      --accent-soft: #2d6edf;
-      --text: #13223d;
-      --text-muted: #4b647d;
-      --border: rgba(38, 89, 169, 0.16);
-      --panel: #eef4ff;
-      --heading-bg: rgba(45, 110, 223, 0.08);
+      --accent: #1f4a8a;
+      --accent-soft: #4d75d6;
+      --text: #15263b;
+      --text-muted: #5e7489;
+      --border: rgba(31, 77, 129, 0.16);
+      --panel: #f4f8ff;
+      --shadow: rgba(31, 77, 129, 0.08);
+      --highlight: #e9efff;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
       font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: radial-gradient(circle at top left, rgba(47, 106, 223, 0.12), transparent 26%),
-        linear-gradient(180deg, #f7faff 0%, var(--background) 100%);
+      background: radial-gradient(circle at top left, rgba(45, 87, 164, 0.14), transparent 28%),
+        linear-gradient(180deg, #f6f9ff 0%, var(--background) 100%);
       color: var(--text);
     }
 
     .container {
-      max-width: 940px;
-      margin: 32px auto;
+      max-width: 960px;
+      margin: 36px auto;
       padding: 36px;
       background: var(--surface);
       border-radius: 28px;
       border: 1px solid var(--border);
-      box-shadow: 0 26px 60px rgba(20, 43, 79, 0.09);
+      box-shadow: 0 28px 70px var(--shadow);
     }
 
     header {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
       gap: 24px;
-      align-items: flex-start;
-      padding-bottom: 24px;
+      align-items: start;
+      padding-bottom: 28px;
       border-bottom: 1px solid var(--border);
     }
 
     .header-info {
-      flex: 1 1 60%;
       min-width: 260px;
     }
 
@@ -60,31 +63,45 @@
       font-size: 3rem;
       letter-spacing: 0.5px;
       color: var(--accent);
+      line-height: 1.05;
     }
 
     header p {
-      margin: 14px 0 0;
+      margin: 18px 0 0;
       font-size: 1.05rem;
       color: var(--text-muted);
-      line-height: 1.75;
-      max-width: 700px;
+      line-height: 1.8;
+      max-width: 720px;
     }
 
     .contact-card {
-      flex: 0 0 300px;
-      background: linear-gradient(180deg, #f3f8ff 0%, #eef4ff 100%);
-      padding: 24px;
-      border-radius: 22px;
-      border: 1px solid rgba(45, 110, 223, 0.12);
-      box-shadow: 0 20px 40px rgba(45, 110, 223, 0.08);
+      background: #ffffff;
+      padding: 26px;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 22px 38px rgba(31, 77, 129, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 6px;
+      width: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-soft));
     }
 
     .contact-card h2 {
-      margin: 0 0 18px;
+      margin: 0 0 20px;
       font-size: 1.05rem;
       color: var(--accent);
-      letter-spacing: 0.5px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
+      position: relative;
+      z-index: 1;
     }
 
     .contact-list {
@@ -93,12 +110,14 @@
       padding: 0;
       display: grid;
       gap: 12px;
+      position: relative;
+      z-index: 1;
     }
 
     .contact-list li {
       color: var(--text-muted);
-      font-size: 0.96rem;
-      line-height: 1.6;
+      font-size: 0.98rem;
+      line-height: 1.7;
     }
 
     .contact-list strong {
@@ -116,7 +135,7 @@
       text-transform: uppercase;
       letter-spacing: 0.12em;
       position: relative;
-      padding-left: 14px;
+      padding-left: 18px;
     }
 
     .section h2::before {
@@ -124,8 +143,8 @@
       position: absolute;
       left: 0;
       top: 4px;
-      width: 6px;
-      height: 28px;
+      width: 8px;
+      height: 32px;
       border-radius: 4px;
       background: var(--accent-soft);
     }
@@ -134,9 +153,9 @@
       content: "";
       position: absolute;
       left: 0;
-      bottom: -6px;
-      width: 48px;
-      height: 4px;
+      bottom: -8px;
+      width: 56px;
+      height: 5px;
       border-radius: 4px;
       background: linear-gradient(90deg, var(--accent), var(--accent-soft));
     }
@@ -144,15 +163,15 @@
     .section-block {
       background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 26px;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
-      margin-bottom: 18px;
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+      margin-bottom: 20px;
     }
 
     .job-title {
       font-weight: 700;
-      color: #1c3a66;
+      color: #1d436f;
       margin-bottom: 8px;
       font-size: 1.05rem;
     }
@@ -161,6 +180,7 @@
       color: var(--text-muted);
       font-size: 0.95rem;
       margin-bottom: 16px;
+      font-style: italic;
     }
 
     .section p,
@@ -171,25 +191,34 @@
     }
 
     .section ul {
-      padding-left: 22px;
+      padding-left: 24px;
       margin: 0;
     }
 
     .section ul li {
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .section ul li::marker {
       color: var(--accent-soft);
     }
 
+    .section-block strong,
+    .section-block span {
+      color: var(--text);
+    }
+
     .grid {
       display: grid;
-      gap: 20px;
+      gap: 24px;
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     @media (max-width: 820px) {
+      header {
+        grid-template-columns: 1fr;
+      }
+
       .grid {
         grid-template-columns: 1fr;
       }
@@ -205,12 +234,12 @@
     <header>
       <div class="header-info">
         <h1>Sri Rajan, MD</h1>
-        <p>Aspirational ophthalmologist with strong clinical judgment, patient-centered care, and surgical teamwork experience. Skilled in eye examinations, diagnostic imaging, and coordinating multidisciplinary care in busy clinical settings.</p>
+        <p>Aspiring ophthalmologist with strong clinical skills, patient care experience, and surgical teamwork. Comfortable with eye exams, diagnostic imaging, and organizing care in a busy clinic.</p>
       </div>
       <div class="contact-card">
         <h2>Contact Information</h2>
         <ul class="contact-list">
-          <li><strong>Email:</strong> srirajan@gmail.com
+          <li><strong>Email:</strong> srirajan@gmail.com</li>
           <li><strong>Location:</strong> London, ON</li>
           <li><strong>Phone:</strong> +1 234-567-8901</li>
         </ul>
@@ -220,7 +249,7 @@
     <section class="section">
       <h2>Objective</h2>
       <div class="section-block">
-        <p>Seeking a residency position in ophthalmology where I can apply clinical acumen, surgical support experience, and compassionate patient care. Dedicated to improving visual health through clear communication, evidence-based practice, and team-driven problem solving.</p>
+        <p>Seeking an ophthalmology residency where I can use clinical skills, surgical support experience, and patient-focused care. I want to help improve vision outcomes with clear communication and evidence-based practice.</p>
       </div>
     </section>
 
@@ -230,15 +259,15 @@
         <div class="job-title">Doctor of Medicine</div>
         <div class="job-details">Western University Schulich School of Medicine & Dentistry, London, ON — 2024</div>
         <ul>
-          <li>Honours: Dean's List, Clinical Excellence Award in Ophthalmology.</li>
-          <li>Relevant coursework: Ophthalmic Pathology, Clinical Diagnostics, Surgical Fundamentals.</li>
+          <li>Dean's List and Clinical Excellence Award in Ophthalmology.</li>
+          <li>Studied ophthalmic pathology, clinical diagnostics, and surgical fundamentals.</li>
         </ul>
       </div>
       <div class="section-block">
         <div class="job-title">Bachelor of Science in Biology</div>
         <div class="job-details">University of Toronto, Toronto, ON — 2020</div>
         <ul>
-          <li>Concentration in human physiology, optics, and neuroscience.</li>
+          <li>Focused on human physiology, optics, and neuroscience.</li>
           <li>Graduated with distinction while volunteering in community health clinics.</li>
         </ul>
       </div>
@@ -250,19 +279,19 @@
         <div class="job-title">Clinical Intern, Ophthalmology Department</div>
         <div class="job-details">St. Mary's Hospital, London, ON — 2023–2024</div>
         <ul>
-          <li>Conducted comprehensive eye exams and slit lamp assessments under physician supervision.</li>
-          <li>Assisted with patient history collection, visual acuity testing, and intraocular pressure screening.</li>
-          <li>Supported preoperative evaluations, instrument sterilization, and intraoperative documentation.</li>
-          <li>Coordinated referrals for optical coherence tomography and specialist consultations.</li>
+          <li>Performed eye exams and slit lamp assessments under supervision.</li>
+          <li>Helped collect patient histories, test visual acuity, and measure intraocular pressure.</li>
+          <li>Assisted with preoperative evaluations, instrument sterilization, and surgery notes.</li>
+          <li>Coordinated referrals for OCT scans and specialist consultations.</li>
         </ul>
       </div>
       <div class="section-block">
         <div class="job-title">Research Assistant, Ophthalmic Imaging Lab</div>
         <div class="job-details">Ontario Eye Institute, Ottawa, ON — 2022–2023</div>
         <ul>
-          <li>Contributed to a study on retinal imaging biomarkers for diabetic retinopathy.</li>
-          <li>Analyzed imaging data, maintained research records, and prepared abstracts for conference presentation.</li>
-          <li>Collaborated with clinicians to design patient intake protocols and improve clinic workflow.</li>
+          <li>Helped study retinal imaging markers for diabetic retinopathy.</li>
+          <li>Reviewed imaging data, kept research records, and prepared conference abstracts.</li>
+          <li>Worked with clinicians to improve patient intake and clinic workflow.</li>
         </ul>
       </div>
     </section>
@@ -271,9 +300,9 @@
       <h2>Extra-Curricular</h2>
       <div class="section-block">
         <ul>
-          <li>Member of the Ophthalmology Interest Group, organizing guest lectures and surgical skills workshops.</li>
-          <li>Volunteer tutor for first-year medical students in anatomy and clinical skills.</li>
-          <li>Participated in simulation lab sessions to refine fundus examination and suturing technique.</li>
+          <li>Organized talks and surgical skills workshops for the Ophthalmology Interest Group.</li>
+          <li>Tutored first-year medical students in anatomy and clinical skills.</li>
+          <li>Practiced fundus exam and suturing in the simulation lab.</li>
         </ul>
       </div>
     </section>
@@ -284,9 +313,9 @@
         <div class="job-title">Vision Screening Volunteer</div>
         <div class="job-details">Community Eye Care Clinic, Toronto, ON — 2021–Present</div>
         <ul>
-          <li>Performed preliminary visual acuity testing and assisted with patient triage at free screening events.</li>
-          <li>Educated patients on eye health, glaucoma screening, and follow-up care recommendations.</li>
-          <li>Helped organize clinic flow and collect patient intake data for community outreach programs.</li>
+          <li>Performed vision tests and assisted with patient triage at free screening events.</li>
+          <li>Explained eye health, glaucoma screening, and follow-up care to patients.</li>
+          <li>Helped manage clinic flow and collect patient intake information.</li>
         </ul>
       </div>
     </section>
@@ -295,11 +324,11 @@
       <h2>Skills and Abilities</h2>
       <div class="section-block">
         <ul>
-          <li>Ophthalmic examination, slit lamp assessment, and fundoscopy support.</li>
+          <li>Ophthalmic exam support, slit lamp assessment, and fundoscopy assistance.</li>
           <li>Patient communication, history taking, and clinical documentation.</li>
           <li>Familiar with EMR systems, medical imaging review, and diagnostic testing.</li>
-          <li>Strong teamwork in multidisciplinary clinics and surgical environments.</li>
-          <li>Basic life support, time management, and problem-solving under pressure.</li>
+          <li>Teamwork in clinics and surgical settings.</li>
+          <li>Basic life support, time management, and calm problem-solving.</li>
         </ul>
       </div>
     </section>
@@ -308,9 +337,9 @@
       <h2>Achievements</h2>
       <div class="section-block">
         <ul>
-          <li>Assisted in 150+ ophthalmic exams and clinical procedures during rotations.</li>
+          <li>Assisted in over 150 ophthalmic exams and clinic procedures during rotations.</li>
           <li>Presented research findings at a regional medical conference.</li>
-          <li>Recognized for attention to detail in preoperative assessments and patient counselling.</li>
+          <li>Noted for careful preoperative checks and clear patient communication.</li>
         </ul>
       </div>
     </section>
@@ -329,9 +358,9 @@
       <h2>Hobbies and Interests</h2>
       <div class="section-block">
         <ul>
-          <li>Photography and visual storytelling with a focus on light, detail, and composition.</li>
-          <li>Hiking, mindfulness, and maintaining a balanced approach to wellness.</li>
-          <li>Reading clinical journals and staying updated on advances in ophthalmology.</li>
+          <li>Photography and visual storytelling, with attention to light and detail.</li>
+          <li>Hiking and mindfulness to keep a healthy work-life balance.</li>
+          <li>Reading clinical journals and following new developments in ophthalmology.</li>
         </ul>
       </div>
     </section>
