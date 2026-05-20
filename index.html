@@ -6,18 +6,16 @@
   <title>Sri Rajan | Resume</title>
   <style>
     :root {
-      --background: #edf3ff;
+      --background: #eef3fb;
       --surface: #ffffff;
-      --primary: #1d4d8f;
-      --primary-soft: #5c79d9;
-      --accent: #d3477b;
-      --accent-soft: #ff8b6a;
-      --text: #122338;
-      --text-muted: #5e7087;
-      --border: rgba(29, 77, 143, 0.16);
-      --panel: #f7f9ff;
-      --shadow: rgba(18, 35, 56, 0.12);
-      --highlight: #eef3ff;
+      --accent: #1f4a8a;
+      --accent-soft: #4d75d6;
+      --text: #15263b;
+      --text-muted: #5e7489;
+      --border: rgba(31, 77, 129, 0.16);
+      --panel: #f4f8ff;
+      --shadow: rgba(31, 77, 129, 0.08);
+      --highlight: #e9efff;
     }
 
     * {
@@ -32,475 +30,350 @@
       margin: 0;
       min-height: 100vh;
       font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: radial-gradient(circle at 20% 10%, rgba(92, 121, 217, 0.18), transparent 22%),
-        radial-gradient(circle at 90% 20%, rgba(211, 71, 123, 0.12), transparent 18%),
-        linear-gradient(180deg, #f7f9ff 0%, var(--background) 100%);
+      background: radial-gradient(circle at top left, rgba(45, 87, 164, 0.14), transparent 28%),
+        linear-gradient(180deg, #f6f9ff 0%, var(--background) 100%);
       color: var(--text);
     }
 
-    .page-wrap {
-      max-width: 1120px;
-      margin: 24px auto 40px;
-      padding: 0 20px;
+    .container {
+      max-width: 960px;
+      margin: 36px auto;
+      padding: 36px;
+      background: var(--surface);
+      border-radius: 28px;
+      border: 1px solid var(--border);
+      box-shadow: 0 28px 70px var(--shadow);
     }
 
-    .resume-card {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 36px;
-      overflow: hidden;
-      box-shadow: 0 32px 80px var(--shadow);
-      border: 1px solid rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(14px);
-    }
-
-    .hero {
+    header {
       display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 28px;
-      padding: 48px;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 24px;
       align-items: start;
-      background: linear-gradient(135deg, #f7f9ff 0%, #e7efff 100%);
+      padding-bottom: 28px;
       border-bottom: 1px solid var(--border);
     }
 
-    .hero-left {
+    .header-info {
+      min-width: 260px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      letter-spacing: 0.5px;
+      color: var(--accent);
+      line-height: 1.05;
+    }
+
+    header p {
+      margin: 18px 0 0;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.8;
       max-width: 720px;
     }
 
-    .hero h1 {
-      margin: 0;
-      font-size: clamp(2.7rem, 4vw, 4rem);
-      line-height: 1.02;
-      letter-spacing: -0.03em;
-      color: var(--primary);
-    }
-
-    .hero-subtitle {
-      margin: 18px 0 0;
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      line-height: 1.85;
-      max-width: 84%;
-    }
-
-    .hero-accent {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 22px;
-      font-size: 0.94rem;
-      color: var(--primary);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-    }
-
-    .hero-accent span {
-      width: 48px;
-      height: 48px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-soft));
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-size: 0.95rem;
-      box-shadow: 0 12px 28px rgba(92, 121, 217, 0.16);
-    }
-
-    .hero-tagline {
-      margin-top: 28px;
-      display: grid;
-      gap: 14px;
-      color: var(--text);
-      font-size: 1rem;
-      line-height: 1.9;
-    }
-
-    .hero-card {
-      min-width: 280px;
-      padding: 28px;
-      border-radius: 28px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), #f4f8ff 100%);
+    .contact-card {
+      background: #ffffff;
+      padding: 26px;
+      border-radius: 24px;
       border: 1px solid var(--border);
-      box-shadow: 0 22px 36px rgba(29, 77, 143, 0.08);
-    }
-
-    .profile-ring {
-      width: 100%;
-      height: 100px;
-      margin-bottom: 24px;
-      border-radius: 28px;
-      background: linear-gradient(180deg, rgba(92, 121, 217, 0.16), transparent 100%);
-      display: grid;
-      place-items: center;
+      box-shadow: 0 22px 38px rgba(31, 77, 129, 0.08);
       position: relative;
+      overflow: hidden;
     }
 
-    .profile-ring::before {
+    .contact-card::before {
       content: "";
-      width: 68px;
-      height: 68px;
-      border-radius: 50%;
-      border: 4px solid rgba(92, 121, 217, 0.32);
-      background: rgba(255, 255, 255, 0.75);
-      box-shadow: inset 0 0 0 1px rgba(92, 121, 217, 0.08);
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 6px;
+      width: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-soft));
     }
 
-    .hero-card h2,
-    .section h2 {
-      margin: 0 0 18px;
-      font-size: 1rem;
+    .contact-card h2 {
+      margin: 0 0 20px;
+      font-size: 1.05rem;
+      color: var(--accent);
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--primary);
+      position: relative;
+      z-index: 1;
     }
 
-    .info-list,
-    .skill-list,
-    .section ul {
+    .contact-list {
       list-style: none;
       margin: 0;
       padding: 0;
       display: grid;
-      gap: 14px;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
     }
 
-    .info-list li {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
+    .contact-list li {
       color: var(--text-muted);
       font-size: 0.98rem;
+      line-height: 1.7;
     }
 
-    .info-list strong {
+    .contact-list strong {
       color: var(--text);
-      min-width: 95px;
-      display: inline-block;
-      font-weight: 600;
-    }
-
-    .skill-list {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .skill-pill {
-      display: inline-flex;
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 0.92rem;
-      color: var(--primary);
-      background: rgba(92, 121, 217, 0.11);
-      border: 1px solid rgba(92, 121, 217, 0.16);
-      width: fit-content;
-      white-space: nowrap;
     }
 
     .section {
-      padding: 36px 48px;
-    }
-
-    .section + .section {
-      border-top: 1px solid var(--border);
+      margin-top: 34px;
     }
 
     .section h2 {
-      margin-bottom: 16px;
+      margin: 0 0 20px;
+      font-size: 1.35rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
       position: relative;
       padding-left: 18px;
     }
 
-    .section h2::before,
+    .section h2::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 4px;
+      width: 8px;
+      height: 32px;
+      border-radius: 4px;
+      background: var(--accent-soft);
+    }
+
     .section h2::after {
       content: "";
       position: absolute;
       left: 0;
-      border-radius: 4px;
-    }
-
-    .section h2::before {
-      top: 4px;
-      width: 8px;
-      height: 32px;
-      background: var(--accent);
-    }
-
-    .section h2::after {
       bottom: -8px;
       width: 56px;
       height: 5px;
-      background: linear-gradient(90deg, var(--primary), var(--accent-soft));
+      border-radius: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-soft));
     }
 
     .section-block {
-      display: grid;
-      gap: 24px;
-      margin-bottom: 24px;
-    }
-
-    .experience-card {
-      padding: 28px;
-      border-radius: 28px;
       background: var(--panel);
-      border: 1px solid rgba(29, 77, 143, 0.08);
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+      margin-bottom: 20px;
     }
 
     .job-title {
-      margin: 0 0 8px;
       font-weight: 700;
+      color: #1d436f;
+      margin-bottom: 8px;
       font-size: 1.05rem;
-      color: var(--primary);
     }
 
     .job-details {
-      margin: 0 0 18px;
       color: var(--text-muted);
-      font-size: 0.96rem;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
       font-style: italic;
     }
 
     .section p,
-    .section li,
-    .hero-tagline div {
-      color: #26394f;
-      font-size: 1rem;
+    .section li {
       line-height: 1.75;
+      font-size: 1rem;
+      color: #2b425d;
     }
 
     .section ul {
-      padding-left: 20px;
+      padding-left: 24px;
+      margin: 0;
     }
 
     .section ul li {
-      margin-bottom: 10px;
-      position: relative;
-      padding-left: 18px;
+      margin-bottom: 12px;
     }
 
     .section ul li::marker {
-      color: transparent;
+      color: var(--accent-soft);
     }
 
-    .section ul li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--accent);
-      font-size: 1.1rem;
-      line-height: 1.6;
+    .section-block strong,
+    .section-block span {
+      color: var(--text);
     }
 
-    .grid-cols-2 {
+    .grid {
       display: grid;
       gap: 24px;
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .section-block .highlight {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      border-radius: 18px;
-      background: rgba(211, 71, 123, 0.08);
-      color: var(--accent);
-      width: fit-content;
-      font-size: 0.95rem;
-      font-weight: 700;
-    }
-
-    @media (max-width: 900px) {
-      .hero {
+    @media (max-width: 820px) {
+      header {
         grid-template-columns: 1fr;
       }
 
-      .section {
-        padding: 28px 32px;
-      }
-
-      .hero-card {
-        min-width: auto;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .page-wrap {
-        margin: 16px auto;
-      }
-
-      .hero,
-      .section {
-        padding: 24px;
-      }
-
-      .section-block,
-      .experience-card {
-        padding: 22px;
-      }
-
-      .skill-list {
+      .grid {
         grid-template-columns: 1fr;
+      }
+
+      .contact-card {
+        flex: 1 1 100%;
       }
     }
   </style>
 </head>
 <body>
-  <div class="page-wrap">
-    <article class="resume-card">
-      <section class="hero">
-        <div class="hero-left">
-          <h1>Sri Rajan, MD</h1>
-          <p class="hero-subtitle">Ophthalmology residency candidate with strong patient assessment, imaging support, and surgical teamwork. Known for organized clinical workflow, compassionate patient teaching, and evidence-based care.</p>
-          <div class="hero-tagline">
-            <div>Clinical precision across eye exams, diagnostics, and preoperative coordination.</div>
-            <div>Collaborative with surgeons, research teams, and multidisciplinary clinic staff.</div>
-            <div>Driven to improve visual outcomes through effective communication and patient education.</div>
-          </div>
-        </div>
+  <div class="container">
+    <header>
+      <div class="header-info">
+        <h1>Sri Rajan, MD</h1>
+        <p>Aspiring ophthalmologist with strong clinical skills, patient care experience, and surgical teamwork. Comfortable with eye exams, diagnostic imaging, and organizing care in a busy clinic.</p>
+      </div>
+      <div class="contact-card">
+        <h2>Contact Information</h2>
+        <ul class="contact-list">
+          <li><strong>Email:</strong> srirajan@gmail.com</li>
+          <li><strong>Location:</strong> London, ON</li>
+          <li><strong>Phone:</strong> +1 234-567-8901</li>
+        </ul>
+      </div>
+    </header>
 
-        <aside class="hero-card">
-          <div class="profile-ring"></div>
-          <h2>Contact</h2>
-          <ul class="info-list">
-            <li><strong>Email</strong><span>srirajan@gmail.com</span></li>
-            <li><strong>Phone</strong><span>+1 234-567-8901</span></li>
-            <li><strong>Location</strong><span>London, ON</span></li>
-          </ul>
+    <section class="section">
+      <h2>Objective</h2>
+      <div class="section-block">
+        <p>Seeking an ophthalmology residency where I can use clinical skills, surgical support experience, and patient-focused care. I want to help improve vision outcomes with clear communication and evidence-based practice.</p>
+      </div>
+    </section>
 
-          <h2>Core strengths</h2>
-          <ul class="skill-list">
-            <li><span class="skill-pill">Ophthalmic assessment</span></li>
-            <li><span class="skill-pill">Surgical support</span></li>
-            <li><span class="skill-pill">Patient communication</span></li>
-            <li><span class="skill-pill">Diagnostic imaging</span></li>
-            <li><span class="skill-pill">EMR workflow</span></li>
-            <li><span class="skill-pill">Team coordination</span></li>
-          </ul>
-        </aside>
-      </section>
+    <section class="section">
+      <h2>Education</h2>
+      <div class="section-block">
+        <div class="job-title">Doctor of Medicine</div>
+        <div class="job-details">Western University Schulich School of Medicine & Dentistry, London, ON — 2024</div>
+        <ul>
+          <li>Dean's List and Clinical Excellence Award in Ophthalmology.</li>
+          <li>Studied ophthalmic pathology, clinical diagnostics, and surgical fundamentals.</li>
+        </ul>
+      </div>
+      <div class="section-block">
+        <div class="job-title">Bachelor of Science in Biology</div>
+        <div class="job-details">University of Toronto, Toronto, ON — 2020</div>
+        <ul>
+          <li>Focused on human physiology, optics, and neuroscience.</li>
+          <li>Graduated with distinction while volunteering in community health clinics.</li>
+        </ul>
+      </div>
+    </section>
 
-      <section class="section">
-        <h2>Objective</h2>
-        <div class="section-block experience-card">
-          <p>Seeking an ophthalmology residency where I can apply clinical skill, surgical support experience, and patient-focused care. I aim to improve vision outcomes through clear communication, organized care, and evidence-based practice.</p>
-        </div>
-      </section>
+    <section class="section">
+      <h2>Work Experience</h2>
+      <div class="section-block">
+        <div class="job-title">Clinical Intern, Ophthalmology Department</div>
+        <div class="job-details">St. Mary's Hospital, London, ON — 2023–2024</div>
+        <ul>
+          <li>Performed eye exams and slit lamp assessments under supervision.</li>
+          <li>Helped collect patient histories, test visual acuity, and measure intraocular pressure.</li>
+          <li>Assisted with preoperative evaluations, instrument sterilization, and surgery notes.</li>
+          <li>Coordinated referrals for OCT scans and specialist consultations.</li>
+        </ul>
+      </div>
+      <div class="section-block">
+        <div class="job-title">Research Assistant, Ophthalmic Imaging Lab</div>
+        <div class="job-details">Ontario Eye Institute, Ottawa, ON — 2022–2023</div>
+        <ul>
+          <li>Helped study retinal imaging markers for diabetic retinopathy.</li>
+          <li>Reviewed imaging data, kept research records, and prepared conference abstracts.</li>
+          <li>Worked with clinicians to improve patient intake and clinic workflow.</li>
+        </ul>
+      </div>
+    </section>
 
-      <section class="section">
-        <h2>Education</h2>
-        <div class="section-block grid-cols-2">
-          <div class="experience-card">
-            <p class="job-title">Doctor of Medicine</p>
-            <p class="job-details">Western University Schulich School of Medicine & Dentistry, London, ON — 2024</p>
-            <ul>
-              <li>Dean's List and Clinical Excellence Award in Ophthalmology.</li>
-              <li>Studied ophthalmic pathology, clinical diagnostics, and surgical fundamentals.</li>
-            </ul>
-          </div>
-          <div class="experience-card">
-            <p class="job-title">Bachelor of Science in Biology</p>
-            <p class="job-details">University of Toronto, Toronto, ON — 2020</p>
-            <ul>
-              <li>Focused on human physiology, optics, and neuroscience.</li>
-              <li>Graduated with distinction while volunteering in community health clinics.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+    <section class="section">
+      <h2>Extra-Curricular</h2>
+      <div class="section-block">
+        <ul>
+          <li>Organized talks and surgical skills workshops for the Ophthalmology Interest Group.</li>
+          <li>Tutored first-year medical students in anatomy and clinical skills.</li>
+          <li>Practiced fundus exam and suturing in the simulation lab.</li>
+        </ul>
+      </div>
+    </section>
 
-      <section class="section">
-        <h2>Experience</h2>
-        <div class="section-block grid-cols-2">
-          <div class="experience-card">
-            <p class="job-title">Clinical Intern, Ophthalmology Department</p>
-            <p class="job-details">St. Mary's Hospital, London, ON — 2023–2024</p>
-            <ul>
-              <li>Performed eye exams and slit lamp assessments under supervision.</li>
-              <li>Collected patient histories, assessed visual acuity, and measured IOP.</li>
-              <li>Assisted with preoperative evaluations, sterilization, and surgery notes.</li>
-              <li>Coordinated referrals for OCT imaging and specialist consultations.</li>
-            </ul>
-          </div>
-          <div class="experience-card">
-            <p class="job-title">Research Assistant, Ophthalmic Imaging Lab</p>
-            <p class="job-details">Ontario Eye Institute, Ottawa, ON — 2022–2023</p>
-            <ul>
-              <li>Studied retinal imaging markers for diabetic retinopathy.</li>
-              <li>Reviewed imaging data, maintained research documentation, and supported conference abstracts.</li>
-              <li>Collaborated with clinicians to refine patient intake and clinic workflow.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+    <section class="section">
+      <h2>Volunteer Experience</h2>
+      <div class="section-block">
+        <div class="job-title">Vision Screening Volunteer</div>
+        <div class="job-details">Community Eye Care Clinic, Toronto, ON — 2021–Present</div>
+        <ul>
+          <li>Performed vision tests and assisted with patient triage at free screening events.</li>
+          <li>Explained eye health, glaucoma screening, and follow-up care to patients.</li>
+          <li>Helped manage clinic flow and collect patient intake information.</li>
+        </ul>
+      </div>
+    </section>
 
-      <section class="section">
-        <h2>Volunteer & Leadership</h2>
-        <div class="section-block grid-cols-2">
-          <div class="experience-card">
-            <p class="job-title">Vision Screening Volunteer</p>
-            <p class="job-details">Community Eye Care Clinic, Toronto, ON — 2021–Present</p>
-            <ul>
-              <li>Performed vision tests and supported patient triage at free community events.</li>
-              <li>Explained eye health, glaucoma screening, and follow-up guidance.</li>
-              <li>Helped manage clinic flow and patient intake procedures.</li>
-            </ul>
-          </div>
-          <div class="experience-card">
-            <p class="job-title">Ophthalmology Interest Group</p>
-            <p class="job-details">Western University — 2022–2024</p>
-            <ul>
-              <li>Organized talks and surgical skills workshops for medical students.</li>
-              <li>Tutored anatomy and clinical techniques for first-year students.</li>
-              <li>Practiced fundus exams and suturing in a simulation lab.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+    <section class="section">
+      <h2>Skills and Abilities</h2>
+      <div class="section-block">
+        <ul>
+          <li>Ophthalmic exam support, slit lamp assessment, and fundoscopy assistance.</li>
+          <li>Patient communication, history taking, and clinical documentation.</li>
+          <li>Familiar with EMR systems, medical imaging review, and diagnostic testing.</li>
+          <li>Teamwork in clinics and surgical settings.</li>
+          <li>Basic life support, time management, and calm problem-solving.</li>
+        </ul>
+      </div>
+    </section>
 
-      <section class="section">
-        <h2>Skills & Certifications</h2>
-        <div class="section-block grid-cols-2">
-          <div class="experience-card">
-            <ul>
-              <li>Ophthalmic exam support, slit lamp assessment, and fundoscopy assistance.</li>
-              <li>Patient communication, history taking, and clinical documentation.</li>
-              <li>Familiar with EMR systems, medical imaging review, and diagnostic testing.</li>
-              <li>Teamwork in clinics and surgical settings.</li>
-              <li>Basic life support, time management, and calm problem-solving.</li>
-            </ul>
-          </div>
-          <div class="experience-card">
-            <p class="job-title">Certifications</p>
-            <p class="job-details">Canadian Red Cross — 2024</p>
-            <p class="job-title">Advanced Cardiac Life Support (ACLS)</p>
-            <p class="job-details">Canadian Heart and Stroke Foundation — 2024</p>
-          </div>
-        </div>
-      </section>
+    <section class="section">
+      <h2>Achievements</h2>
+      <div class="section-block">
+        <ul>
+          <li>Assisted in over 150 ophthalmic exams and clinic procedures during rotations.</li>
+          <li>Presented research findings at a regional medical conference.</li>
+          <li>Noted for careful preoperative checks and clear patient communication.</li>
+        </ul>
+      </div>
+    </section>
 
-      <section class="section">
-        <h2>Achievements</h2>
-        <div class="section-block experience-card">
-          <ul>
-            <li>Assisted in over 150 ophthalmic exams and clinic procedures during rotations.</li>
-            <li>Presented research findings at a regional medical conference.</li>
-            <li>Recognized for careful preoperative checks and clear patient communication.</li>
-          </ul>
-        </div>
-      </section>
+    <section class="section">
+      <h2>Certifications</h2>
+      <div class="section-block">
+        <div class="job-title">Basic Life Support (BLS)</div>
+        <div class="job-details">Canadian Red Cross — 2024</div>
+        <div class="job-title">Advanced Cardiac Life Support (ACLS)</div>
+        <div class="job-details">Canadian Heart and Stroke Foundation — 2024</div>
+      </div>
+    </section>
 
-      <section class="section">
-        <h2>References</h2>
-        <div class="section-block experience-card">
-          <ul>
-            <li>References available upon request from clinical supervisors and faculty mentors.</li>
-            <li>Dr. Priya Singh, Ophthalmology Faculty, +1 234-567-8901.</li>
-          </ul>
-        </div>
-      </section>
-    </article>
+    <section class="section">
+      <h2>Hobbies and Interests</h2>
+      <div class="section-block">
+        <ul>
+          <li>Photography and visual storytelling, with attention to light and detail.</li>
+          <li>Hiking and mindfulness to keep a healthy work-life balance.</li>
+          <li>Reading clinical journals and following new developments in ophthalmology.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>References</h2>
+      <div class="section-block">
+        <ul>
+          <li>References available upon request from clinical supervisors and faculty mentors.</li>
+          <li>Dr. Priya Singh, Ophthalmology Faculty, +1 234-567-8901.</li>
+        </ul>
+      </div>
+    </section>
   </div>
 </body>
 </html>
