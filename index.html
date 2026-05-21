@@ -8,23 +8,22 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 
     :root {
-      --background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
+      --background: #f3f7fb;
       --surface: #ffffff;
-      --accent: #0066cc;
-      --accent-dark: #0052a3;
-      --accent-light: #e6f0ff;
-      --text: #1a1a1a;
-      --text-muted: #666666;
-      --text-light: #999999;
-      --border: #e0e0e0;
-      --success: #10b981;
-      --highlight: #fef3c7;
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
-      --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.16);
+      --accent: #0b5ed7;
+      --accent-dark: #0a58ca;
+      --accent-light: #e7f1ff;
+      --text: #1f2937;
+      --text-muted: #4b5563;
+      --text-light: #6b7280;
+      --border: #dbe4ef;
+      --success: #16a34a;
+      --shadow-sm: 0 10px 30px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 18px 50px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 28px 80px rgba(15, 23, 42, 0.12);
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
     }
 
@@ -35,132 +34,116 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--background);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top left, rgba(11, 94, 215, 0.08), transparent 30%),
+                  radial-gradient(circle at bottom right, rgba(22, 163, 74, 0.08), transparent 30%),
+                  var(--background);
       color: var(--text);
       position: relative;
       overflow-x: hidden;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        radial-gradient(circle at 20% 50%, rgba(0, 102, 204, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: 1;
-    }
-
     .container {
-      max-width: 1000px;
+      max-width: 1080px;
       margin: 0 auto;
-      padding: 40px 32px;
-      background: var(--surface);
+      padding: 40px 32px 56px;
+      background: transparent;
       position: relative;
       z-index: 2;
     }
 
-    /* Header Styles */
     header {
       display: grid;
-      grid-template-columns: 1.6fr 1fr;
-      gap: 36px;
+      grid-template-columns: 1.65fr 1fr;
+      gap: 32px;
       align-items: start;
       padding: 40px;
-      background: linear-gradient(135deg, rgba(0, 102, 204, 0.05) 0%, rgba(16, 185, 129, 0.02) 100%);
-      border-radius: 24px;
-      border: 2px solid var(--accent-light);
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 28px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
       margin-bottom: 40px;
       position: relative;
       overflow: hidden;
     }
 
     header::before {
-      content: "";
+      content: '';
       position: absolute;
-      top: -50%;
+      top: -30%;
       right: -20%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(0, 102, 204, 0.1) 0%, transparent 70%);
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(11, 94, 215, 0.14), transparent 65%);
       border-radius: 50%;
       z-index: 0;
     }
 
-    .header-info {
+    .header-info,
+    .contact-card {
       position: relative;
       z-index: 1;
     }
 
     header h1 {
       margin: 0;
-      font-size: 3.5rem;
+      font-size: clamp(2.6rem, 5vw, 3.4rem);
       font-weight: 800;
-      letter-spacing: -1px;
-      background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1.1;
-      font-family: "Poppins", sans-serif;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      font-family: 'Poppins', sans-serif;
+      color: var(--text);
     }
 
     header h1 .credential {
-      font-size: 0.7em;
+      display: inline-block;
+      font-size: 0.72em;
       font-weight: 600;
-      margin-left: 8px;
+      margin-left: 10px;
+      vertical-align: middle;
+      color: var(--accent);
     }
 
-    header p {
+    .headline {
       margin: 18px 0 0;
       font-size: 1.05rem;
       color: var(--text-muted);
-      line-height: 1.8;
-      max-width: 700px;
+      line-height: 1.9;
+      max-width: 720px;
       font-weight: 400;
     }
 
     .contact-card {
-      background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+      background: #ffffff;
+      border-radius: 22px;
+      border: 1px solid var(--border);
       padding: 32px;
-      border-radius: 20px;
-      border: 2px solid var(--accent-light);
-      box-shadow: var(--shadow-md);
-      position: relative;
-      overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 1;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
 
     .contact-card:hover {
-      border-color: var(--accent);
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-6px);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
 
     .contact-card::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
-      height: 4px;
       width: 100%;
+      height: 4px;
       background: linear-gradient(90deg, var(--accent), var(--success));
+      border-radius: 0 0 999px 999px;
     }
 
     .contact-card h2 {
       margin: 0 0 24px;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--accent);
-      letter-spacing: 0.15em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      position: relative;
-      z-index: 1;
       font-weight: 700;
     }
 
@@ -170,109 +153,89 @@
       padding: 0;
       display: grid;
       gap: 16px;
-      position: relative;
-      z-index: 1;
     }
 
     .contact-list li {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
       display: flex;
-      align-items: center;
-      gap: 8px;
+      align-items: flex-start;
+      gap: 12px;
+      color: var(--text-muted);
+      font-size: 0.96rem;
+      line-height: 1.7;
     }
 
     .contact-list li::before {
-      content: "";
-      width: 4px;
-      height: 4px;
-      background: var(--accent);
+      content: '';
+      min-width: 10px;
+      min-height: 10px;
       border-radius: 50%;
+      margin-top: 6px;
+      background: var(--accent);
       flex-shrink: 0;
     }
 
     .contact-list strong {
       color: var(--text);
+      min-width: 90px;
+      display: inline-block;
       font-weight: 600;
     }
 
-    /* Section Styles */
     .section {
-      margin-bottom: 40px;
-      scroll-margin-top: 20px;
+      margin-bottom: 42px;
+      scroll-margin-top: 18px;
     }
 
     .section h2 {
-      margin: 0 0 28px;
-      font-size: 1.6rem;
+      margin: 0 0 24px;
+      font-size: 1.45rem;
       color: var(--text);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      position: relative;
-      padding: 0;
+      letter-spacing: 0.12em;
       font-weight: 700;
-      font-family: "Poppins", sans-serif;
-      display: flex;
+      font-family: 'Poppins', sans-serif;
+      display: inline-flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
     }
 
     .section h2::before {
-      content: "";
+      content: '';
       width: 4px;
-      height: 40px;
-      background: linear-gradient(180deg, var(--accent) 0%, var(--success) 100%);
-      border-radius: 2px;
+      height: 38px;
+      background: linear-gradient(180deg, var(--accent), var(--success));
+      border-radius: 999px;
       flex-shrink: 0;
     }
 
     .section-block {
       background: #ffffff;
-      border: 2px solid var(--border);
-      border-radius: 18px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
       padding: 32px;
       box-shadow: var(--shadow-sm);
       margin-bottom: 20px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .section-block::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
     .section-block:hover {
-      border-color: var(--accent);
+      transform: translateY(-2px);
       box-shadow: var(--shadow-md);
-      transform: translateY(-3px);
-    }
-
-    .section-block:hover::before {
-      opacity: 1;
+      border-color: rgba(11, 94, 215, 0.18);
     }
 
     .job-title {
+      margin: 0 0 8px;
+      font-size: 1.12rem;
       font-weight: 700;
       color: var(--text);
-      margin-bottom: 8px;
-      font-size: 1.15rem;
-      font-family: "Poppins", sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
 
     .job-details {
+      margin: 0 0 18px;
       color: var(--text-light);
-      font-size: 0.9rem;
-      margin-bottom: 16px;
+      font-size: 0.95rem;
       font-style: italic;
       display: flex;
       align-items: center;
@@ -280,14 +243,16 @@
     }
 
     .job-details::before {
-      content: "📍";
-      font-size: 0.85rem;
+      content: '•';
+      color: var(--accent);
+      font-size: 1.1rem;
+      line-height: 1;
     }
 
     .section p,
     .section li {
       line-height: 1.8;
-      font-size: 0.95rem;
+      font-size: 0.97rem;
       color: var(--text-muted);
     }
 
@@ -303,7 +268,7 @@
 
     .section ul li::marker {
       color: var(--accent);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .section-block strong,
@@ -312,10 +277,9 @@
       font-weight: 600;
     }
 
-    /* Skills Section - Badge Style */
     .skills-container {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
       margin: 0;
       padding: 0;
@@ -324,43 +288,37 @@
 
     .skills-container li {
       margin: 0 !important;
-      background: linear-gradient(135deg, var(--accent-light) 0%, rgba(230, 240, 255, 0.5) 100%);
-      border: 2px solid var(--accent);
-      color: var(--accent-dark);
-      padding: 8px 16px;
-      border-radius: 24px;
-      font-size: 0.9rem;
+      background: #f8fbff;
+      border: 1px solid rgba(11, 94, 215, 0.14);
+      color: var(--text);
+      padding: 14px 16px;
+      border-radius: 16px;
+      font-size: 0.95rem;
       font-weight: 600;
-      display: inline-block;
-      transition: all 0.3s ease;
-      cursor: default;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .skills-container li:hover {
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
-      color: white;
-      transform: scale(1.05);
-      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
     }
 
     .skills-container li::marker {
       display: none;
     }
 
-    /* Grid */
     .grid {
       display: grid;
       gap: 24px;
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    /* Objective Section Special Style */
     .section-block.objective {
-      background: linear-gradient(135deg, var(--accent-light) 0%, rgba(16, 185, 129, 0.05) 100%);
-      border: 2px solid var(--accent);
+      background: linear-gradient(180deg, #f0f6ff 0%, #ffffff 100%);
+      border: 1px solid rgba(11, 94, 215, 0.16);
       padding: 36px;
       font-size: 1rem;
-      line-height: 1.9;
+      line-height: 1.95;
       color: var(--text);
     }
 
@@ -369,28 +327,25 @@
       font-weight: 500;
     }
 
-    /* Achievement Badges */
     .achievement-badge {
-      display: inline-block;
-      background: linear-gradient(135deg, #fef3c7 0%, #fef08a 100%);
-      border: 2px solid #fbbf24;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff5d8;
+      border: 1px solid #f5c842;
       color: #92400e;
-      padding: 12px 16px;
-      border-radius: 8px;
+      padding: 10px 14px;
+      border-radius: 14px;
       font-size: 0.9rem;
       font-weight: 600;
       margin-right: 8px;
       margin-top: 8px;
     }
 
-    /* Responsive Design */
     @media (max-width: 900px) {
       header {
         grid-template-columns: 1fr;
-      }
-
-      header h1 {
-        font-size: 2.8rem;
+        padding: 32px;
       }
 
       .grid {
@@ -398,26 +353,26 @@
       }
 
       .section h2 {
-        font-size: 1.4rem;
+        font-size: 1.35rem;
       }
     }
 
     @media (max-width: 640px) {
       .container {
-        padding: 24px 16px;
+        padding: 24px 16px 40px;
       }
 
       header {
-        padding: 24px;
         gap: 24px;
+        padding: 24px;
       }
 
       header h1 {
         font-size: 2.2rem;
       }
 
-      header p {
-        font-size: 0.95rem;
+      .headline {
+        font-size: 0.98rem;
       }
 
       .contact-card {
@@ -425,12 +380,16 @@
       }
 
       .section-block {
-        padding: 20px;
+        padding: 22px;
       }
 
       .section h2 {
-        font-size: 1.2rem;
-        margin-bottom: 20px;
+        font-size: 1.25rem;
+        margin-bottom: 18px;
+      }
+
+      .skills-container {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -440,7 +399,7 @@
     <header>
       <div class="header-info">
         <h1>Sri Rajan, MD</h1>
-        <p>Aspiring ophthalmologist with strong clinical skills, patient care experience, and surgical teamwork. Comfortable with eye exams, diagnostic imaging, and organizing care in a busy clinic.</p>
+        <p class="headline">Aspiring ophthalmologist with strong clinical skills, patient care experience, and surgical teamwork. Comfortable with eye exams, diagnostic imaging, and organizing care in a busy clinic.</p>
       </div>
       <div class="contact-card">
         <h2>Contact Information</h2>
