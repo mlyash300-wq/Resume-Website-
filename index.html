@@ -4,14 +4,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Sri Rajan | Professional Resume</title>
+<title>Sri Rajan | Portfolio Resume</title>
 
 <style>
-
 :root{
-  --accent:#2563eb;
-  --accent-dark:#0f3b72;
+  --blue:#2563eb;
+  --purple:#7c3aed;
+  --pink:#ec4899;
+  --cyan:#06b6d4;
   --text:#1e293b;
   --muted:#64748b;
 }
@@ -25,58 +25,146 @@
 body{
   font-family:Inter,Segoe UI,sans-serif;
   color:var(--text);
+  overflow-x:hidden;
 
   background:linear-gradient(
-      -45deg,
-      #eef4ff,
-      #dbeafe,
-      #f8fafc,
-      #dbeafe
+    -45deg,
+    #dbeafe,
+    #ede9fe,
+    #fce7f3,
+    #cffafe
   );
 
   background-size:400% 400%;
-  animation:gradientFlow 15s ease infinite;
+  animation:bgFlow 15s ease infinite;
 }
 
-@keyframes gradientFlow{
+@keyframes bgFlow{
   0%{background-position:0% 50%;}
   50%{background-position:100% 50%;}
   100%{background-position:0% 50%;}
 }
 
+/* Floating particles */
+
+#particles{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  overflow:hidden;
+}
+
+.particle{
+  position:absolute;
+  border-radius:50%;
+  background:rgba(37,99,235,.12);
+  animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+  from{
+    transform:translateY(110vh);
+  }
+  to{
+    transform:translateY(-120px);
+  }
+}
+
+/* Mouse Glow */
+
 .cursor-glow{
   position:fixed;
   width:300px;
   height:300px;
-
-  background:radial-gradient(
-      circle,
-      rgba(37,99,235,.15),
-      transparent 70%
-  );
-
   border-radius:50%;
   pointer-events:none;
-  transform:translate(-50%,-50%);
   z-index:-1;
+
+  background:radial-gradient(
+    circle,
+    rgba(37,99,235,.18),
+    transparent 70%
+  );
+
+  transform:translate(-50%,-50%);
 }
 
 .container{
-  max-width:1000px;
+  position:relative;
+
+  max-width:1100px;
+
   margin:40px auto;
+
   padding:40px;
 
-  background:rgba(255,255,255,.75);
+  border-radius:35px;
 
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
+  background:rgba(255,255,255,.72);
 
-  border-radius:30px;
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
 
-  border:1px solid rgba(255,255,255,.4);
+  overflow:hidden;
+}
 
-  box-shadow:
-  0 30px 60px rgba(0,0,0,.08);
+.container::before{
+  content:"";
+
+  position:absolute;
+  inset:-3px;
+
+  background:linear-gradient(
+    45deg,
+    var(--blue),
+    var(--purple),
+    var(--pink),
+    var(--cyan),
+    var(--blue)
+  );
+
+  background-size:400% 400%;
+  animation:borderFlow 10s linear infinite;
+
+  z-index:-1;
+}
+
+@keyframes borderFlow{
+  from{
+    background-position:0% 50%;
+  }
+  to{
+    background-position:400% 50%;
+  }
+}
+
+.hero{
+  text-align:center;
+
+  padding:18px;
+
+  margin-bottom:30px;
+
+  border-radius:20px;
+
+  color:white;
+
+  font-weight:700;
+
+  background:linear-gradient(
+    90deg,
+    var(--blue),
+    var(--purple),
+    var(--pink)
+  );
+
+  animation:pulse 4s infinite;
+}
+
+@keyframes pulse{
+  50%{
+    transform:scale(1.02);
+  }
 }
 
 header{
@@ -85,8 +173,8 @@ header{
   gap:30px;
   flex-wrap:wrap;
 
-  padding-bottom:25px;
   border-bottom:1px solid rgba(0,0,0,.08);
+  padding-bottom:25px;
 }
 
 .header-info{
@@ -94,15 +182,15 @@ header{
 }
 
 .name{
-  font-size:3rem;
+  font-size:3.2rem;
   font-weight:800;
 
   background:linear-gradient(
     90deg,
-    #0f3b72,
-    #2563eb,
-    #60a5fa,
-    #0f3b72
+    var(--blue),
+    var(--purple),
+    var(--pink),
+    var(--blue)
   );
 
   background-size:300% auto;
@@ -126,27 +214,26 @@ header{
 }
 
 .contact-card{
-  width:280px;
-
-  padding:24px;
-
-  border-radius:20px;
+  width:300px;
 
   background:white;
 
-  box-shadow:
-      0 15px 30px rgba(37,99,235,.08);
+  border-radius:20px;
+
+  padding:25px;
 
   transition:.3s;
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.08);
 }
 
 .contact-card:hover{
-  transform:translateY(-8px);
+  transform:translateY(-10px);
 }
 
 .contact-card h3{
   margin-bottom:15px;
-  color:var(--accent-dark);
 }
 
 .contact-card p{
@@ -158,45 +245,74 @@ header{
 }
 
 .section h2{
-  color:var(--accent-dark);
   margin-bottom:20px;
-  position:relative;
-  display:inline-block;
+  color:#0f172a;
+  transition:.4s;
 }
 
-.section h2::after{
-  content:"";
-  position:absolute;
-  bottom:-8px;
-  left:0;
-
-  width:60px;
-  height:4px;
-
-  border-radius:5px;
-  background:var(--accent);
+.section:hover h2{
+  transform:translateX(10px);
+  color:var(--blue);
 }
 
 .section-block{
-  background:white;
+  position:relative;
 
-  padding:25px;
+  background:white;
 
   border-radius:20px;
 
-  margin-bottom:18px;
+  padding:25px;
+
+  margin-bottom:20px;
+
+  overflow:hidden;
 
   transition:
-  transform .25s ease,
-  box-shadow .25s ease;
+    transform .25s,
+    box-shadow .25s;
 
   box-shadow:
-  0 10px 25px rgba(0,0,0,.05);
+    0 10px 30px rgba(0,0,0,.06);
+}
+
+.section-block::before{
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:-150%;
+
+  width:100%;
+  height:100%;
+
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.5),
+    transparent
+  );
+
+  transition:.8s;
+}
+
+.section-block:hover::before{
+  left:150%;
+}
+
+.section-block:hover{
+  box-shadow:
+    0 30px 60px rgba(37,99,235,.18);
+
+  transform:
+    translateY(-10px)
+    scale(1.02);
 }
 
 .job-title{
   font-weight:700;
-  margin-bottom:6px;
+  margin-bottom:8px;
 }
 
 .job-details{
@@ -205,11 +321,11 @@ header{
 }
 
 ul{
-  padding-left:20px;
+  padding-left:22px;
 }
 
 li{
-  margin-bottom:8px;
+  margin-bottom:10px;
   line-height:1.7;
 }
 
@@ -221,24 +337,47 @@ li{
 
 .skill{
   padding:12px 18px;
-  border-radius:20px;
 
-  background:#eef4ff;
+  border-radius:999px;
+
+  background:#eef2ff;
 
   border:1px solid rgba(37,99,235,.15);
 
-  transition:.3s;
   cursor:pointer;
+
+  transition:.3s;
+
+  animation:floatSkill 4s ease-in-out infinite;
+}
+
+.skill:nth-child(2n){
+  animation-delay:1s;
+}
+
+.skill:nth-child(3n){
+  animation-delay:2s;
+}
+
+@keyframes floatSkill{
+  50%{
+    transform:translateY(-5px);
+  }
 }
 
 .skill:hover{
-  background:var(--accent);
   color:white;
 
-  transform:translateY(-5px);
+  background:linear-gradient(
+    135deg,
+    var(--blue),
+    var(--purple),
+    var(--pink)
+  );
 
-  box-shadow:
-  0 0 20px rgba(37,99,235,.4);
+  transform:
+    translateY(-8px)
+    scale(1.08);
 }
 
 .hidden{
@@ -252,7 +391,17 @@ li{
   transition:all .8s ease;
 }
 
-@media(max-width:800px){
+.counter{
+  font-weight:800;
+  color:var(--blue);
+}
+
+@media(max-width:850px){
+
+  .container{
+    margin:20px;
+    padding:25px;
+  }
 
   header{
     flex-direction:column;
@@ -263,36 +412,45 @@ li{
   }
 
   .name{
-    font-size:2.3rem;
+    font-size:2.4rem;
   }
 
 }
-
 </style>
 </head>
 <body>
 
+<div id="particles"></div>
 <div class="cursor-glow"></div>
 
 <div class="container">
 
+<div class="hero">
+Future Ophthalmologist • Researcher • Patient Advocate
+</div>
+
 <header>
 
 <div class="header-info">
+
 <h1 class="name">Sri Rajan, MD</h1>
 
 <p class="subtitle">
 Aspirational ophthalmologist with strong clinical judgment,
-patient-centered care, diagnostic imaging experience,
-and multidisciplinary clinical teamwork.
+patient-centered care, surgical teamwork experience,
+and expertise in diagnostic imaging and visual health.
 </p>
+
 </div>
 
 <div class="contact-card">
+
 <h3>Contact Information</h3>
-<p><strong>Email:</strong> srirajan@gmail.com</p>
-<p><strong>Phone:</strong> +1 234-567-8901</p>
-<p><strong>Location:</strong> London, ON</p>
+
+<p>📧 srirajan@gmail.com</p>
+<p>📱 +1 234-567-8901</p>
+<p>📍 London, Ontario</p>
+
 </div>
 
 </header>
@@ -301,9 +459,9 @@ and multidisciplinary clinical teamwork.
 <h2>Objective</h2>
 
 <div class="section-block">
-Seeking a residency position in ophthalmology where I can apply
-clinical expertise, surgical support experience, and compassionate
-patient care to improve visual health outcomes.
+Seeking a residency position in ophthalmology where I can combine
+clinical excellence, compassionate patient care, and research
+experience to improve visual health outcomes.
 </div>
 </section>
 
@@ -313,12 +471,12 @@ patient care to improve visual health outcomes.
 <div class="section-block">
 <div class="job-title">Doctor of Medicine</div>
 <div class="job-details">
-Western University Schulich School of Medicine & Dentistry • 2024
+Western University Schulich School of Medicine • 2024
 </div>
 <ul>
 <li>Dean's List</li>
-<li>Clinical Excellence Award in Ophthalmology</li>
-<li>Ophthalmic Pathology and Surgical Fundamentals</li>
+<li>Clinical Excellence Award</li>
+<li>Ophthalmology Focus</li>
 </ul>
 </div>
 
@@ -328,19 +486,19 @@ Western University Schulich School of Medicine & Dentistry • 2024
 University of Toronto • 2020
 </div>
 <ul>
-<li>Graduated with distinction</li>
-<li>Focus on physiology and neuroscience</li>
+<li>Graduated with Distinction</li>
+<li>Human Physiology & Neuroscience</li>
 </ul>
 </div>
 
 </section>
 
 <section class="section">
-<h2>Work Experience</h2>
+<h2>Experience</h2>
 
 <div class="section-block">
 <div class="job-title">
-Clinical Intern, Ophthalmology Department
+Clinical Intern, Ophthalmology
 </div>
 
 <div class="job-details">
@@ -348,61 +506,57 @@ St. Mary's Hospital • 2023–2024
 </div>
 
 <ul>
-<li>Conducted eye exams and slit lamp assessments.</li>
-<li>Assisted with visual acuity testing.</li>
-<li>Supported preoperative evaluations.</li>
+<li>Conducted comprehensive eye examinations.</li>
+<li>Supported pre-operative evaluations.</li>
 <li>Coordinated specialist referrals.</li>
+<li>Performed visual acuity testing.</li>
 </ul>
 </div>
-
-<div class="section-block">
-<div class="job-title">
-Research Assistant, Ophthalmic Imaging Lab
-</div>
-
-<div class="job-details">
-Ontario Eye Institute • 2022–2023
-</div>
-
-<ul>
-<li>Studied retinal imaging biomarkers.</li>
-<li>Analyzed ophthalmic imaging data.</li>
-<li>Prepared conference abstracts.</li>
-</ul>
-</div>
-
-</section>
-
-<section class="section">
-<h2>Skills</h2>
-
-<div class="section-block">
-<div class="skills">
-
-<div class="skill">Ophthalmic Exams</div>
-<div class="skill">Slit Lamp Assessment</div>
-<div class="skill">Patient Communication</div>
-<div class="skill">Clinical Documentation</div>
-<div class="skill">Medical Imaging</div>
-<div class="skill">EMR Systems</div>
-<div class="skill">Diagnostic Testing</div>
-<div class="skill">Surgical Teamwork</div>
-<div class="skill">BLS / ACLS</div>
-
-</div>
-</div>
-
 </section>
 
 <section class="section">
 <h2>Achievements</h2>
 
 <div class="section-block">
+
 <ul>
-<li>150+ ophthalmic examinations assisted.</li>
-<li>Presented findings at a regional conference.</li>
-<li>Recognized for excellence in patient care.</li>
+<li>
+<span class="counter" data-target="150">0</span>+
+Ophthalmic examinations assisted.
+</li>
+
+<li>
+<span class="counter" data-target="25">0</span>+
+Research presentations and projects.
+</li>
+
+<li>
+Recognized for excellence in patient care.
+</li>
 </ul>
+
+</div>
+</section>
+
+<section class="section">
+<h2>Skills</h2>
+
+<div class="section-block">
+
+<div class="skills">
+
+<div class="skill">Ophthalmic Exams</div>
+<div class="skill">Slit Lamp Assessment</div>
+<div class="skill">Fundoscopy</div>
+<div class="skill">Patient Care</div>
+<div class="skill">EMR Systems</div>
+<div class="skill">Medical Imaging</div>
+<div class="skill">Diagnostics</div>
+<div class="skill">Research</div>
+<div class="skill">Surgical Teamwork</div>
+
+</div>
+
 </div>
 </section>
 
@@ -410,51 +564,62 @@ Ontario Eye Institute • 2022–2023
 
 <script>
 
-// Typing Animation
+// Typing Effect
 
-const name = document.querySelector(".name");
-const original = name.textContent;
+const nameElement = document.querySelector(".name");
+const originalName = nameElement.textContent;
 
-name.textContent = "";
+nameElement.textContent = "";
 
-let i = 0;
+let letter = 0;
 
-function typeWriter(){
+function typeName(){
 
-  if(i < original.length){
+  if(letter < originalName.length){
 
-    name.textContent += original.charAt(i);
+    nameElement.textContent +=
+      originalName.charAt(letter);
 
-    i++;
+    letter++;
 
-    setTimeout(typeWriter,80);
-
+    setTimeout(typeName,80);
   }
-
 }
 
-typeWriter();
+typeName();
+
+
+// Mouse Glow
+
+const glow =
+document.querySelector(".cursor-glow");
+
+document.addEventListener("mousemove",e=>{
+
+  glow.style.left = e.clientX + "px";
+  glow.style.top = e.clientY + "px";
+
+});
 
 
 // Scroll Reveal
 
-const observer = new IntersectionObserver(entries=>{
+const observer =
+new IntersectionObserver(entries=>{
 
   entries.forEach(entry=>{
 
     if(entry.isIntersecting){
 
       entry.target.classList.add("show");
-
     }
 
   });
 
-},{
-  threshold:0.15
-});
+},{threshold:0.15});
 
-document.querySelectorAll(".section").forEach(section=>{
+document.querySelectorAll(".section")
+.forEach(section=>{
 
   section.classList.add("hidden");
 
@@ -463,48 +628,104 @@ document.querySelectorAll(".section").forEach(section=>{
 });
 
 
-// Mouse Glow
-
-const glow = document.querySelector(".cursor-glow");
-
-document.addEventListener("mousemove",(e)=>{
-
-  glow.style.left = e.clientX + "px";
-  glow.style.top = e.clientY + "px";
-
-});
-
-
 // 3D Hover Cards
 
-document.querySelectorAll(".section-block").forEach(card=>{
+document.querySelectorAll(".section-block")
+.forEach(card=>{
 
-  card.addEventListener("mousemove",(e)=>{
+  card.addEventListener("mousemove",e=>{
 
-    const rect = card.getBoundingClientRect();
+    const rect =
+      card.getBoundingClientRect();
 
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    const rotateY = ((x/rect.width)-0.5)*10;
-    const rotateX = ((y/rect.height)-0.5)*-10;
+    const rotateY =
+      ((x/rect.width)-0.5)*10;
+
+    const rotateX =
+      ((y/rect.height)-0.5)*-10;
 
     card.style.transform =
       `perspective(1000px)
-       rotateX(${rotateX}deg)
-       rotateY(${rotateY}deg)
-       translateY(-8px)`;
-
+      rotateX(${rotateX}deg)
+      rotateY(${rotateY}deg)
+      translateY(-8px)`;
   });
 
   card.addEventListener("mouseleave",()=>{
 
     card.style.transform =
-      "perspective(1000px) rotateX(0) rotateY(0)";
-
+      "perspective(1000px) rotateX(0deg) rotateY(0deg)";
   });
 
 });
+
+
+// Counters
+
+document.querySelectorAll(".counter")
+.forEach(counter=>{
+
+  const target =
+    parseInt(counter.dataset.target);
+
+  let value = 0;
+
+  const update = ()=>{
+
+    value += target/100;
+
+    if(value < target){
+
+      counter.textContent =
+        Math.floor(value);
+
+      requestAnimationFrame(update);
+
+    }else{
+
+      counter.textContent = target;
+    }
+
+  };
+
+  update();
+
+});
+
+
+// Particles
+
+const particles =
+document.getElementById("particles");
+
+for(let i=0;i<40;i++){
+
+  const particle =
+    document.createElement("div");
+
+  particle.classList.add("particle");
+
+  const size =
+    Math.random()*12 + 4;
+
+  particle.style.width =
+    size + "px";
+
+  particle.style.height =
+    size + "px";
+
+  particle.style.left =
+    Math.random()*100 + "%";
+
+  particle.style.animationDuration =
+    (Math.random()*15 + 10) + "s";
+
+  particles.appendChild(particle);
+
+}
 
 </script>
 
