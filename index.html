@@ -1,190 +1,158 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sri Rajan - Interactive Premium Resume</title>
+<title>Sri Rajan | Ophthalmologist Resume</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
-
 :root {
-    --bg-gradient: linear-gradient(135deg, #0b0d19 0%, #16122c 50%, #25112e 100%);
-    --bg-card: rgba(26, 22, 46, 0.85);
-    --bg-box: rgba(36, 31, 64, 0.5);
+    --bg-body: #090d16;
+    --bg-card: #131a26;
     --text-light: #f8fafc;
-    --text-muted: #cbd5e1;
-    --text-dim: #94a3b8;
-    --border-subtle: rgba(129, 140, 248, 0.15);
+    --text-muted: #94a3b8;
+    --border-subtle: #1e293b;
 
-    --accent-gold: #f59e0b;
-    --accent-purple: #a78bfa;
-    --accent-glow: rgba(245, 158, 11, 0.12);
+    --cls-header: linear-gradient(135deg, #00dfd8, #7928ca, #ff007f);
+    --color-summary: #ff007f;
+    --color-exp: #00dfd8;
+    --color-achieve: #7928ca;
+    --color-ventures: #ff9f00;
+    --color-skills: #00ff66;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     font-family: 'Inter', sans-serif;
-    background: var(--bg-gradient);
-    background-attachment: fixed;
+    background: var(--bg-body);
     color: var(--text-muted);
-    margin: 0;
     padding: 60px 20px;
 }
 
+/* MAIN CONTAINER */
 .resume {
-    max-width: 840px;
-    margin: 0 auto;
+    max-width: 900px;
+    margin: auto;
     background: var(--bg-card);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 50px 60px;
+    padding: 60px 70px;
     border-radius: 24px;
-    border: 1px solid rgba(255,255,255,0.06);
-    box-shadow: 0 40px 100px rgba(10, 5, 25, 0.6);
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.5);
 }
 
 /* HEADER */
 .header {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    padding-bottom: 35px;
+    padding: 40px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #161f30, #0d131f);
+    border-left: 6px solid #00dfd8;
     margin-bottom: 40px;
-    border-bottom: 1px solid var(--border-subtle);
 }
 
-.header-text { flex: 1; }
-
 .name {
-    font-size: 3.2rem;
+    font-size: 3rem;
     font-weight: 800;
-    color: var(--text-light);
-    background: linear-gradient(to right, #fff, #e2e8f0);
+    background: var(--cls-header);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .title {
-    font-size: 1.05rem;
+    color: #00dfd8;
+    margin-top: 6px;
     font-weight: 700;
-    color: var(--accent-gold);
     text-transform: uppercase;
-    letter-spacing: 2px;
 }
 
-.photo {
-    width: 120px;
-    height: 120px;
-    overflow: hidden;
-    border-radius: 20px;
-    border: 2px solid var(--accent-gold);
-    box-shadow: 0 0 25px rgba(245, 158, 11, 0.2);
-    transition: transform 0.4s ease;
+.contact {
+    margin-top: 12px;
+    color: #94a3b8;
+    font-size: 0.9rem;
 }
 
-/* SECTIONS */
-.section { margin-bottom: 45px; }
+/* SECTION SYSTEM */
+.section {
+    margin-top: 50px;
+}
 
 .section-title {
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 800;
-    color: var(--accent-purple);
     text-transform: uppercase;
-    letter-spacing: 2.5px;
-    margin-bottom: 22px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 }
 
 .section-title::after {
     content: '';
+    height: 2px;
     flex: 1;
-    height: 1px;
-    background: linear-gradient(to right, var(--border-subtle), transparent);
+    background: linear-gradient(to right, currentColor, transparent);
 }
 
-/* CARDS (FULL LEBRON INTERACTION SYSTEM) */
+/* COLOR BY SECTION */
+.section:nth-of-type(1) .section-title { color: var(--color-summary); }
+.section:nth-of-type(2) .section-title { color: var(--color-exp); }
+.section:nth-of-type(3) .section-title { color: var(--color-achieve); }
+.section:nth-of-type(4) .section-title { color: var(--color-ventures); }
+.section:nth-of-type(5) .section-title { color: var(--color-skills); }
+.section:nth-of-type(6) .section-title { color: var(--color-exp); }
+.section:nth-of-type(7) .section-title { color: var(--color-achieve); }
+.section:nth-of-type(8) .section-title { color: var(--color-ventures); }
+
+/* CARDS */
 .content-box, .grid-box {
     position: relative;
-    background: var(--bg-box);
+    background: linear-gradient(135deg, #151f32, #101726);
     border: 1px solid var(--border-subtle);
     border-radius: 16px;
-    padding: 24px;
+    padding: 26px;
     margin-bottom: 20px;
-    cursor: pointer;
     overflow: hidden;
     transform-style: preserve-3d;
-    transition: all 0.3s ease;
+    transition: 0.2s ease;
 }
 
-/* DIM / HIGHLIGHT SYSTEM */
-.content-box.dimmed, .grid-box.dimmed {
-    opacity: 0.15;
-    filter: grayscale(80%);
-    transform: scale(0.98);
-}
-
-.content-box.highlighted, .grid-box.highlighted {
-    border-color: var(--accent-purple);
-    background: rgba(46, 40, 82, 0.5);
-    box-shadow: 0 0 20px rgba(167, 139, 250, 0.15);
-}
-
-/* SPOTLIGHT EFFECT */
+/* GLOW TRACKING */
 .content-box::before, .grid-box::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-        250px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
-        var(--accent-glow),
-        transparent 80%
-    );
+    background: radial-gradient(circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+        rgba(0,255,255,0.15), transparent 60%);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: 0.3s;
 }
 
-.content-box:hover::before, .grid-box:hover::before {
+.content-box:hover::before,
+.grid-box:hover::before {
     opacity: 1;
-}
-
-/* DRAWER */
-.drawer {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: all 0.4s ease;
-}
-
-.expanded .drawer {
-    max-height: 220px;
-    opacity: 1;
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px dashed rgba(167, 139, 250, 0.25);
-}
-
-.click-hint {
-    font-size: 0.75rem;
-    color: var(--accent-purple);
-    opacity: 0.6;
-    margin-top: 10px;
-    display: block;
 }
 
 /* TEXT */
-.job-title { font-weight: 700; color: var(--text-light); font-size: 1.1rem; }
-.company { color: var(--accent-gold); }
-
-.row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
+p, li {
+    color: #cbd5e1;
+    line-height: 1.7;
 }
 
-ul { padding-left: 18px; }
-li { margin-bottom: 8px; }
+ul {
+    padding-left: 18px;
+}
+
+li::marker {
+    color: #00dfd8;
+}
 
 /* SKILLS */
 .skills {
@@ -194,39 +162,41 @@ li { margin-bottom: 8px; }
 }
 
 .skill {
-    padding: 8px 14px;
-    border-radius: 10px;
-    background: rgba(167,139,250,0.08);
-    border: 1px solid var(--border-subtle);
+    padding: 10px 16px;
+    border-radius: 12px;
+    background: #1e293b;
+    border: 1px solid #00dfd8;
+    color: #00dfd8;
     cursor: pointer;
-    transition: 0.25s ease;
+    transition: 0.2s;
 }
 
 .skill:hover {
-    transform: translateY(-2px);
-    border-color: var(--accent-purple);
+    transform: scale(1.1);
+    background: #00dfd8;
+    color: #000;
 }
 
-.skill.matrix-active {
-    background: rgba(245,158,11,0.15);
-    color: var(--accent-gold);
-    border-color: var(--accent-gold);
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
 }
 
-/* RIPPLE */
-.ripple {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(245,158,11,0.25);
-    transform: scale(0);
-    animation: ripple 0.6s ease-out;
+/* HOVER ANIMATION */
+.content-box:hover,
+.grid-box:hover {
+    transform: translateY(-6px);
+    border-color: #00dfd8;
+    box-shadow: 0 20px 40px rgba(0,255,255,0.1);
 }
 
-@keyframes ripple {
-    to {
-        transform: scale(4);
-        opacity: 0;
-    }
+footer {
+    text-align: center;
+    margin-top: 60px;
+    color: #475569;
+    font-size: 0.8rem;
 }
 </style>
 </head>
@@ -237,209 +207,132 @@ li { margin-bottom: 8px; }
 
 <!-- HEADER -->
 <div class="header">
-    <div class="header-text">
-        <h1 class="name">Sri Rajan, MD</h1>
-        <p class="title">Ophthalmologist & Clinical Researcher</p>
-        <p>
-            London, Ontario • +1 234-567-8901 • srirajan@gmail.com
-        </p>
-    </div>
-
-    <div class="photo">
-        <img src="https://images.unsplash.com/photo-1580281657527-47f249e8f7d5" />
+    <div class="name">Sri Rajan, MD</div>
+    <div class="title">Ophthalmologist | Eye Surgery & Clinical Research</div>
+    <div class="contact">
+        London, ON • srirajan@gmail.com • +1 234-567-8901
     </div>
 </div>
 
-<!-- PROFESSIONAL SUMMARY -->
+<!-- SUMMARY -->
 <div class="section">
 <h2 class="section-title">Professional Summary</h2>
-
-<div class="content-box" data-skills="clinical research diagnosis surgery">
-    Four-time clinical excellence award recipient with strong ophthalmic diagnostic training and patient-centered care.
-    <span class="click-hint">Click to expand</span>
-
-    <div class="drawer">
-        Focused on retinal imaging, slit-lamp diagnostics, and multidisciplinary surgical support in ophthalmology.
-    </div>
+<div class="content-box">
+<p>
+Aspiring ophthalmologist with strong clinical experience in eye diagnostics, patient care, and surgical assistance. Focused on precision medicine, retinal imaging, and evidence-based treatment.
+</p>
 </div>
 </div>
 
-<!-- PROFESSIONAL EXPERIENCE -->
+<!-- EDUCATION -->
 <div class="section">
-<h2 class="section-title">Professional Experience</h2>
+<h2 class="section-title">Education</h2>
 
-<div class="content-box" data-skills="clinical surgery diagnosis">
-    <div class="row">
-        <div>
-            <div class="job-title">Ophthalmology Intern</div>
-            <div class="company">St. Mary’s Hospital</div>
-        </div>
-        <div>2023–2024</div>
-    </div>
-    <ul>
-        <li>Conducted slit lamp examinations</li>
-        <li>Assisted preoperative ophthalmic assessments</li>
-        <li>Supported surgical documentation</li>
-    </ul>
-    <span class="click-hint">Click to expand</span>
-    <div class="drawer">Hands-on clinical exposure in ophthalmic workflows.</div>
+<div class="content-box">
+<b>Doctor of Medicine (MD)</b><br>
+Western University<br>
+<ul>
+<li>Dean’s List</li>
+<li>Clinical Excellence in Ophthalmology</li>
+</ul>
 </div>
 
-<div class="content-box" data-skills="research diagnosis">
-    <div class="row">
-        <div>
-            <div class="job-title">Research Assistant</div>
-            <div class="company">Ontario Eye Institute</div>
-        </div>
-        <div>2022–2023</div>
-    </div>
-    <ul>
-        <li>Retinal imaging analysis</li>
-        <li>Diabetic retinopathy biomarker research</li>
-    </ul>
-    <span class="click-hint">Click to expand</span>
-    <div class="drawer">Contributed to peer-reviewed ophthalmology research.</div>
+<div class="content-box">
+<b>BSc Biology</b><br>
+University of Toronto
+<ul>
+<li>Neuroscience & Human Physiology Focus</li>
+</ul>
 </div>
 </div>
 
-<!-- KEY ACHIEVEMENTS -->
+<!-- EXPERIENCE -->
 <div class="section">
-<h2 class="section-title">Key Achievements</h2>
+<h2 class="section-title">Clinical Experience</h2>
 
-<div class="grid-box" data-skills="clinical research diagnosis">
-    <ul>
-        <li>150+ supervised ophthalmic procedures</li>
-        <li>Research conference presentation</li>
-        <li>Clinical excellence recognition</li>
-    </ul>
-    <span class="click-hint">Click to expand</span>
-    <div class="drawer">Recognized for precision in diagnostic ophthalmology.</div>
+<div class="content-box">
+<b>Ophthalmology Intern</b><br>
+St. Mary’s Hospital
+<ul>
+<li>Eye exams & slit-lamp assessments</li>
+<li>Assisted surgical procedures</li>
+</ul>
+</div>
+
+<div class="content-box">
+<b>Research Assistant</b><br>
+Ontario Eye Institute
+<ul>
+<li>Retinal imaging analysis</li>
+<li>Diabetic retinopathy research</li>
+</ul>
 </div>
 </div>
 
-<!-- OFF-COURT VENTURES (EDUCATION / VOLUNTEER STYLE) -->
+<!-- ACHIEVEMENTS -->
 <div class="section">
-<h2 class="section-title">Off-Court Ventures</h2>
+<h2 class="section-title">Achievements</h2>
 
-<div class="grid-box" data-skills="leadership research teaching">
-
-<strong>Medical Education</strong><br>
-Tutoring and mentoring junior medical students
-<span class="click-hint">Click</span>
-<div class="drawer">Focused on anatomy, ophthalmology, and clinical reasoning.</div>
-
+<div class="grid">
+<div class="grid-box">
+<ul>
+<li>150+ clinical eye exams assisted</li>
+<li>Conference research presentation</li>
+</ul>
 </div>
 
-<div class="grid-box" data-skills="volunteer clinical">
-<strong>Volunteer Work</strong><br>
-Community eye screening programs
-<span class="click-hint">Click</span>
-<div class="drawer">Provided vision screening and early detection support.</div>
+<div class="grid-box">
+<ul>
+<li>High accuracy diagnostic support</li>
+<li>Clinical excellence recognition</li>
+</ul>
 </div>
-
+</div>
 </div>
 
 <!-- SKILLS -->
 <div class="section">
-<h2 class="section-title">Skills Matrix</h2>
+<h2 class="section-title">Skills</h2>
 
 <div class="content-box">
 <div class="skills">
-    <div class="skill" data-skill-id="clinical">Clinical Care</div>
-    <div class="skill" data-skill-id="surgery">Surgical Assistance</div>
-    <div class="skill" data-skill-id="diagnosis">Diagnostics</div>
-    <div class="skill" data-skill-id="research">Research</div>
+<div class="skill">Ophthalmic Exams</div>
+<div class="skill">Slit Lamp</div>
+<div class="skill">Fundoscopy</div>
+<div class="skill">Diagnostics</div>
+<div class="skill">Patient Care</div>
+<div class="skill">Surgical Support</div>
 </div>
 </div>
+
 </div>
+
+<!-- FOOTER -->
+<footer>Created by Sri Rajan</footer>
 
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-
 const cards = document.querySelectorAll('.content-box, .grid-box');
-const skills = document.querySelectorAll('.skill');
-const avatar = document.querySelector('.photo');
 
-/* HOVER TILT + SPOTLIGHT */
 cards.forEach(card => {
-
     card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+        const r = card.getBoundingClientRect();
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
 
-        const xPercent = (x / rect.width - 0.5) * 2;
-        const yPercent = (y / rect.height - 0.5) * 2;
+        card.style.setProperty('--mouse-x', x + 'px');
+        card.style.setProperty('--mouse-y', y + 'px');
 
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
+        const rx = ((y / r.height) - 0.5) * -6;
+        const ry = ((x / r.width) - 0.5) * 6;
 
-        card.style.transform =
-            `perspective(1000px)
-            rotateX(${-yPercent * 4}deg)
-            rotateY(${xPercent * 4}deg)
-            translateY(-2px)`;
+        card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
     });
 
     card.addEventListener('mouseleave', () => {
         card.style.transform = 'none';
     });
-
-    card.addEventListener('click', (e) => {
-        if(e.target.tagName.toLowerCase() === 'a') return;
-
-        const ripple = document.createElement('span');
-        ripple.classList.add('ripple');
-
-        const rect = card.getBoundingClientRect();
-        ripple.style.left = (e.clientX - rect.left) + 'px';
-        ripple.style.top = (e.clientY - rect.top) + 'px';
-
-        card.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 600);
-
-        card.classList.toggle('expanded');
-    });
-});
-
-/* SKILL MATRIX */
-skills.forEach(skill => {
-    skill.addEventListener('click', () => {
-
-        const id = skill.dataset.skillId;
-        const active = skill.classList.contains('matrix-active');
-
-        skills.forEach(s => s.classList.remove('matrix-active'));
-        cards.forEach(c => c.classList.remove('dimmed','highlighted'));
-
-        if(!active){
-            skill.classList.add('matrix-active');
-
-            cards.forEach(card => {
-                const data = card.getAttribute('data-skills');
-                if(data && data.includes(id)){
-                    card.classList.add('highlighted');
-                } else {
-                    card.classList.add('dimmed');
-                }
-            });
-        }
-    });
-});
-
-/* AVATAR HOVER */
-if(avatar){
-    avatar.addEventListener('mouseenter', () => {
-        avatar.style.transform = 'scale(1.05) rotate(-1deg)';
-    });
-
-    avatar.addEventListener('mouseleave', () => {
-        avatar.style.transform = 'none';
-    });
-}
-
 });
 </script>
 
