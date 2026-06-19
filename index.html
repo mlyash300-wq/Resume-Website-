@@ -1,21 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sri Rajan | Resume</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-<style>
 :root{
-  --bg:#0b1220;
-  --card:#111a2e;
-  --text:#e5e7eb;
-  --muted:#9aa4b2;
-  --accent:#4f8cff;
-  --accent2:#22d3ee;
-  --border:rgba(255,255,255,0.06);
+  --bg-gradient:linear-gradient(
+    135deg,
+    #0b0d19 0%,
+    #16122c 50%,
+    #25112e 100%
+  );
+
+  --card:rgba(26,22,46,.88);
+  --card-hover:rgba(36,31,64,.92);
+
+  --text:#f8fafc;
+  --muted:#cbd5e1;
+  --dim:#94a3b8;
+
+  --accent:#f59e0b;
+  --accent2:#a78bfa;
+
+  --border:rgba(167,139,250,.15);
 }
 
 *{
@@ -24,146 +25,224 @@
   box-sizing:border-box;
 }
 
-body{
-  font-family:'Inter',sans-serif;
-  background:
-    radial-gradient(circle at top left, rgba(79,140,255,0.12), transparent 40%),
-    radial-gradient(circle at bottom right, rgba(34,211,238,0.10), transparent 45%),
-    var(--bg);
-  color:var(--text);
-  padding:50px 20px;
+html{
+  scroll-behavior:smooth;
 }
 
-/* CONTAINER */
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg-gradient);
+  background-attachment:fixed;
+  color:var(--text);
+  padding:60px 20px;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* MAIN CONTAINER */
+
 .container{
-  max-width:1000px;
+  max-width:850px;
   margin:auto;
-  background:rgba(17,26,46,0.85);
-  backdrop-filter:blur(14px);
-  border:1px solid var(--border);
+
+  background:var(--card);
+
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+
+  border:1px solid rgba(255,255,255,.06);
+
   border-radius:24px;
-  padding:40px;
-  box-shadow:0 40px 100px rgba(0,0,0,0.5);
+
+  padding:50px 60px;
+
+  box-shadow:
+    0 40px 100px rgba(0,0,0,.45),
+    0 0 80px rgba(167,139,250,.04);
 }
 
 /* HEADER */
+
 header{
   display:flex;
   justify-content:space-between;
-  gap:30px;
+  align-items:flex-start;
+  gap:40px;
   flex-wrap:wrap;
-  padding-bottom:25px;
+
+  padding-bottom:35px;
+  margin-bottom:40px;
+
   border-bottom:1px solid var(--border);
 }
 
 header h1{
-  font-size:3rem;
+  font-size:3.2rem;
   font-weight:800;
-  letter-spacing:-1px;
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  letter-spacing:-1.5px;
+  line-height:1;
+
+  background:linear-gradient(
+    to right,
+    #ffffff,
+    #e2e8f0
+  );
+
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  transition:0.3s ease;
-}
-
-header h1:hover{
-  transform:scale(1.02);
 }
 
 header p{
   color:var(--muted);
-  max-width:700px;
-  margin-top:10px;
+  line-height:1.7;
+  margin-top:14px;
+  max-width:560px;
 }
 
-/* CONTACT CARD */
 .contact-card{
   min-width:260px;
-  padding:18px;
-  border-radius:16px;
-  background:linear-gradient(145deg,#121c33,#0f172a);
+
+  background:rgba(36,31,64,.45);
+
   border:1px solid var(--border);
-  transition:0.3s ease;
+
+  border-radius:16px;
+
+  padding:22px;
+
+  transition:.3s ease;
 }
 
 .contact-card:hover{
   transform:translateY(-4px);
-  box-shadow:0 20px 50px rgba(79,140,255,0.15);
+
+  border-color:rgba(245,158,11,.25);
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.25),
+    0 0 30px rgba(245,158,11,.08);
 }
 
-/* SECTION */
+/* SECTIONS */
+
 .section{
-  margin-top:40px;
+  margin-bottom:45px;
+}
+
+.section:last-child{
+  margin-bottom:0;
 }
 
 .section h2{
-  font-size:0.85rem;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
+  font-size:.95rem;
+  font-weight:800;
+
   color:var(--accent2);
-  margin-bottom:15px;
-  position:relative;
+
+  text-transform:uppercase;
+
+  letter-spacing:2.5px;
+
+  display:flex;
+  align-items:center;
+  gap:14px;
+
+  margin-bottom:22px;
 }
 
 .section h2::after{
   content:"";
-  display:block;
-  width:80px;
-  height:2px;
-  margin-top:6px;
-  background:linear-gradient(90deg,var(--accent2),transparent);
+
+  flex:1;
+
+  height:1px;
+
+  background:linear-gradient(
+    to right,
+    rgba(167,139,250,.25),
+    transparent
+  );
 }
 
-/* BLOCKS */
+/* CARDS */
+
 .section-block{
-  background:linear-gradient(145deg,#121c33,#0f172a);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:22px;
-  margin-bottom:16px;
-  transition:0.25s ease;
   position:relative;
+
+  background:rgba(36,31,64,.4);
+
+  border:1px solid var(--border);
+
+  border-radius:14px;
+
+  padding:24px;
+
+  margin-bottom:18px;
+
   overflow:hidden;
+
+  transition:
+    transform .35s ease,
+    border-color .35s ease,
+    background .35s ease,
+    box-shadow .35s ease;
 }
 
 .section-block:hover{
   transform:translateY(-5px);
-  border-color:rgba(79,140,255,0.25);
-  box-shadow:0 20px 50px rgba(79,140,255,0.12);
+
+  background:var(--card-hover);
+
+  border-color:rgba(245,158,11,.25);
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.25),
+    0 0 25px rgba(245,158,11,.06);
 }
 
-/* SHINE */
 .section-block::before{
   content:"";
+
   position:absolute;
-  top:0;
-  left:-120%;
-  width:120%;
-  height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent);
-  transition:0.6s;
+  inset:0;
+
+  background:
+  radial-gradient(
+    400px circle at top left,
+    rgba(245,158,11,.05),
+    transparent 60%
+  );
+
+  opacity:0;
+
+  transition:.4s;
 }
 
 .section-block:hover::before{
-  left:120%;
+  opacity:1;
 }
 
-/* TEXT */
+/* JOB TITLES */
+
 .job-title{
+  font-size:1.15rem;
   font-weight:700;
-  font-size:1.1rem;
-  margin-bottom:5px;
+  color:#fff;
+  margin-bottom:6px;
 }
 
 .job-details{
-  color:var(--muted);
-  font-size:0.9rem;
-  margin-bottom:10px;
+  color:var(--accent);
+  font-size:.9rem;
+  font-weight:600;
+  margin-bottom:14px;
 }
 
-p, li{
-  line-height:1.7;
-  color:var(--text);
+/* TEXT */
+
+p,
+li{
+  color:var(--muted);
+  line-height:1.75;
 }
 
 ul{
@@ -175,10 +254,11 @@ li{
 }
 
 li::marker{
-  color:var(--accent2);
+  color:var(--accent);
 }
 
 /* SKILLS */
+
 .skills-container{
   display:flex;
   flex-wrap:wrap;
@@ -187,219 +267,92 @@ li::marker{
 }
 
 .skills-container li{
-  padding:10px 14px;
-  border-radius:12px;
-  background:rgba(34,211,238,0.06);
-  border:1px solid rgba(34,211,238,0.15);
-  color:var(--accent2);
-  transition:0.2s ease;
-  cursor:pointer;
+  background:rgba(167,139,250,.08);
+
+  border:1px solid var(--border);
+
+  color:#e2e8f0;
+
+  padding:9px 16px;
+
+  border-radius:10px;
+
+  font-size:.88rem;
+  font-weight:600;
+
+  transition:.25s ease;
 }
 
 .skills-container li:hover{
-  transform:scale(1.08);
-  background:var(--accent2);
-  color:#000;
+  transform:translateY(-2px);
+
+  border-color:var(--accent2);
+
+  background:rgba(167,139,250,.15);
+
+  color:#fff;
 }
 
 /* GRID */
+
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:20px;
+  gap:18px;
 }
 
 /* SCROLL ANIMATION */
+
 .hidden{
   opacity:0;
-  transform:translateY(18px);
+  transform:translateY(25px);
 }
 
 .show{
   opacity:1;
   transform:translateY(0);
-  transition:all 0.6s ease;
+
+  transition:
+    opacity .7s ease,
+    transform .7s ease;
 }
 
-/* RESPONSIVE */
-@media(max-width:800px){
-  .grid{grid-template-columns:1fr;}
-  header h1{font-size:2.2rem;}
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+  width:10px;
 }
-</style>
-</head>
 
-<body>
+::-webkit-scrollbar-track{
+  background:#0f172a;
+}
 
-<div class="container">
+::-webkit-scrollbar-thumb{
+  background:rgba(167,139,250,.3);
+  border-radius:20px;
+}
 
-<header>
-  <div class="header-info">
-    <h1>Sri Rajan, MD</h1>
-    <p>
-      Aspirational ophthalmologist with strong clinical judgment,
-      patient-centered care, and surgical teamwork experience.
-      Skilled in eye examinations, diagnostic imaging, and coordinating multidisciplinary care in busy clinical settings.
-    </p>
-  </div>
+/* MOBILE */
 
-  <div class="contact-card">
-    <strong>Contact Information</strong><br><br>
-    Email: srirajan@gmail.com<br>
-    Location: London, ON<br>
-    Phone: +1 234-567-8901
-  </div>
-</header>
+@media(max-width:850px){
 
-<section class="section">
-  <h2>Objective</h2>
-  <div class="section-block">
-    Seeking a residency position in ophthalmology where I can apply clinical acumen, surgical support experience, and compassionate patient care. Dedicated to improving visual health through clear communication, evidence-based practice, and team-driven problem solving.
-  </div>
-</section>
+  .container{
+    padding:35px 25px;
+  }
 
-<section class="section">
-  <h2>Education</h2>
+  .grid{
+    grid-template-columns:1fr;
+  }
 
-  <div class="section-block">
-    <div class="job-title">Doctor of Medicine</div>
-    <div class="job-details">Western University Schulich School of Medicine & Dentistry, London, ON — 2024</div>
-    <ul>
-      <li>Honours: Dean's List, Clinical Excellence Award in Ophthalmology.</li>
-      <li>Relevant coursework: Ophthalmic Pathology, Clinical Diagnostics, Surgical Fundamentals.</li>
-    </ul>
-  </div>
+  header{
+    flex-direction:column;
+  }
 
-  <div class="section-block">
-    <div class="job-title">Bachelor of Science in Biology</div>
-    <div class="job-details">University of Toronto, Toronto, ON — 2020</div>
-    <ul>
-      <li>Concentration in human physiology, optics, and neuroscience.</li>
-      <li>Graduated with distinction while volunteering in community health clinics.</li>
-    </ul>
-  </div>
-</section>
+  header h1{
+    font-size:2.5rem;
+  }
 
-<section class="section">
-  <h2>Work Experience</h2>
-
-  <div class="section-block">
-    <div class="job-title">Clinical Intern, Ophthalmology Department</div>
-    <div class="job-details">St. Mary's Hospital, London, ON — 2023–2024</div>
-    <ul>
-      <li>Conducted comprehensive eye exams and slit lamp assessments under physician supervision.</li>
-      <li>Assisted with patient history collection, visual acuity testing, and intraocular pressure screening.</li>
-      <li>Supported preoperative evaluations, instrument sterilization, and intraoperative documentation.</li>
-      <li>Coordinated referrals for optical coherence tomography and specialist consultations.</li>
-    </ul>
-  </div>
-
-  <div class="section-block">
-    <div class="job-title">Research Assistant, Ophthalmic Imaging Lab</div>
-    <div class="job-details">Ontario Eye Institute, Ottawa, ON — 2022–2023</div>
-    <ul>
-      <li>Contributed to a study on retinal imaging biomarkers for diabetic retinopathy.</li>
-      <li>Analyzed imaging data, maintained research records, and prepared abstracts for conference presentation.</li>
-      <li>Collaborated with clinicians to design patient intake protocols and improve clinic workflow.</li>
-    </ul>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Extra-Curricular</h2>
-  <div class="section-block">
-    <ul class="skills-container">
-      <li>Ophthalmology Interest Group</li>
-      <li>Guest Lectures Organization</li>
-      <li>Simulation Lab Training</li>
-      <li>Medical Student Tutoring</li>
-    </ul>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Volunteer Experience</h2>
-  <div class="section-block">
-    <ul>
-      <li>Vision Screening Volunteer – Community Eye Care Clinic</li>
-      <li>Patient triage and visual acuity testing</li>
-      <li>Health education and outreach programs</li>
-    </ul>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Skills and Abilities</h2>
-  <div class="section-block">
-    <ul class="skills-container">
-      <li>Ophthalmic Exam Support</li>
-      <li>Slit Lamp Assessment</li>
-      <li>Fundoscopy</li>
-      <li>Patient Communication</li>
-      <li>EMR Systems</li>
-      <li>Clinical Documentation</li>
-      <li>Diagnostic Testing</li>
-      <li>Surgical Teamwork</li>
-    </ul>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Achievements</h2>
-  <div class="section-block">
-    <ul>
-      <li>Assisted in 150+ ophthalmic exams and clinical procedures during rotations.</li>
-      <li>Presented research findings at a regional medical conference.</li>
-      <li>Recognized for attention to detail in preoperative assessments and patient counselling.</li>
-    </ul>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Certifications</h2>
-  <div class="section-block">
-    <div class="job-title">Basic Life Support (BLS)</div>
-    <div class="job-details">Canadian Red Cross — 2024</div>
-
-    <div class="job-title">Advanced Cardiac Life Support (ACLS)</div>
-    <div class="job-details">Heart and Stroke Foundation — 2024</div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Hobbies and Interests</h2>
-  <div class="section-block">
-    <ul>
-      <li>Photography and visual storytelling</li>
-      <li>Hiking and wellness</li>
-      <li>Clinical journal reading and research updates</li>
-    </ul>
-  </div>
-</section>
-
-<section class="section">
-  <h2>References</h2>
-  <div class="section-block">
-    References available upon request from clinical supervisors and faculty mentors.
-  </div>
-</section>
-
-</div>
-
-<script>
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add("show");
-    }
-  });
-},{threshold:0.12});
-
-document.querySelectorAll(".section-block").forEach(el=>{
-  el.classList.add("hidden");
-  observer.observe(el);
-});
-</script>
-
-</body>
-</html>
+  .contact-card{
+    width:100%;
+  }
+}
