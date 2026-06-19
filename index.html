@@ -1,421 +1,629 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Sri Rajan | Interactive Ophthalmology Resume</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Rajan, MD - Neon Matrix Medical Resume</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        :root {
+            --bg-body: #090d16;        /* Ultra dark sleek matrix background */
+            --bg-card: #131a26;        /* Deep translucent neon card backing */
+            --text-light: #f8fafc;     /* Clean bright text */
+            --text-muted: #94a3b8;     /* Soft slate text */
+            --border-subtle: #1e293b;  /* Matrix grid lines */
+            
+            /* Multi-Color Identity System */
+            --cls-header: linear-gradient(135deg, #00dfd8, #7928ca, #ff007f);
+            --color-summary: #00dfd8;  /* Electric Cyan */
+            --color-edu: #7928ca;      /* Cyber Purple */
+            --color-exp: #ff007f;      /* Neon Pink */
+            --color-achieve: #ff9f00;  /* Sunset Gold */
+            --color-certs: #00ff66;    /* Acid Green */
+            --color-skills: #ff00ff;   /* Hot Magenta */
+            --color-hobbies: #0076ff;  /* Laser Blue */
+            --color-ref: #cbd5e1;      /* Bright White/Slate */
+        }
 
-:root {
-  --bg: linear-gradient(135deg,#0b0d19,#16122c,#25112e);
-  --card: rgba(26,22,46,0.85);
-  --box: rgba(36,31,64,0.55);
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-body);
+            color: var(--text-muted);
+            margin: 0;
+            padding: 60px 20px;
+            -webkit-font-smoothing: antialiased;
+        }
 
-  --text: #f8fafc;
-  --muted: #cbd5e1;
-  --dim: #94a3b8;
+        .resume {
+            max-width: 880px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 60px 70px;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5), 0 0 40px rgba(121, 40, 202, 0.1);
+            border-radius: 24px;
+            border: 1px solid var(--border-subtle);
+        }
 
-  --border: rgba(129,140,248,0.15);
+        /* High-Octane Gradient Header */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            padding: 40px;
+            margin-bottom: 45px;
+            background: linear-gradient(145deg, #161f30, #0d131f);
+            border-radius: 20px;
+            border-left: 6px solid #00dfd8;
+            box-shadow: inset 0 0 20px rgba(0, 223, 216, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(121, 40, 202, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
 
-  --gold: #f59e0b;
-  --purple: #a78bfa;
-  --glow: rgba(245,158,11,0.15);
-}
+        .header-text {
+            flex: 1;
+        }
 
-* { box-sizing: border-box; }
+        .photo {
+            width: 130px;
+            height: 130px;
+            overflow: hidden;
+            flex-shrink: 0;
+            border-radius: 24px;
+            border: 3px solid #00dfd8;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 223, 216, 0.3);
+            will-change: transform;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.3s;
+            background: #151f32;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-body {
-  margin:0;
-  padding:60px 20px;
-  font-family: Inter;
-  background: var(--bg);
-  background-attachment: fixed;
-  color: var(--muted);
-}
+        .photo svg {
+            width: 65%;
+            height: 65%;
+            fill: #00dfd8;
+            transition: fill 0.3s ease;
+        }
 
-/* ===== MAIN WRAPPER ===== */
-.resume {
-  max-width: 900px;
-  margin:auto;
-  padding:50px 60px;
-  background: var(--card);
-  border-radius:24px;
-  border:1px solid rgba(255,255,255,0.06);
-  box-shadow:0 40px 120px rgba(0,0,0,0.6);
-  backdrop-filter: blur(20px);
-}
+        /* Typography Color Transitions */
+        .name {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin: 0 0 8px 0;
+            background: var(--cls-header);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: transform 0.3s ease;
+            cursor: default;
+            display: inline-block;
+        }
+        .name:hover {
+            transform: scale(1.02) rotate(-1deg);
+        }
 
-/* ===== HEADER ===== */
-.header {
-  padding-bottom:30px;
-  margin-bottom:40px;
-  border-bottom:1px solid var(--border);
-}
+        .title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #00dfd8;
+            margin: 0 0 16px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .title:hover {
+            color: #ff007f;
+            transform: translateX(5px);
+        }
 
-h1 {
-  margin:0;
-  font-size:3rem;
-  color:var(--text);
-  letter-spacing:-1px;
-}
+        .contact {
+            font-size: 0.92rem;
+            color: #64748b;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+        .contact:hover {
+            color: var(--text-light);
+        }
 
-.subtitle {
-  margin-top:10px;
-  color:var(--gold);
-  font-weight:700;
-  letter-spacing:2px;
-  text-transform:uppercase;
-}
+        /* Colorful Section Containers */
+        .section {
+            margin-bottom: 50px;
+        }
 
-.contact {
-  margin-top:10px;
-  font-size:0.95rem;
-  color:var(--dim);
-}
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding-bottom: 8px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.3s ease;
+        }
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+        }
+        .section-title:hover {
+            transform: translateX(8px);
+        }
 
-/* ===== SECTION ===== */
-.section {
-  margin-bottom:40px;
-}
+        /* Customizing Section Color Rules */
+        .section:nth-of-type(1) .section-title { color: var(--color-summary); }
+        .section:nth-of-type(1) .section-title::after { background: linear-gradient(to right, var(--color-summary), transparent); }
+        
+        .section:nth-of-type(2) .section-title { color: var(--color-edu); }
+        .section:nth-of-type(2) .section-title::after { background: linear-gradient(to right, var(--color-edu), transparent); }
 
-.section-title {
-  font-size:0.9rem;
-  letter-spacing:2.5px;
-  font-weight:800;
-  color:var(--purple);
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:18px;
-}
+        .section:nth-of-type(3) .section-title { color: var(--color-exp); }
+        .section:nth-of-type(3) .section-title::after { background: linear-gradient(to right, var(--color-exp), transparent); }
 
-.section-title::after {
-  content:"";
-  flex:1;
-  height:1px;
-  background:linear-gradient(to right,var(--border),transparent);
-}
+        .section:nth-of-type(4) .section-title { color: var(--color-achieve); }
+        .section:nth-of-type(4) .section-title::after { background: linear-gradient(to right, var(--color-achieve), transparent); }
 
-/* ===== CARDS ===== */
-.card {
-  background: var(--box);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:22px;
-  margin-bottom:16px;
-  position:relative;
-  overflow:hidden;
-  cursor:pointer;
-  transition: transform 0.4s ease, border 0.3s ease;
-  transform-style:preserve-3d;
-}
+        .section:nth-of-type(5) .section-title { color: var(--color-certs); }
+        .section:nth-of-type(5) .section-title::after { background: linear-gradient(to right, var(--color-certs), transparent); }
 
-/* spotlight glow */
-.card::before {
-  content:"";
-  position:absolute;
-  inset:0;
-  background: radial-gradient(250px circle at var(--x,50%) var(--y,50%), var(--glow), transparent 70%);
-  opacity:0;
-  transition:0.3s;
-  pointer-events:none;
-}
-.card:hover::before { opacity:1; }
+        .section:nth-of-type(6) .section-title { color: var(--color-skills); }
+        .section:nth-of-type(6) .section-title::after { background: linear-gradient(to right, var(--color-skills), transparent); }
 
-/* ripple */
-.ripple {
-  position:absolute;
-  border-radius:50%;
-  background:rgba(245,158,11,0.25);
-  transform:scale(0);
-  animation:ripple 0.6s ease-out;
-}
-@keyframes ripple {
-  to { transform:scale(4); opacity:0; }
-}
+        .section:nth-of-type(7) .section-title { color: var(--color-hobbies); }
+        .section:nth-of-type(7) .section-title::after { background: linear-gradient(to right, var(--color-hobbies), transparent); }
 
-/* tilt */
-.card:hover {
-  border-color: rgba(167,139,250,0.3);
-  transform: translateY(-3px);
-}
+        .section:nth-of-type(8) .section-title { color: var(--color-ref); }
+        .section:nth-of-type(8) .section-title::after { background: linear-gradient(to right, var(--color-ref), transparent); }
 
-/* expand drawer */
-.drawer {
-  max-height:0;
-  overflow:hidden;
-  opacity:0;
-  transition:0.4s ease;
-  margin-top:0;
-}
+        /* Dynamic Translucent Neon Cards */
+        .content-box, .grid-box {
+            position: relative;
+            background: linear-gradient(135deg, #151f32 0%, #101726 100%);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 26px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transform-style: preserve-3d;
+            will-change: transform;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .content-box:last-child { margin-bottom: 0; }
 
-.card.expanded .drawer {
-  max-height:200px;
-  opacity:1;
-  margin-top:12px;
-}
+        .content-box *, .grid-box * {
+            position: relative;
+            z-index: 2;
+        }
 
-/* text */
-h3 {
-  margin:0;
-  color:var(--text);
-}
+        /* Laser Beam Tracking Spotlight Filter */
+        .content-box::before, .grid-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(280px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), var(--glow-color, rgba(255,255,255,0.1)), transparent 80%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .content-box:hover::before, .grid-box:hover::before {
+            opacity: 1;
+        }
 
-.small {
-  font-size:0.9rem;
-  color:var(--dim);
-}
+        .content-box p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #cbd5e1;
+            transition: color 0.3s ease;
+        }
+        .content-box p:hover {
+            color: var(--text-light);
+        }
 
-ul {
-  padding-left:18px;
-}
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
 
-li::marker {
-  color:var(--gold);
-}
+        .job-title {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-light);
+            transition: color 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+        .job-title:hover {
+            color: #00dfd8;
+            transform: translateY(-1px);
+        }
 
-/* ===== GRID ===== */
-.grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-}
-@media(max-width:800px){
-  .grid { grid-template-columns:1fr; }
-}
+        .company {
+            color: #7928ca;
+            font-weight: 600;
+            font-size: 1.02rem;
+            margin-top: 3px;
+            display: inline-block;
+            transition: color 0.2s ease;
+        }
+        .company:hover {
+            color: #ff007f;
+        }
 
-/* ===== SKILLS ===== */
-.skills {
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
+        .date {
+            color: #00dfd8;
+            font-size: 0.88rem;
+            font-weight: 700;
+            background: rgba(0, 223, 216, 0.1);
+            padding: 4px 14px;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 223, 216, 0.2);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .date:hover {
+            background: #00dfd8;
+            color: #000000;
+            box-shadow: 0 0 15px rgba(0, 223, 216, 0.4);
+        }
 
-.skill {
-  padding:8px 14px;
-  border-radius:10px;
-  border:1px solid var(--border);
-  cursor:pointer;
-  font-size:0.85rem;
-  transition:0.3s;
-}
+        /* Laser List Bullets */
+        ul {
+            padding-left: 18px;
+            margin-top: 15px;
+            margin-bottom: 0;
+        }
 
-.skill:hover {
-  border-color:var(--purple);
-  color:white;
-}
+        li {
+            margin-bottom: 10px;
+            color: #94a3b8;
+            font-size: 0.98rem;
+            line-height: 1.6;
+            transition: transform 0.2s ease, color 0.2s ease;
+            cursor: default;
+        }
+        li:last-child { margin-bottom: 0; }
+        
+        li::marker {
+            color: #ff007f;
+            font-size: 1.1rem;
+        }
+        li:hover {
+            transform: translateX(6px);
+            color: var(--text-light);
+        }
 
-.dimmed {
-  opacity:0.15;
-  filter:grayscale(80%);
-}
+        /* Layout Grid Architecture */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
 
-.highlight {
-  border-color:var(--gold);
-  background:rgba(245,158,11,0.1);
-}
+        @media(max-width:768px){
+            .grid { grid-template-columns: 1fr; }
+            .header { flex-direction: column; text-align: center; gap: 25px; }
+            .resume { padding: 40px 30px; }
+        }
 
-/* footer */
-footer {
-  text-align:center;
-  margin-top:60px;
-  font-size:0.75rem;
-  letter-spacing:2px;
-  color:rgba(148,163,184,0.4);
-}
-</style>
+        .grid-box {
+            padding: 24px;
+            margin-bottom: 0;
+        }
+
+        .grid-box strong {
+            display: inline-block;
+            font-weight: 700;
+            color: #ff9f00;
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+            letter-spacing: -0.3px;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .grid-box:hover strong {
+            color: #00dfd8;
+            transform: scale(1.02);
+        }
+
+        /* Neon Rainbow Skill Tokens */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill {
+            background: #1e293b;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            border: 1px solid transparent;
+            cursor: pointer;
+            will-change: transform;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Distinct Colorful Spectrum mapping for tags */
+        .skill:nth-child(1) { border-color: #ff0055; color: #ff0055; }
+        .skill:nth-child(2) { border-color: #ff7300; color: #ff7300; }
+        .skill:nth-child(3) { border-color: #ffcc00; color: #ffcc00; }
+        .skill:nth-child(4) { border-color: #00ff66; color: #00ff66; }
+        .skill:nth-child(5) { border-color: #00dfd8; color: #00dfd8; }
+        .skill:nth-child(6) { border-color: #0076ff; color: #0076ff; }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #475569;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        footer:hover {
+            color: #00ff66;
+            text-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+        }
+    </style>
 </head>
 
 <body>
+    <div class="resume">
+        <div class="header">
+            <div class="header-text">
+                <h1 class="name">Sri Rajan, MD</h1>
+                <p class="title">Ophthalmologist</p>
+                <p class="contact">
+                    London, ON • (234) 567-8901 • srirajan@gmail.com<br>
+                    Clinical Training • Diagnostics • Surgical Support
+                </p>
+            </div>
+            <div class="photo">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                </svg>
+            </div>
+        </div>
 
-<div class="resume">
+        <div class="section">
+            <h2 class="section-title">Qualifications</h2>
+            <div class="content-box" data-glow="rgba(0, 223, 216, 0.2)">
+                <p>
+                    Dedicated ophthalmology-focused medical professional with clinical training in diagnostics, patient care, and surgical support. Specializing in advanced retinal analytics, pre-operative physiological metrics, and accurate slit lamp evaluations.
+                </p>
+            </div>
+        </div>
 
-<!-- HEADER -->
-<div class="header">
-  <h1>Sri Rajan, MD</h1>
-  <div class="subtitle">Ophthalmologist</div>
-  <div class="contact">London, ON • srirajan@gmail.com • +1 234 567 8901</div>
-</div>
+        <div class="section">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="content-box" data-glow="rgba(121, 40, 202, 0.25)">
+                <div class="row">
+                    <div>
+                        <div class="job-title">MD — Schulich School of Medicine</div>
+                        <div class="company">Western University</div>
+                    </div>
+                    <div class="date">2024 Grad</div>
+                </div>
+                <ul>
+                    <li>Awarded Clinical Excellence Recognition in Ophthalmology tracks</li>
+                    <li>Maintained strict standing on the academic Dean's List</li>
+                </ul>
+            </div>
 
-<!-- OBJECTIVE -->
-<div class="section">
-  <div class="section-title">QUALIFICATIONS</div>
-  <div class="card">
-    <p>Dedicated ophthalmology-focused medical professional with clinical training in diagnostics, patient care, and surgical support.</p>
-    <div class="drawer">
-      <p class="small">Focused on retinal diseases, pre-operative evaluation, and advanced ocular diagnostics.</p>
+            <div class="content-box" data-glow="rgba(121, 40, 202, 0.25)">
+                <div class="row">
+                    <div>
+                        <div class="job-title">BSc Biology</div>
+                        <div class="company">University of Toronto</div>
+                    </div>
+                    <div class="date">2020 Grad</div>
+                </div>
+                <ul>
+                    <li>Deep specialization focus within human physiology & complex neuroscience</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Clinical Experience</h2>
+            
+            <div class="content-box" data-glow="rgba(255, 0, 127, 0.25)">
+                <div class="row">
+                    <div>
+                        <div class="job-title">Ophthalmology Intern</div>
+                        <div class="company">St. Mary's Hospital</div>
+                    </div>
+                    <div class="date">2023 – 2024</div>
+                </div>
+                <ul>
+                    <li>Executed detailed eye exams and precise slit lamp structural ocular assessments</li>
+                    <li>Conducted accurate visual acuity mapping and critical intraocular pressure testing array matrices</li>
+                </ul>
+            </div>
+
+            <div class="content-box" data-glow="rgba(255, 0, 127, 0.25)">
+                <div class="row">
+                    <div>
+                        <div class="job-title">Research Assistant</div>
+                        <div class="company">Ontario Eye Institute</div>
+                    </div>
+                    <div class="date">2022 – 2023</div>
+                </div>
+                <ul>
+                    <li>Managed data processing workflows for deep-field retinal imaging analysis systems</li>
+                    <li>Contributed foundational analysis pipelines to advanced diabetic retinopathy clinical research</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Key Achievements</h2>
+            <div class="grid">
+                <div class="grid-box" data-glow="rgba(255, 159, 0, 0.3)">
+                    <ul>
+                        <li>150+ Supervised Surgical Procedures</li>
+                        <li>National Conference Presentation Lead</li>
+                    </ul>
+                </div>
+                <div class="grid-box" data-glow="rgba(255, 159, 0, 0.3)">
+                    <ul>
+                        <li>Clinical Excellence Distinction Unit</li>
+                        <li>Published Clinical Research Asset Support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Certifications</h2>
+            <div class="grid">
+                <div class="grid-box" data-glow="rgba(0, 255, 102, 0.25)">
+                    <strong>BLS Provider</strong><br>
+                    Certified life support metrics via Canadian Red Cross architecture.
+                </div>
+                <div class="grid-box" data-glow="rgba(0, 255, 102, 0.25)">
+                    <strong>ACLS Operator</strong><br>
+                    Advanced Cardiovascular Life Support baseline verified via Heart & Stroke Foundation.
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Skills & Abilities</h2>
+            <div class="content-box" data-glow="rgba(255, 0, 255, 0.2)">
+                <div class="skills">
+                    <div class="skill">Eye Exams</div>
+                    <div class="skill">Slit Lamp</div>
+                    <div class="skill">Fundoscopy</div>
+                    <div class="skill">Patient Care</div>
+                    <div class="skill">EMR Systems</div>
+                    <div class="skill">Diagnostics</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Hobbies & Interests</h2>
+            <div class="grid">
+                <div class="grid-box" data-glow="rgba(0, 118, 255, 0.25)">
+                    <strong>Ocular Photography</strong><br>
+                    Capturing high-resolution clinical aesthetic medical imaging.
+                </div>
+                <div class="grid-box" data-glow="rgba(0, 118, 255, 0.25)">
+                    <strong>Academic Literature</strong><br>
+                    Consistent review schedules tracking modern clinical research prints.
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">References</h2>
+            <div class="content-box" data-glow="rgba(203, 213, 225, 0.15)">
+                <p>
+                    Available immediately upon request from supervising clinical physicians, hospital staff heads, and Schulich academic mentors.
+                </p>
+            </div>
+        </div>
+
+        <footer>Interactive Medical Resume System</footer>
     </div>
-  </div>
-</div>
 
-<!-- EDUCATION -->
-<div class="section">
-  <div class="section-title">EDUCATION</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const structuralCards = document.querySelectorAll('.content-box, .grid-box');
+            const skills = document.querySelectorAll('.skill');
+            const avatar = document.querySelector('.photo');
 
-  <div class="card">
-    <h3>MD — Western University</h3>
-    <div class="small">Schulich School of Medicine (2024)</div>
-    <ul>
-      <li>Clinical Excellence in Ophthalmology</li>
-      <li>Dean’s List</li>
-    </ul>
-  </div>
+            // 1. Sleek 3D Mechanical Tilt & Dynamic Multi-Color Laser Array
+            structuralCards.forEach(card => {
+                const customGlow = card.getAttribute('data-glow') || 'rgba(0, 223, 216, 0.2)';
+                card.style.setProperty('--glow-color', customGlow);
 
-  <div class="card">
-    <h3>BSc Biology — University of Toronto</h3>
-    <div class="small">2020</div>
-    <ul>
-      <li>Human physiology & neuroscience</li>
-    </ul>
-  </div>
-</div>
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;  
 
-<!-- CLINICAL EXPERIENCE -->
-<div class="section">
-  <div class="section-title">CLINICAL EXPERIENCE</div>
+                    const transformX = (x / rect.width) - 0.5;
+                    const transformY = (y / rect.height) - 0.5;
 
-  <div class="card">
-    <h3>Ophthalmology Intern — St. Mary’s Hospital</h3>
-    <div class="small">2023–2024</div>
-    <ul>
-      <li>Eye exams, slit lamp assessment</li>
-      <li>Visual acuity & intraocular pressure testing</li>
-    </ul>
-  </div>
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
 
-  <div class="card">
-    <h3>Research Assistant — Ontario Eye Institute</h3>
-    <div class="small">2022–2023</div>
-    <ul>
-      <li>Retinal imaging analysis</li>
-      <li>Diabetic retinopathy research</li>
-    </ul>
-  </div>
-</div>
+                    const maxRotation = 5;
+                    card.style.transform = `perspective(1000px) rotateX(${-transformY * maxRotation}deg) rotateY(${transformX * maxRotation}deg) translateY(-4px)`;
+                    card.style.boxShadow = `0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px ${customGlow.replace(/[^,]+(?=\))/, '0.15')}`;
+                    card.style.borderColor = customGlow.replace(/[^,]+(?=\))/, '0.4');
+                    card.style.transition = 'transform 0.08s linear, box-shadow 0.1s ease, border-color 0.2s ease';
+                });
 
-<!-- ACHIEVEMENTS -->
-<div class="section">
-  <div class="section-title">ACHIEVEMENTS</div>
-  <div class="grid">
-    <div class="card"><ul><li>150+ supervised procedures</li><li>Conference presentation</li></ul></div>
-    <div class="card"><ul><li>Clinical excellence recognition</li><li>Research publication support</li></ul></div>
-  </div>
-</div>
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+                    card.style.boxShadow = '';
+                    card.style.borderColor = '';
+                    card.style.transition = 'transform 0.4s ease, box-shadow 0.3s ease, border-color 0.3s ease';
+                });
+            });
 
-<!-- CERTIFICATIONS -->
-<div class="section">
-  <div class="section-title">CERTIFICATIONS</div>
-  <div class="card">
-    <ul>
-      <li>BLS — Canadian Red Cross</li>
-      <li>ACLS — Heart & Stroke Foundation</li>
-    </ul>
-  </div>
-</div>
+            // 2. Neon Pill Organic Angular Physics Explosion
+            skills.forEach(pill => {
+                pill.addEventListener('mouseenter', () => {
+                    const randomRotation = (Math.random() * 8 - 4).toFixed(1);
+                    pill.style.transform = `scale(1.12) rotate(${randomRotation}deg)`;
+                    
+                    const computedColor = window.getComputedStyle(pill).color;
+                    pill.style.backgroundColor = computedColor;
+                    pill.style.color = '#090d16';
+                    pill.style.boxShadow = `0 0 20px ${computedColor}`;
+                    pill.style.transition = 'all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                });
 
-<!-- SKILLS -->
-<div class="section">
-  <div class="section-title">SKILLS & ABILITIES</div>
+                pill.addEventListener('mouseleave', () => {
+                    pill.style.transform = 'scale(1) rotate(0deg)';
+                    pill.style.backgroundColor = '';
+                    pill.style.color = '';
+                    pill.style.boxShadow = '';
+                });
+            });
 
-  <div class="card skills">
-    <div class="skill" data="eye exams">Eye Exams</div>
-    <div class="skill" data="slit">Slit Lamp</div>
-    <div class="skill" data="fundus">Fundoscopy</div>
-    <div class="skill" data="patient">Patient Care</div>
-    <div class="skill" data="emr">EMR Systems</div>
-    <div class="skill" data="diagnostic">Diagnostics</div>
-  </div>
-</div>
-
-<!-- HOBBIES -->
-<div class="section">
-  <div class="section-title">HOBBIES & INTEREST</div>
-  <div class="card">
-    <ul>
-      <li>Medical imaging photography</li>
-      <li>Clinical research reading</li>
-      <li>Fitness & wellness</li>
-    </ul>
-  </div>
-</div>
-
-<!-- REFERENCES -->
-<div class="section">
-  <div class="section-title">REFERENCES</div>
-  <div class="card">
-    <p>Available upon request from supervising physicians and academic mentors.</p>
-  </div>
-</div>
-
-<footer>Interactive Medical Resume System</footer>
-
-</div>
-
-<script>
-const cards = document.querySelectorAll('.card');
-const skills = document.querySelectorAll('.skill');
-
-/* ===== 3D + SPOTLIGHT + RIPPLE ===== */
-cards.forEach(card => {
-
-  card.addEventListener('mousemove', e => {
-    const r = card.getBoundingClientRect();
-    const x = e.clientX - r.left;
-    const y = e.clientY - r.top;
-
-    const rx = (x / r.width - 0.5) * 6;
-    const ry = (y / r.height - 0.5) * 6;
-
-    card.style.transform = `rotateX(${-ry}deg) rotateY(${rx}deg) translateY(-3px)`;
-    card.style.setProperty('--x', x + 'px');
-    card.style.setProperty('--y', y + 'px');
-  });
-
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = '';
-  });
-
-  card.addEventListener('click', e => {
-
-    const ripple = document.createElement('span');
-    ripple.className = 'ripple';
-
-    const r = card.getBoundingClientRect();
-    ripple.style.left = (e.clientX - r.left) + 'px';
-    ripple.style.top = (e.clientY - r.top) + 'px';
-
-    card.appendChild(ripple);
-    setTimeout(() => ripple.remove(), 600);
-
-    card.classList.toggle('expanded');
-  });
-});
-
-/* ===== SKILL FILTER MATRIX ===== */
-skills.forEach(skill => {
-  skill.addEventListener('click', () => {
-
-    const active = skill.classList.contains('highlight');
-
-    skills.forEach(s => s.classList.remove('highlight'));
-    cards.forEach(c => c.classList.remove('dimmed'));
-
-    if (!active) {
-      skill.classList.add('highlight');
-
-      const val = skill.textContent.toLowerCase();
-
-      cards.forEach(card => {
-        if (!card.textContent.toLowerCase().includes(val)) {
-          card.classList.add('dimmed');
-        }
-      });
-    }
-  });
-});
-</script>
-
+            // 3. Avatar Icon Scale Glow Shift
+            if(avatar) {
+                const icon = avatar.querySelector('svg');
+                avatar.addEventListener('mouseenter', () => {
+                    avatar.style.transform = 'scale(1.1) rotate(-3deg)';
+                    avatar.style.borderColor = '#ff007f';
+                    avatar.style.boxShadow = '0 0 30px rgba(255, 0, 127, 0.5)';
+                    if(icon) icon.style.fill = '#ff007f';
+                });
+                avatar.addEventListener('mouseleave', () => {
+                    avatar.style.transform = 'scale(1) rotate(0deg)';
+                    avatar.style.borderColor = '';
+                    avatar.style.boxShadow = '';
+                    if(icon) icon.style.fill = '#00dfd8';
+                });
+            }
+        });
+    </script>
 </body>
+
 </html>
