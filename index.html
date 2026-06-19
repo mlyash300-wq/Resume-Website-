@@ -1,47 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sri Rajan | Interactive Medical Resume</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
 :root {
-  --bg: linear-gradient(135deg, #0b0f1a, #121a2b, #0e1424);
+  --bg1: #0b0f1a;
+  --bg2: #121a2f;
+  --bg3: #1a1230;
+
   --card: rgba(255,255,255,0.06);
   --glass: rgba(255,255,255,0.08);
   --border: rgba(255,255,255,0.12);
-  --text: #e8eefc;
-  --muted: #a9b4c7;
-  --accent: #4ea1ff;
-  --accent2: #7c5cff;
-  --glow: rgba(78,161,255,0.25);
-}
 
-* {
-  box-sizing: border-box;
+  --text: #eef3ff;
+  --muted: #b8c2d9;
+
+  --blue: #4ea1ff;
+  --purple: #7c5cff;
+  --gold: #f5b942;
+  --orange: #ff8a3d;
+
+  --glow-blue: rgba(78,161,255,0.25);
+  --glow-purple: rgba(124,92,255,0.25);
+  --glow-gold: rgba(245,185,66,0.25);
 }
 
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;
-  background: var(--bg);
-  background-attachment: fixed;
+  font-family: Inter, sans-serif;
+  background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
   color: var(--muted);
   padding: 60px 20px;
+  overflow-x: hidden;
 }
 
+/* MAIN CONTAINER */
 .container {
-  max-width: 950px;
+  max-width: 980px;
   margin: auto;
   background: var(--card);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px);
   border: 1px solid var(--border);
-  border-radius: 26px;
-  padding: 42px;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  border-radius: 28px;
+  padding: 44px;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.65);
 }
 
 /* HEADER */
@@ -62,22 +69,21 @@ body {
 
 .header p {
   margin-top: 10px;
-  color: var(--muted);
   line-height: 1.6;
 }
 
 .contact {
-  min-width: 260px;
   background: var(--glass);
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 18px;
-  transition: 0.3s ease;
+  min-width: 260px;
+  transition: 0.3s;
 }
 
 .contact:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px var(--glow);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px var(--glow-purple);
 }
 
 /* SECTIONS */
@@ -86,25 +92,25 @@ body {
 }
 
 .section h2 {
-  font-size: 1rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: var(--accent);
   margin-bottom: 16px;
+  color: var(--gold);
 }
 
-/* CARDS */
+/* CARD */
 .card {
+  position: relative;
   background: var(--glass);
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 22px;
   margin-bottom: 16px;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
   transform-style: preserve-3d;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  overflow: hidden;
 }
 
 /* SPOTLIGHT */
@@ -112,30 +118,44 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at var(--x,50%) var(--y,50%), var(--glow), transparent 40%);
+  background: radial-gradient(circle at var(--x,50%) var(--y,50%), var(--glow-purple), transparent 45%);
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: 0.25s;
 }
 
 .card:hover::before {
   opacity: 1;
 }
 
-/* CLICK SHINE */
+/* GLASS SHINE CLICK EFFECT */
 .card::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
-  transform: translateX(-100%);
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: translateX(-120%);
 }
 
 .card.clicked::after {
-  animation: shine 0.6s ease;
+  animation: shine 0.65s ease;
 }
 
 @keyframes shine {
-  to { transform: translateX(100%); }
+  to { transform: translateX(120%); }
+}
+
+/* DRAWER */
+.drawer {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: 0.35s ease;
+  margin-top: 10px;
+}
+
+.card.open .drawer {
+  max-height: 200px;
+  opacity: 1;
 }
 
 /* TITLES */
@@ -145,23 +165,8 @@ body {
 }
 
 .subtitle {
-  color: var(--accent2);
+  color: var(--purple);
   font-weight: 600;
-  margin-top: 4px;
-}
-
-/* DRAWER */
-.drawer {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: 0.4s ease;
-  margin-top: 10px;
-}
-
-.card.open .drawer {
-  max-height: 200px;
-  opacity: 1;
 }
 
 /* SKILLS */
@@ -177,29 +182,57 @@ body {
   background: rgba(255,255,255,0.05);
   border: 1px solid var(--border);
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: 0.2s;
 }
 
 .skill:hover {
   transform: translateY(-2px);
-  border-color: var(--accent);
-  color: var(--text);
+  border-color: var(--blue);
 }
 
 .skill.active {
-  background: var(--accent);
+  background: var(--gold);
   color: #000;
 }
 
-/* DIM SYSTEM */
+/* FILTER SYSTEM */
 .dim {
-  opacity: 0.2;
+  opacity: 0.18;
   filter: blur(0.5px);
 }
 
 .highlight {
-  border-color: var(--accent);
-  box-shadow: 0 0 25px var(--glow);
+  border-color: var(--gold);
+  box-shadow: 0 0 25px var(--glow-gold);
+}
+
+/* ROW */
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.date {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+/* RIPPLE */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  transform: scale(0);
+  animation: ripple 0.6s ease;
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
 }
 </style>
 </head>
@@ -212,7 +245,9 @@ body {
 <div class="header">
   <div>
     <h1>Sri Rajan</h1>
-    <p>Aspirational Ophthalmologist with strong clinical training, diagnostic imaging experience, and patient-centered care focus.</p>
+    <p>
+      Aspiring Ophthalmologist focused on clinical diagnostics, surgical precision, and patient-centered eye care.
+    </p>
   </div>
 
   <div class="contact">
@@ -223,101 +258,61 @@ body {
   </div>
 </div>
 
-<!-- OBJECTIVE -->
-<div class="section">
-  <h2>Objective</h2>
-  <div class="card">
-    Seeking ophthalmology residency with focus on clinical excellence, surgical precision, and evidence-based care.
-  </div>
-</div>
-
 <!-- EDUCATION -->
 <div class="section">
-  <h2>Education</h2>
+<h2>Education</h2>
 
-  <div class="card" data-skills="clinical anatomy diagnostics">
-    <div class="title">Doctor of Medicine</div>
-    <div class="subtitle">Western University</div>
-    <div class="drawer">Graduated with clinical distinction in ophthalmic rotations.</div>
-  </div>
+<div class="card" data-skills="biology optics research">
+  <div class="title">Doctor of Medicine</div>
+  <div class="subtitle">Western University</div>
+  <div class="drawer">Clinical excellence in ophthalmology rotations.</div>
+</div>
 
-  <div class="card" data-skills="biology research optics">
-    <div class="title">BSc Biology</div>
-    <div class="subtitle">University of Toronto</div>
-    <div class="drawer">Focused on human physiology and neuroscience.</div>
-  </div>
+<div class="card" data-skills="biology neuroscience physiology">
+  <div class="title">BSc Biology</div>
+  <div class="subtitle">University of Toronto</div>
+  <div class="drawer">Focused on human physiology and visual systems.</div>
+</div>
 </div>
 
 <!-- WORK -->
 <div class="section">
-  <h2>Work Experience</h2>
+<h2>Work Experience</h2>
 
-  <div class="card" data-skills="clinical diagnostics teamwork">
-    <div class="title">Clinical Intern</div>
-    <div class="subtitle">St. Mary’s Hospital</div>
-    <div class="drawer">Assisted eye exams, imaging, and patient diagnostics.</div>
-  </div>
+<div class="card" data-skills="clinical diagnostics teamwork">
+  <div class="title">Clinical Intern</div>
+  <div class="subtitle">St. Mary’s Hospital</div>
+  <div class="drawer">Assisted in eye exams, imaging, and pre-op evaluations.</div>
+</div>
 
-  <div class="card" data-skills="research imaging analysis">
-    <div class="title">Research Assistant</div>
-    <div class="subtitle">Ontario Eye Institute</div>
-    <div class="drawer">Studied retinal biomarkers for diabetic retinopathy.</div>
-  </div>
+<div class="card" data-skills="research imaging analysis">
+  <div class="title">Research Assistant</div>
+  <div class="subtitle">Ontario Eye Institute</div>
+  <div class="drawer">Studied retinal biomarkers and imaging systems.</div>
+</div>
 </div>
 
 <!-- CLINICAL -->
 <div class="section">
-  <h2>Clinical Experience</h2>
-  <div class="card" data-skills="clinical diagnostics surgery">
-    <div class="title">Ophthalmology Rotation</div>
-    <div class="drawer">Assisted slit lamp exams, visual acuity testing, and pre-op care.</div>
-  </div>
-</div>
+<h2>Clinical Experience</h2>
 
-<!-- CERTIFICATIONS -->
-<div class="section">
-  <h2>Certifications</h2>
-  <div class="card">
-    BLS Certified<br>
-    ACLS Certified
-  </div>
+<div class="card" data-skills="clinical surgery diagnostics">
+  <div class="title">Ophthalmology Rotation</div>
+  <div class="drawer">Slit lamp exams, visual acuity testing, patient triage.</div>
 </div>
-
-<!-- ACHIEVEMENTS -->
-<div class="section">
-  <h2>Achievements</h2>
-  <div class="card">
-    Dean’s List • Clinical Excellence Award • Research Conference Presenter
-  </div>
 </div>
 
 <!-- SKILLS -->
 <div class="section">
-  <h2>Skills & Abilities</h2>
-  <div class="skills">
-    <div class="skill">Clinical Exam</div>
-    <div class="skill">Diagnostics</div>
-    <div class="skill">Surgical Support</div>
-    <div class="skill">Imaging</div>
-    <div class="skill">Patient Care</div>
-    <div class="skill">Research</div>
-  </div>
-</div>
+<h2>Skills & Abilities</h2>
 
-<!-- HOBBIES -->
-<div class="section">
-  <h2>Hobbies & Interests</h2>
-  <div class="card">
-    Photography • Medical Journals • Hiking • Visual Science
-  </div>
+<div class="skills">
+  <div class="skill">Clinical</div>
+  <div class="skill">Diagnostics</div>
+  <div class="skill">Imaging</div>
+  <div class="skill">Surgery Support</div>
+  <div class="skill">Patient Care</div>
 </div>
-
-<!-- REFERENCES -->
-<div class="section">
-  <h2>References</h2>
-  <div class="card">
-    Available upon request from clinical supervisors.
-  </div>
 </div>
 
 </div>
@@ -326,7 +321,7 @@ body {
 const cards = document.querySelectorAll(".card");
 const skills = document.querySelectorAll(".skill");
 
-/* 3D + spotlight + click shine + drawer */
+/* 3D + spotlight + click */
 cards.forEach(card => {
 
   card.addEventListener("mousemove", (e) => {
@@ -346,24 +341,31 @@ cards.forEach(card => {
     card.style.transform = "rotateX(0) rotateY(0)";
   });
 
-  card.addEventListener("click", () => {
+  card.addEventListener("click", (e) => {
     card.classList.toggle("open");
-    card.classList.add("clicked");
-    setTimeout(() => card.classList.remove("clicked"), 600);
+
+    const ripple = document.createElement("span");
+    ripple.classList.add("ripple");
+
+    const rect = card.getBoundingClientRect();
+    ripple.style.left = (e.clientX - rect.left) + "px";
+    ripple.style.top = (e.clientY - rect.top) + "px";
+
+    card.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
   });
 });
 
-/* skill filtering */
+/* skill filter */
 skills.forEach(skill => {
   skill.addEventListener("click", () => {
-
-    const active = skill.classList.toggle("active");
-    const type = skill.textContent.toLowerCase();
+    const name = skill.textContent.toLowerCase();
+    skill.classList.toggle("active");
 
     cards.forEach(card => {
-      const match = card.dataset.skills?.includes(type);
+      const match = card.dataset.skills?.includes(name);
 
-      if (active && card.dataset.skills) {
+      if (skill.classList.contains("active")) {
         card.classList.add(match ? "highlight" : "dim");
       } else {
         card.classList.remove("highlight", "dim");
