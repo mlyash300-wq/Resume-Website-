@@ -1,675 +1,421 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aryabhata | Astronomer & Mathematician Portfolio</title>
-    <style>
-        :root {
-            --bg-color: #f0f4f8;
-            --header-gradient: linear-gradient(135deg, #1e293b, #3b4f6e);
-            --primary-accent: #b45309; /* Elegant Golden Amber instead of neon green */
-            --primary-accent-hover: #d97706;
-            --text-main: #334155;
-            --text-muted: #64748b;
-            --card-bg: #ffffff;
-            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-            --border-radius: 16px;
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.15);
-            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sri Rajan | Interactive Ophthalmology Resume</title>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            padding: 40px 20px;
-            display: flex;
-            justify-content: center;
-        }
+:root {
+  --bg: linear-gradient(135deg,#0b0d19,#16122c,#25112e);
+  --card: rgba(26,22,46,0.85);
+  --box: rgba(36,31,64,0.55);
 
-        .portfolio-container {
-            width: 100%;
-            max-width: 950px;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+  --dim: #94a3b8;
 
-        /* --- Header Section with Glassmorphism --- */
-        .profile-header {
-            background: var(--header-gradient);
-            border-radius: var(--border-radius);
-            padding: 40px;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
+  --border: rgba(129,140,248,0.15);
 
-        /* Background blur decorative element inside header */
-        .profile-header::before {
-            content: '';
-            position: absolute;
-            top: -20%;
-            right: -10%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
+  --gold: #f59e0b;
+  --purple: #a78bfa;
+  --glow: rgba(245,158,11,0.15);
+}
 
-        .avatar-container {
-            position: relative;
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            background: var(--glass-bg);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            padding: 6px;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            flex-shrink: 0;
-        }
+* { box-sizing: border-box; }
 
-        .avatar-container:hover {
-            transform: scale(1.06) rotate(2deg);
-        }
+body {
+  margin:0;
+  padding:60px 20px;
+  font-family: Inter;
+  background: var(--bg);
+  background-attachment: fixed;
+  color: var(--muted);
+}
 
-        .avatar-container img.profile-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            background: #fff;
-            display: block;
-        }
+/* ===== MAIN WRAPPER ===== */
+.resume {
+  max-width: 900px;
+  margin:auto;
+  padding:50px 60px;
+  background: var(--card);
+  border-radius:24px;
+  border:1px solid rgba(255,255,255,0.06);
+  box-shadow:0 40px 120px rgba(0,0,0,0.6);
+  backdrop-filter: blur(20px);
+}
 
-        .header-info h1 {
-            font-size: 2.5rem;
-            margin-bottom: 8px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
+/* ===== HEADER ===== */
+.header {
+  padding-bottom:30px;
+  margin-bottom:40px;
+  border-bottom:1px solid var(--border);
+}
 
-        .header-info p {
-            font-size: 1.1rem;
-            color: #cbd5e1;
-            margin-bottom: 20px;
-        }
+h1 {
+  margin:0;
+  font-size:3rem;
+  color:var(--text);
+  letter-spacing:-1px;
+}
 
-        .hire-btn {
-            background-color: var(--primary-accent);
-            color: white;
-            border: none;
-            padding: 12px 32px;
-            font-size: 0.95rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 12px rgba(180, 83, 9, 0.3);
-        }
+.subtitle {
+  margin-top:10px;
+  color:var(--gold);
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
 
-        .hire-btn:hover {
-            background-color: var(--primary-accent-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(180, 83, 9, 0.55);
-        }
-        
-        .hire-btn:active {
-            transform: translateY(-1px);
-        }
+.contact {
+  margin-top:10px;
+  font-size:0.95rem;
+  color:var(--dim);
+}
 
-        /* --- Main Content Split Grid --- */
-        .main-layout {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-        }
+/* ===== SECTION ===== */
+.section {
+  margin-bottom:40px;
+}
 
-        @media (max-width: 768px) {
-            .main-layout {
-                grid-template-columns: 1fr;
-            }
-        }
+.section-title {
+  font-size:0.9rem;
+  letter-spacing:2.5px;
+  font-weight:800;
+  color:var(--purple);
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
 
-        .card {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+.section-title::after {
+  content:"";
+  flex:1;
+  height:1px;
+  background:linear-gradient(to right,var(--border),transparent);
+}
 
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.08);
-        }
+/* ===== CARDS ===== */
+.card {
+  background: var(--box);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:22px;
+  margin-bottom:16px;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  transition: transform 0.4s ease, border 0.3s ease;
+  transform-style:preserve-3d;
+}
 
-        .section-title {
-            font-size: 1.5rem;
-            color: #1e293b;
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-        }
+/* spotlight glow */
+.card::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background: radial-gradient(250px circle at var(--x,50%) var(--y,50%), var(--glow), transparent 70%);
+  opacity:0;
+  transition:0.3s;
+  pointer-events:none;
+}
+.card:hover::before { opacity:1; }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -6px;
-            width: 100%;
-            height: 3px;
-            background-color: var(--primary-accent);
-            border-radius: 2px;
-        }
+/* ripple */
+.ripple {
+  position:absolute;
+  border-radius:50%;
+  background:rgba(245,158,11,0.25);
+  transform:scale(0);
+  animation:ripple 0.6s ease-out;
+}
+@keyframes ripple {
+  to { transform:scale(4); opacity:0; }
+}
 
-        .about-text {
-            color: var(--text-main);
-            line-height: 1.7;
-            font-size: 1.05rem;
-        }
+/* tilt */
+.card:hover {
+  border-color: rgba(167,139,250,0.3);
+  transform: translateY(-3px);
+}
 
-        /* --- Quick Info Panel --- */
-        .info-panel {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 20px;
-        }
+/* expand drawer */
+.drawer {
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transition:0.4s ease;
+  margin-top:0;
+}
 
-        .info-item {
-            border-bottom: 1px dashed #e2e8f0;
-            padding-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.95rem;
-            transition: background-color 0.2s ease;
-            border-radius: 4px;
-        }
+.card.expanded .drawer {
+  max-height:200px;
+  opacity:1;
+  margin-top:12px;
+}
 
-        .info-item:hover {
-            background-color: #f8fafc;
-        }
+/* text */
+h3 {
+  margin:0;
+  color:var(--text);
+}
 
-        .info-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
+.small {
+  font-size:0.9rem;
+  color:var(--dim);
+}
 
-        .info-label {
-            font-weight: 600;
-            color: #1e293b;
-            padding-left: 4px;
-        }
+ul {
+  padding-left:18px;
+}
 
-        .info-value {
-            color: var(--text-muted);
-            padding-right: 4px;
-        }
+li::marker {
+  color:var(--gold);
+}
 
-        /* --- Professional Skills Grid --- */
-        .skills-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
+/* ===== GRID ===== */
+.grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+@media(max-width:800px){
+  .grid { grid-template-columns:1fr; }
+}
 
-        @media (max-width: 600px) {
-            .skills-container {
-                grid-template-columns: 1fr;
-            }
-        }
+/* ===== SKILLS ===== */
+.skills {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
 
-        .skill-item {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            padding: 8px;
-            border-radius: 8px;
-            transition: background-color 0.2s ease;
-        }
+.skill {
+  padding:8px 14px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  cursor:pointer;
+  font-size:0.85rem;
+  transition:0.3s;
+}
 
-        .skill-item:hover {
-            background-color: #f8fafc;
-        }
+.skill:hover {
+  border-color:var(--purple);
+  color:white;
+}
 
-        .skill-label {
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: #1e293b;
-        }
+.dimmed {
+  opacity:0.15;
+  filter:grayscale(80%);
+}
 
-        .skill-bar-bg {
-            background: #e2e8f0;
-            height: 8px;
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-        }
+.highlight {
+  border-color:var(--gold);
+  background:rgba(245,158,11,0.1);
+}
 
-        .skill-bar-fill {
-            height: 100%;
-            background-color: #475569;
-            border-radius: 4px;
-            width: 0; 
-            transition: width 1.5s cubic-bezier(0.1, 1, 0.1, 1), background-color 0.3s ease;
-        }
-
-        .skill-item:hover .skill-bar-fill {
-            background-color: var(--primary-accent);
-        }
-
-        /* --- Interactive Work Experience --- */
-        .experience-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .exp-card {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 24px;
-            box-shadow: var(--shadow);
-            border-left: 5px solid #64748b;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-
-        .exp-card:hover {
-            transform: translateY(-3px) scale(1.005);
-            box-shadow: 0 14px 24px rgba(0,0,0,0.07);
-        }
-
-        .exp-card.active {
-            border-left-color: var(--primary-accent);
-            background: linear-gradient(to right, #ffffff, #fffdfa);
-        }
-
-        .exp-card.active .exp-role {
-            color: var(--primary-accent);
-        }
-
-        .exp-role {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 6px;
-            transition: color 0.2s ease;
-        }
-
-        .exp-meta {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .exp-bullets {
-            list-style-type: none;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .exp-bullets li {
-            position: relative;
-            padding-left: 18px;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: var(--text-main);
-        }
-
-        .exp-bullets li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: var(--primary-accent);
-            font-weight: bold;
-        }
-
-        .exp-details-expand {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            margin-top: 0;
-            border-top: 0px solid transparent;
-            padding-top: 0;
-        }
-
-        .exp-card.active .exp-details-expand {
-            max-height: 200px;
-            margin-top: 14px;
-            border-top: 1px solid #f1f5f9;
-            padding-top: 14px;
-        }
-
-        .expansion-text {
-            font-size: 0.9rem;
-            color: #475569;
-            font-style: italic;
-            line-height: 1.6;
-        }
-
-        /* --- Major Achievements Grid --- */
-        .achievements-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        @media (max-width: 650px) {
-            .achievements-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .achieve-card {
-            border-radius: var(--border-radius);
-            padding: 24px;
-            color: white;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 160px;
-        }
-
-        .achieve-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18);
-        }
-
-        .achieve-1 { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
-        .achieve-2 { background: linear-gradient(135deg, #064e3b, #047857); }
-        .achieve-3 { background: linear-gradient(135deg, #831843, #be185d); }
-        .achieve-4 { background: linear-gradient(135deg, #7c2d12, #c2410c); }
-
-        .achieve-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .achieve-desc {
-            font-size: 0.95rem;
-            opacity: 0.9;
-            line-height: 1.5;
-        }
-
-        .achieve-hidden-node {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-            font-size: 0.85rem;
-            opacity: 0;
-            margin-top: 0;
-            line-height: 1.4;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            padding-top: 0;
-        }
-
-        .achieve-card.expanded .achieve-hidden-node {
-            max-height: 120px;
-            opacity: 1;
-            margin-top: 12px;
-            padding-top: 12px;
-        }
-
-        /* --- Footer Contact with Glass Effects --- */
-        .footer-contact {
-            background: #1e293b;
-            border-radius: var(--border-radius);
-            padding: 40px;
-            text-align: center;
-            color: white;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer-contact h2 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            letter-spacing: 0.5px;
-        }
-
-        .email-pill {
-            display: inline-block;
-            background: var(--glass-bg);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            padding: 14px 36px;
-            border-radius: 50px;
-            color: #e2e8f0;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
-        }
-
-        .email-pill:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            border-color: rgba(255,255,255,0.3);
-        }
-
-        .email-pill:active {
-            transform: translateY(-1px);
-        }
-    </style>
+/* footer */
+footer {
+  text-align:center;
+  margin-top:60px;
+  font-size:0.75rem;
+  letter-spacing:2px;
+  color:rgba(148,163,184,0.4);
+}
+</style>
 </head>
+
 <body>
 
-    <div class="portfolio-container">
-        
-        <header class="profile-header">
-            <div class="avatar-container">
-                <img src="aryabhata.jpeg" alt="Aryabhata" class="profile-img">
-            </div>
-            <div class="header-info">
-                <h1>Aryabhata</h1>
-                <p>Mathematician & Astronomer</p>
-                <button class="hire-btn" onclick="alert('Inquiry form initialized!')">Hire Me</button>
-            </div>
-        </header>
+<div class="resume">
 
-        <div class="main-layout">
-            <section class="card">
-                <h2 class="section-title">About Me</h2>
-                <p class="about-text">
-                    Greetings! I am Aryabhata. I am deeply dedicated to uncovering the deep, geometric, and numerical patterns ordering our cosmos. As a classical mathematician and theoretical astronomer, I pioneered early frameworks in structural algebra, refined trigonometric functions, and established foundational models detailing planetary configurations and diurnal stellar rotation.
-                </p>
-            </section>
+<!-- HEADER -->
+<div class="header">
+  <h1>Sri Rajan, MD</h1>
+  <div class="subtitle">Ophthalmologist</div>
+  <div class="contact">London, ON • srirajan@gmail.com • +1 234 567 8901</div>
+</div>
 
-            <aside class="card info-panel">
-                <div class="info-item">
-                    <span class="info-label">Era</span>
-                    <span class="info-value">476 – 550 CE</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Email</span>
-                    <span class="info-value">aryabhata@cosmos.edu</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Location</span>
-                    <span class="info-value">Pataliputra, India</span>
-                </div>
-            </aside>
-        </div>
-
-        <section class="card">
-            <h2 class="section-title">Professional Skills</h2>
-            <div class="skills-container">
-                <div class="skill-item">
-                    <div class="skill-label">Mathematical Astronomy</div>
-                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="98%"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-label">Trigonometry & Sine Tables</div>
-                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-label">Algebraic Algorithms</div>
-                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92%"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-label">Spherical Geometry</div>
-                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88%"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-label">Scientific Composition</div>
-                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90%"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-label">Calendar Systems (Siddhantas)</div>
-                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="94%"></div></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="experience-container">
-            <h2 class="section-title" style="margin-bottom: 25px;">Work Experience</h2>
-            <div class="experience-stack">
-                
-                <div class="exp-card active" onclick="toggleAccordion(this)">
-                    <div class="exp-role">Head of Nalanda Observatory</div>
-                    <div class="exp-meta">📍 Nalanda University | 499 CE – Academic Directorship</div>
-                    <ul class="exp-bullets">
-                        <li>Delivered higher lectures on analytical mathematics, geometric proofs, and advanced algorithms.</li>
-                        <li>Coordinated night sky observations to standardize tracking maps for planetary coordinate paths.</li>
-                        <li>Supervised experimental projects examining shadows and gnomon measurements.</li>
-                    </ul>
-                    <div class="exp-details-expand">
-                        <p class="expansion-text">💡 Expanded Scope: Under this tenure, the school unified traditional Vedic arithmetic models with pure structural logic, providing students comprehensive algebraic formulas to solve complex quadratic operations cleanly.</p>
-                    </div>
-                </div>
-
-                <div class="exp-card" onclick="toggleAccordion(this)">
-                    <div class="exp-role">Chief Astro-Consultant</div>
-                    <div class="exp-meta">📍 Imperial Court of Magadha | 510 CE – 525 CE</div>
-                    <ul class="exp-bullets">
-                        <li>Refined civil and religious calendar systems based on exact astronomical measurements.</li>
-                        <li>Advised state institutions on eclipse cycles and agricultural timeline mappings.</li>
-                        <li>Standardized standardized weights, measures, and calculation baselines across regions.</li>
-                    </ul>
-                    <div class="exp-details-expand">
-                        <p class="expansion-text">💡 Expanded Scope: Implemented planetary tracking architectures that eliminated legacy discrepancies, leading to absolute reliability in predicting seasonal shifts across states.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section>
-            <h2 class="section-title" style="margin-bottom: 25px;">Major Achievements</h2>
-            <div class="achievements-grid">
-                
-                <div class="achieve-card achieve-1" onclick="toggleAchieve(this)">
-                    <div>
-                        <div class="achieve-title">Aryabhatiya Treatise</div>
-                        <div class="achieve-desc">Compiled an epic masterwork summarizing mathematics, time divisions, and core astronomy in 121 verses.</div>
-                    </div>
-                    <div class="achieve-hidden-node">
-                        Deep Dive: Features 33 distinct mathematical verses covering square roots, cube roots, geometric progressions, and algebraic equations.
-                    </div>
-                </div>
-
-                <div class="achieve-card achieve-2" onclick="toggleAchieve(this)">
-                    <div>
-                        <div class="achieve-title">Heliocentric Foundations</div>
-                        <div class="achieve-desc">Discovered that the Earth rotates daily on its axis and accurately mapped relative planetary speeds.</div>
-                    </div>
-                    <div class="achieve-hidden-node">
-                        Deep Dive: Derived precise geometric proofs proving that celestial bodies shine via reflected sunlight from a static, central star structure.
-                    </div>
-                </div>
-
-                <div class="achieve-card achieve-3" onclick="toggleAchieve(this)">
-                    <div>
-                        <div class="achieve-title">Approximation of Pi (π)</div>
-                        <div class="achieve-desc">Calculated the value of Pi to four decimal places (3.1416), recognizing it as an irrational ratio.</div>
-                    </div>
-                    <div class="achieve-hidden-node">
-                        Deep Dive: Stated mathematically that the ratio of a circle's circumference to its diameter is uniquely non-terminating and incommensurable.
-                    </div>
-                </div>
-
-                <div class="achieve-card achieve-4" onclick="toggleAchieve(this)">
-                    <div>
-                        <div class="achieve-title">Trigonometric Systems</div>
-                        <div class="achieve-desc">Invented early sine and versine tables, transforming mathematical geometry and structural mapping.</div>
-                    </div>
-                    <div class="achieve-hidden-node">
-                        Deep Dive: Developed the concept of 'jya', which eventually formed the historical structural framework for modern global trigonometry frameworks.
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <footer class="footer-contact">
-            <h2>Contact</h2>
-            <a href="mailto:aryabhata@cosmos.edu" class="email-pill">Email: aryabhata@cosmos.edu</a>
-        </footer>
-
+<!-- OBJECTIVE -->
+<div class="section">
+  <div class="section-title">QUALIFICATIONS</div>
+  <div class="card">
+    <p>Dedicated ophthalmology-focused medical professional with clinical training in diagnostics, patient care, and surgical support.</p>
+    <div class="drawer">
+      <p class="small">Focused on retinal diseases, pre-operative evaluation, and advanced ocular diagnostics.</p>
     </div>
+  </div>
+</div>
 
-    <script>
-        // Trigger progressive skill bar animation on page load
-        window.addEventListener('DOMContentLoaded', () => {
-            const fills = document.querySelectorAll('.skill-bar-fill');
-            setTimeout(() => {
-                fills.forEach(fill => {
-                    fill.style.width = fill.getAttribute('data-width');
-                });
-            }, 150);
-        });
+<!-- EDUCATION -->
+<div class="section">
+  <div class="section-title">EDUCATION</div>
 
-        // Toggle Work Experience accordion card expansions smoothly
-        function toggleAccordion(element) {
-            const allCards = document.querySelectorAll('.exp-card');
-            const isCurrentlyActive = element.classList.contains('active');
-            
-            allCards.forEach(card => {
-                card.classList.remove('active');
-            });
-            
-            if (!isCurrentlyActive) {
-                element.classList.add('active');
-            }
+  <div class="card">
+    <h3>MD — Western University</h3>
+    <div class="small">Schulich School of Medicine (2024)</div>
+    <ul>
+      <li>Clinical Excellence in Ophthalmology</li>
+      <li>Dean’s List</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>BSc Biology — University of Toronto</h3>
+    <div class="small">2020</div>
+    <ul>
+      <li>Human physiology & neuroscience</li>
+    </ul>
+  </div>
+</div>
+
+<!-- CLINICAL EXPERIENCE -->
+<div class="section">
+  <div class="section-title">CLINICAL EXPERIENCE</div>
+
+  <div class="card">
+    <h3>Ophthalmology Intern — St. Mary’s Hospital</h3>
+    <div class="small">2023–2024</div>
+    <ul>
+      <li>Eye exams, slit lamp assessment</li>
+      <li>Visual acuity & intraocular pressure testing</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Research Assistant — Ontario Eye Institute</h3>
+    <div class="small">2022–2023</div>
+    <ul>
+      <li>Retinal imaging analysis</li>
+      <li>Diabetic retinopathy research</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div class="section">
+  <div class="section-title">ACHIEVEMENTS</div>
+  <div class="grid">
+    <div class="card"><ul><li>150+ supervised procedures</li><li>Conference presentation</li></ul></div>
+    <div class="card"><ul><li>Clinical excellence recognition</li><li>Research publication support</li></ul></div>
+  </div>
+</div>
+
+<!-- CERTIFICATIONS -->
+<div class="section">
+  <div class="section-title">CERTIFICATIONS</div>
+  <div class="card">
+    <ul>
+      <li>BLS — Canadian Red Cross</li>
+      <li>ACLS — Heart & Stroke Foundation</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="section">
+  <div class="section-title">SKILLS & ABILITIES</div>
+
+  <div class="card skills">
+    <div class="skill" data="eye exams">Eye Exams</div>
+    <div class="skill" data="slit">Slit Lamp</div>
+    <div class="skill" data="fundus">Fundoscopy</div>
+    <div class="skill" data="patient">Patient Care</div>
+    <div class="skill" data="emr">EMR Systems</div>
+    <div class="skill" data="diagnostic">Diagnostics</div>
+  </div>
+</div>
+
+<!-- HOBBIES -->
+<div class="section">
+  <div class="section-title">HOBBIES & INTEREST</div>
+  <div class="card">
+    <ul>
+      <li>Medical imaging photography</li>
+      <li>Clinical research reading</li>
+      <li>Fitness & wellness</li>
+    </ul>
+  </div>
+</div>
+
+<!-- REFERENCES -->
+<div class="section">
+  <div class="section-title">REFERENCES</div>
+  <div class="card">
+    <p>Available upon request from supervising physicians and academic mentors.</p>
+  </div>
+</div>
+
+<footer>Interactive Medical Resume System</footer>
+
+</div>
+
+<script>
+const cards = document.querySelectorAll('.card');
+const skills = document.querySelectorAll('.skill');
+
+/* ===== 3D + SPOTLIGHT + RIPPLE ===== */
+cards.forEach(card => {
+
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
+
+    const rx = (x / r.width - 0.5) * 6;
+    const ry = (y / r.height - 0.5) * 6;
+
+    card.style.transform = `rotateX(${-ry}deg) rotateY(${rx}deg) translateY(-3px)`;
+    card.style.setProperty('--x', x + 'px');
+    card.style.setProperty('--y', y + 'px');
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+
+  card.addEventListener('click', e => {
+
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple';
+
+    const r = card.getBoundingClientRect();
+    ripple.style.left = (e.clientX - r.left) + 'px';
+    ripple.style.top = (e.clientY - r.top) + 'px';
+
+    card.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+
+    card.classList.toggle('expanded');
+  });
+});
+
+/* ===== SKILL FILTER MATRIX ===== */
+skills.forEach(skill => {
+  skill.addEventListener('click', () => {
+
+    const active = skill.classList.contains('highlight');
+
+    skills.forEach(s => s.classList.remove('highlight'));
+    cards.forEach(c => c.classList.remove('dimmed'));
+
+    if (!active) {
+      skill.classList.add('highlight');
+
+      const val = skill.textContent.toLowerCase();
+
+      cards.forEach(card => {
+        if (!card.textContent.toLowerCase().includes(val)) {
+          card.classList.add('dimmed');
         }
+      });
+    }
+  });
+});
+</script>
 
-        // Toggle Major Achievement boxes to reveal advanced technical deep dives
-        function toggleAchieve(element) {
-            element.classList.toggle('expanded');
-        }
-    </script>
 </body>
 </html>
