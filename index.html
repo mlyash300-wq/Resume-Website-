@@ -1,358 +1,384 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LeBron James - Neon Matrix Resume (Ultra Expanded)</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dr. Sri Rajan - NeuroVision Ophthalmic System</title>
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
-        :root {
-            --bg-body: #090d16;
-            --bg-card: #131a26;
-            --text-light: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-subtle: #1e293b;
+:root{
+    --bg:#070b14;
+    --card:#111a2a;
+    --text:#e6edf7;
+    --muted:#93a4b7;
 
-            --cls-header: linear-gradient(135deg, #ff007f, #7928ca, #00dfd8);
-            --color-summary: #ff007f;
-            --color-exp: #00dfd8;
-            --color-achieve: #7928ca;
-            --color-ventures: #ff9f00;
-            --color-skills: #00ff66;
-        }
+    --cyan:#00dfd8;
+    --pink:#ff007f;
+    --purple:#7c3aed;
+    --green:#00ff88;
+    --orange:#ff9f1c;
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-body);
-            color: var(--text-muted);
-            margin: 0;
-            padding: 60px 20px;
-        }
+    --glow: rgba(0,223,216,0.15);
+}
 
-        .resume {
-            max-width: 980px;
-            margin: 0 auto;
-            background: var(--bg-card);
-            padding: 70px;
-            border-radius: 24px;
-            border: 1px solid var(--border-subtle);
-        }
+body{
+    margin:0;
+    font-family:Inter;
+    background:radial-gradient(circle at top,#0b1630,#070b14);
+    color:var(--muted);
+    overflow-x:hidden;
+}
 
-        .header {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            padding: 40px;
-            margin-bottom: 45px;
-            background: linear-gradient(145deg, #161f30, #0d131f);
-            border-radius: 20px;
-        }
+/* ================= LOADING SCREEN ================= */
+#loader{
+    position:fixed;
+    inset:0;
+    background:#050814;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    z-index:999;
+    color:var(--cyan);
+    font-weight:700;
+    letter-spacing:2px;
+}
 
-        .photo {
-            width: 140px;
-            height: 140px;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 3px solid #00dfd8;
-        }
+.loader-bar{
+    width:280px;
+    height:4px;
+    background:#1b2a44;
+    margin-top:20px;
+    overflow:hidden;
+    border-radius:20px;
+}
 
-        .photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+.loader-bar::after{
+    content:"";
+    display:block;
+    width:40%;
+    height:100%;
+    background:linear-gradient(90deg,var(--cyan),var(--purple));
+    animation:load 1.5s infinite;
+}
 
-        .name {
-            font-size: 3.4rem;
-            font-weight: 800;
-            background: var(--cls-header);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+@keyframes load{
+    0%{transform:translateX(-100%)}
+    100%{transform:translateX(300%)}
+}
 
-        .title {
-            color: #00dfd8;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
+/* ================= MAIN ================= */
+.resume{
+    max-width:1000px;
+    margin:80px auto;
+    padding:60px;
+}
 
-        .section {
-            margin-bottom: 55px;
-        }
+/* ================= HEADER ================= */
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:40px;
+    border-radius:20px;
+    background:linear-gradient(145deg,#101b2e,#0a1220);
+    border-left:6px solid var(--cyan);
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+    position:relative;
+    overflow:hidden;
+}
 
-        .section-title {
-            font-size: 1.1rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-        }
+.header::before{
+    content:"";
+    position:absolute;
+    width:400px;
+    height:400px;
+    background:radial-gradient(circle,rgba(0,223,216,0.15),transparent 60%);
+    top:-100px;
+    right:-100px;
+}
 
-        .content-box {
-            background: linear-gradient(135deg, #151f32, #101726);
-            padding: 26px;
-            border-radius: 16px;
-            border: 1px solid #1e293b;
-            margin-bottom: 20px;
-        }
+.name{
+    font-size:3rem;
+    font-weight:800;
+    background:linear-gradient(135deg,var(--pink),var(--purple),var(--cyan));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
 
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-        }
+.title{
+    color:var(--cyan);
+    font-weight:700;
+    margin-top:8px;
+}
 
-        ul {
-            margin: 0;
-            padding-left: 18px;
-        }
+.photo{
+    width:140px;
+    height:140px;
+    border-radius:18px;
+    overflow:hidden;
+    border:3px solid var(--cyan);
+    transition:0.3s;
+}
 
-        li {
-            margin-bottom: 10px;
-        }
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
 
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
+/* ================= SECTIONS ================= */
+.section{
+    margin-top:60px;
+}
 
-        .skill {
-            padding: 10px 16px;
-            border-radius: 12px;
-            border: 1px solid #00ff66;
-            color: #00ff66;
-        }
-    </style>
+.section-title{
+    font-size:0.95rem;
+    font-weight:800;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--cyan);
+}
+
+/* ================= CARDS ================= */
+.card{
+    background:linear-gradient(135deg,#121c2f,#0d1424);
+    border:1px solid #1d2b45;
+    border-radius:16px;
+    padding:22px;
+    margin-top:15px;
+    transition:0.2s;
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(400px circle at var(--x,50%) var(--y,50%),rgba(0,223,216,0.12),transparent 40%);
+    opacity:0;
+    transition:0.3s;
+}
+
+.card:hover::before{
+    opacity:1;
+}
+
+/* ================= GRID ================= */
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+/* ================= SKILLS ================= */
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.skill{
+    padding:8px 14px;
+    border-radius:12px;
+    border:1px solid var(--cyan);
+    color:var(--cyan);
+    transition:0.2s;
+}
+
+/* ================= METRICS ================= */
+.metric{
+    display:flex;
+    justify-content:space-between;
+    margin:10px 0;
+}
+
+.bar{
+    height:6px;
+    background:#1c2a44;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.bar span{
+    display:block;
+    height:100%;
+    background:linear-gradient(90deg,var(--cyan),var(--purple));
+}
+
+/* ================= SCROLL ANIMATION ================= */
+.hidden{
+    opacity:0;
+    transform:translateY(40px);
+    transition:0.6s;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+</style>
 </head>
 
 <body>
 
+<div id="loader">
+    Initializing NeuroVision Ophthalmic System...
+    <div class="loader-bar"></div>
+</div>
+
 <div class="resume">
 
-    <!-- HEADER -->
-    <div class="header">
-        <div class="header-text">
-            <h1 class="name">LeBron James</h1>
-            <p class="title">Professional Athlete • Entrepreneur • Investor • Philanthropist</p>
-            <p>Los Angeles, USA • NBA Veteran • Global Brand Ambassador</p>
-        </div>
-
-        <div class="photo">
-            <img src="https://cdn.nba.com/headshots/nba/latest/1040x760/2544.png">
-        </div>
+<!-- HEADER -->
+<div class="header hidden">
+    <div>
+        <div class="name">Dr. Sri Rajan</div>
+        <div class="title">Consultant Ophthalmic Surgeon | Cornea • LASIK • Cataract</div>
+        <p>NeuroVision Eye Institute • Chennai</p>
     </div>
 
-    <!-- SUMMARY -->
-    <div class="section">
-        <h2 class="section-title">Professional Summary</h2>
-        <div class="content-box">
-            <p>
-                Global elite athlete with 20+ years of professional basketball dominance, recognized for leadership,
-                longevity, peak performance under pressure, and generational influence across sports, business, and culture.
-                Known for redefining modern athletic career longevity and multi-industry brand building.
-            </p>
-        </div>
+    <div class="photo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png">
     </div>
+</div>
 
-    <!-- EXPERIENCE -->
-    <div class="section">
-        <h2 class="section-title">Professional Experience</h2>
+<!-- SUMMARY -->
+<div class="section hidden">
+<div class="section-title">Clinical Overview</div>
+<div class="card">
+Senior ophthalmic surgeon specializing in high-precision cataract surgery, corneal transplantation, and refractive correction procedures with 18+ years of surgical experience and 25,000+ procedures performed.
+</div>
+</div>
 
-        <div class="content-box">
-            <h3>Los Angeles Lakers (2018 – Present)</h3>
-            <ul>
-                <li>NBA Championship (2020) leadership performance</li>
-                <li>Maintained elite production: 25+ PPG, 7+ RPG, 7+ APG</li>
-                <li>Acted as primary playmaker at forward position</li>
-                <li>Franchise leadership and roster mentorship role</li>
-                <li>Extended playoff qualification consistency</li>
-            </ul>
-        </div>
+<!-- METRICS -->
+<div class="section hidden">
+<div class="section-title">Performance Metrics</div>
+<div class="card">
 
-        <div class="content-box">
-            <h3>Cleveland Cavaliers (2014 – 2018)</h3>
-            <ul>
-                <li>2016 NBA Championship (historic 3–1 comeback)</li>
-                <li>Delivered Finals MVP performance</li>
-                <li>Franchise revival leadership role</li>
-                <li>Multiple Finals appearances</li>
-            </ul>
-        </div>
+<div class="metric">Surgical Success Rate <b>98.7%</b></div>
+<div class="bar"><span style="width:98%"></span></div>
 
-        <div class="content-box">
-            <h3>Miami Heat (2010 – 2014)</h3>
-            <ul>
-                <li>2× NBA Championships (2012, 2013)</li>
-                <li>4 straight NBA Finals appearances</li>
-                <li>Peak efficiency scoring and defensive versatility</li>
-                <li>Positionless basketball evolution leader</li>
-            </ul>
-        </div>
+<div class="metric">Patient Recovery Efficiency <b>96%</b></div>
+<div class="bar"><span style="width:96%"></span></div>
 
-        <div class="content-box">
-            <h3>Cleveland Cavaliers (2003 – 2010)</h3>
-            <ul>
-                <li>2003 Rookie of the Year</li>
-                <li>First franchise playoff transformation era</li>
-                <li>Multiple All-NBA selections</li>
-                <li>Youngest scoring leader milestones</li>
-            </ul>
-        </div>
-    </div>
+<div class="metric">Visual Acuity Restoration <b>97%</b></div>
+<div class="bar"><span style="width:97%"></span></div>
 
-    <!-- ACHIEVEMENTS -->
-    <div class="section">
-        <h2 class="section-title">Key Achievements & Records</h2>
+</div>
+</div>
 
-        <div class="grid">
-            <div class="content-box">
-                <ul>
-                    <li>4× NBA Champion</li>
-                    <li>4× Finals MVP</li>
-                    <li>4× League MVP</li>
-                    <li>NBA All-Time Scoring Leader</li>
-                    <li>20+ All-Star selections</li>
-                </ul>
-            </div>
+<!-- EXPERIENCE -->
+<div class="section hidden">
+<div class="section-title">Clinical Experience</div>
 
-            <div class="content-box">
-                <ul>
-                    <li>Most playoff points in NBA history</li>
-                    <li>10+ NBA Finals appearances</li>
-                    <li>Only player with 30K+ points & 10K+ assists</li>
-                    <li>Oldest player with 40+ point games</li>
-                    <li>Historic longevity across 2 decades</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+<div class="card">
+<b>Senior Consultant – VisionEye Institute</b><br>
+2009–Present
+<ul>
+<li>Performed 25,000+ cataract surgeries</li>
+<li>Introduced micro-incision phaco techniques</li>
+<li>Led refractive surgery department</li>
+</ul>
+</div>
 
-    <!-- EDUCATION -->
-    <div class="section">
-        <h2 class="section-title">Education & Early Development</h2>
-
-        <div class="content-box">
-            <ul>
-                <li>St. Vincent–St. Mary High School (Akron, Ohio)</li>
-                <li>National high school basketball phenom</li>
-                <li>USA Junior National Team development program</li>
-                <li>Early media exposure & elite scouting prospect</li>
-                <li>Elite training in athletic biomechanics & conditioning</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- VENTURES -->
-    <div class="section">
-        <h2 class="section-title">Business & Ventures</h2>
-
-        <div class="grid">
-            <div class="content-box">
-                <h3>SpringHill Company</h3>
-                <p>Media production company focused on storytelling, sports culture, and entertainment.</p>
-            </div>
-
-            <div class="content-box">
-                <h3>Fenway Sports Group</h3>
-                <p>Ownership stake in global sports enterprises including Liverpool FC.</p>
-            </div>
-
-            <div class="content-box">
-                <h3>Blaze Pizza Investment</h3>
-                <p>Early-stage investor turned multi-million expansion partner.</p>
-            </div>
-
-            <div class="content-box">
-                <h3>Brand Partnerships</h3>
-                <p>Lifetime partnership with Nike and global brand endorsements.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- PHILANTHROPY -->
-    <div class="section">
-        <h2 class="section-title">Philanthropy & Impact</h2>
-
-        <div class="content-box">
-            <ul>
-                <li>LeBron James Family Foundation founder</li>
-                <li>I PROMISE School initiative (Akron, Ohio)</li>
-                <li>Scholarship funding for at-risk youth</li>
-                <li>Community housing and family support programs</li>
-                <li>Education-first empowerment model</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- SKILLS -->
-    <div class="section">
-        <h2 class="section-title">Core Skills</h2>
-
-        <div class="content-box">
-            <div class="skills">
-                <div class="skill">Leadership</div>
-                <div class="skill">Basketball IQ</div>
-                <div class="skill">Strategy</div>
-                <div class="skill">Athletic Performance</div>
-                <div class="skill">Decision Making</div>
-                <div class="skill">Brand Building</div>
-                <div class="skill">Public Influence</div>
-                <div class="skill">Mentorship</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- FOOTER -->
-    <div style="text-align:center; margin-top:60px; color:#555;">
-        CREATED BY OTIS CHUNG • NEON MATRIX RESUME SYSTEM
-    </div>
+<div class="card">
+<b>Consultant – Government Eye Hospital</b><br>
+2004–2009
+<ul>
+<li>Managed high-volume corneal pathology cases</li>
+<li>Emergency ocular trauma surgery</li>
+</ul>
+</div>
 
 </div>
 
-<!-- JS (UNCHANGED INTERACTIVE SYSTEM) -->
+<!-- SURGICAL EXPERTISE -->
+<div class="section hidden">
+<div class="section-title">Surgical Expertise</div>
+
+<div class="grid">
+
+<div class="card">
+✔ Femto Cataract Surgery<br>
+✔ LASIK / SMILE / PRK<br>
+✔ Refractive Lens Exchange
+</div>
+
+<div class="card">
+✔ Corneal Transplant (DMEK/DALK)<br>
+✔ Glaucoma Laser Treatment<br>
+✔ Ocular Trauma Reconstruction
+</div>
+
+</div>
+</div>
+
+<!-- RESEARCH -->
+<div class="section hidden">
+<div class="section-title">Research Contributions</div>
+
+<div class="card">
+<ul>
+<li>AI-assisted retinal disease detection models</li>
+<li>Corneal endothelial regeneration studies</li>
+<li>Laser refractive outcome optimization</li>
+<li>Published in international ophthalmology journals</li>
+</ul>
+</div>
+
+</div>
+
+<!-- SKILLS -->
+<div class="section hidden">
+<div class="section-title">Clinical Skills</div>
+
+<div class="card">
+<div class="skills">
+<div class="skill">Surgical Precision</div>
+<div class="skill">LASIK Systems</div>
+<div class="skill">Corneal Biology</div>
+<div class="skill">Patient Care</div>
+<div class="skill">Microsurgery</div>
+<div class="skill">Diagnostics</div>
+</div>
+</div>
+
+</div>
+
+</div>
+
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.content-box, .grid-box');
-    const skills = document.querySelectorAll('.skill');
-    const avatar = document.querySelector('.photo');
 
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const r = card.getBoundingClientRect();
-            const x = e.clientX - r.left;
-            const y = e.clientY - r.top;
-            const rx = (x / r.width - 0.5) * 5;
-            const ry = (y / r.height - 0.5) * 5;
-            card.style.transform = `perspective(1000px) rotateX(${-ry}deg) rotateY(${rx}deg)`;
-        });
+/* REMOVE LOADER */
+window.onload = () => {
+    setTimeout(()=>{
+        document.getElementById("loader").style.display="none";
+    },1200);
+};
 
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
-        });
+/* SCROLL REVEAL */
+const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+        if(e.isIntersecting){
+            e.target.classList.add("show");
+        }
     });
-
-    skills.forEach(skill => {
-        skill.addEventListener('mouseenter', () => {
-            skill.style.transform = 'scale(1.1)';
-        });
-        skill.addEventListener('mouseleave', () => {
-            skill.style.transform = '';
-        });
-    });
-
-    if (avatar) {
-        avatar.addEventListener('mouseenter', () => {
-            avatar.style.transform = 'scale(1.1)';
-        });
-        avatar.addEventListener('mouseleave', () => {
-            avatar.style.transform = '';
-        });
-    }
 });
+
+document.querySelectorAll(".hidden").forEach(el=>obs.observe(el));
+
+/* HOVER GLASS FOLLOW */
+document.querySelectorAll(".card").forEach(card=>{
+    card.addEventListener("mousemove",(e)=>{
+        const r=card.getBoundingClientRect();
+        card.style.setProperty("--x",((e.clientX-r.left)/r.width)*100+"%");
+        card.style.setProperty("--y",((e.clientY-r.top)/r.height)*100+"%");
+    });
+});
+
 </script>
 
 </body>
