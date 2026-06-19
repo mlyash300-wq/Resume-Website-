@@ -1,185 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Sri Rajan - Interactive Creative Resume</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sri Rajan - Neon Creative Resume</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
 :root {
-    --bg-body: #090d16;
-    --bg-card: #131a26;
-    --text-light: #f8fafc;
-    --text-muted: #94a3b8;
-    --border-subtle: #1e293b;
+    --bg-body:#070b14;
+    --bg-card:#111a2b;
+    --text:#f8fafc;
+    --muted:#94a3b8;
 
-    --blue: #00dfd8;
-    --purple: #7928ca;
-    --pink: #ff007f;
-    --gold: #ff9f00;
-    --green: #00ff66;
+    --blue:#00dfd8;
+    --pink:#ff007f;
+    --purple:#7928ca;
+    --gold:#ff9f00;
+    --green:#00ff66;
+
+    --glass: rgba(255,255,255,0.06);
 }
 
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: var(--bg-body);
-    color: var(--text-muted);
-    padding: 60px 20px;
+body{
+    margin:0;
+    font-family:Inter;
+    background:var(--bg-body);
+    color:var(--muted);
+    padding:60px 20px;
+    overflow-x:hidden;
 }
 
-.resume {
-    max-width: 900px;
-    margin: auto;
-    background: var(--bg-card);
-    border-radius: 24px;
-    padding: 60px;
-    border: 1px solid var(--border-subtle);
-    box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+/* MAIN FRAME */
+.resume{
+    max-width:980px;
+    margin:auto;
+    background:linear-gradient(145deg,#0e1525,#0b1020);
+    padding:60px;
+    border-radius:26px;
+    border:1px solid rgba(255,255,255,0.08);
+    box-shadow:0 40px 120px rgba(0,0,0,0.6);
+    position:relative;
+    overflow:hidden;
+}
+
+/* GLOBAL CLICK RIPPLE */
+.ripple{
+    position:absolute;
+    border-radius:50%;
+    transform:scale(0);
+    animation:ripple 700ms linear;
+    background:radial-gradient(circle, rgba(0,223,216,0.5), transparent);
+    pointer-events:none;
+    z-index:999;
+}
+@keyframes ripple{
+    to{ transform:scale(6); opacity:0; }
 }
 
 /* HEADER */
-.header {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-    padding-bottom: 35px;
-    border-bottom: 1px solid var(--border-subtle);
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:40px;
+    border-radius:20px;
+    background:linear-gradient(145deg,#121a2e,#0b1220);
+    border-left:5px solid var(--pink);
+    position:relative;
+    overflow:hidden;
 }
 
-.name {
-    font-size: 3rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, var(--pink), var(--purple), var(--blue));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.name{
+    font-size:3rem;
+    font-weight:800;
+    background:linear-gradient(135deg,var(--pink),var(--purple),var(--blue));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
-.title {
-    color: var(--blue);
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+.title{
+    color:var(--blue);
+    font-weight:700;
+    letter-spacing:1px;
 }
 
-/* SECTION */
-.section {
-    margin-top: 50px;
+.photo{
+    width:130px;height:130px;
+    border-radius:20px;
+    border:2px solid var(--blue);
+    overflow:hidden;
+    transition:0.4s;
 }
 
-.section-title {
-    font-size: 1rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
+/* SECTIONS */
+.section{
+    margin-top:40px;
 }
 
-.section-title::after {
-    content: "";
-    height: 1px;
-    flex: 1;
-    background: linear-gradient(to right, var(--purple), transparent);
+.section-title{
+    font-size:1.1rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    cursor:pointer;
 }
 
-/* CARD */
-.card {
-    position: relative;
-    background: linear-gradient(135deg, #151f32, #101726);
-    border: 1px solid var(--border-subtle);
-    border-radius: 16px;
-    padding: 22px;
-    margin-bottom: 18px;
-
-    transform-style: preserve-3d;
-    overflow: hidden;
-    cursor: pointer;
-
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
+.section-title::after{
+    content:"";
+    flex:1;
+    height:2px;
+    background:linear-gradient(to right,var(--blue),transparent);
 }
 
-/* SPOTLIGHT */
-.card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-        300px circle at var(--x, 0px) var(--y, 0px),
-        rgba(255,255,255,0.08),
-        transparent 60%
-    );
-    opacity: 0;
-    transition: opacity 0.3s;
+/* COLLAPSIBLE CONTENT */
+.content{
+    margin-top:15px;
+    display:none;
 }
 
-.card:hover::before {
-    opacity: 1;
+.content.active{
+    display:block;
 }
 
-/* RIPPLE */
-.ripple {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.2);
-    transform: scale(0);
-    animation: ripple 0.6s ease-out;
+/* GLASS CARD */
+.card{
+    background:linear-gradient(145deg,#121a2a,#0c1424);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:18px;
+    padding:22px;
+    margin-bottom:18px;
+    position:relative;
+    overflow:hidden;
+    transform-style:preserve-3d;
+    transition:0.3s;
 }
 
-@keyframes ripple {
-    to {
-        transform: scale(4);
-        opacity: 0;
-    }
+/* spotlight */
+.card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at var(--x,50%) var(--y,50%),
+    rgba(0,223,216,0.15), transparent 60%);
+    opacity:0;
+    transition:0.3s;
 }
 
-/* DRAWER */
-.drawer {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: all 0.4s ease;
+.card:hover::before{
+    opacity:1;
 }
 
-.card.expanded .drawer {
-    max-height: 200px;
-    margin-top: 12px;
-    opacity: 1;
+/* CLICK SHINE */
+.card.clicked::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,0.2),transparent);
+    animation:shine 0.6s ease;
 }
-
-/* DIM SYSTEM */
-.dim {
-    opacity: 0.15;
-    filter: grayscale(80%);
+@keyframes shine{
+    from{transform:translateX(-100%);}
+    to{transform:translateX(100%);}
 }
 
 /* SKILLS */
-.skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
 }
 
-.skill {
-    padding: 8px 14px;
-    border-radius: 10px;
-    border: 1px solid var(--border-subtle);
-    cursor: pointer;
-    transition: 0.2s;
+.skill{
+    padding:10px 16px;
+    border-radius:12px;
+    background:#182235;
+    border:1px solid rgba(255,255,255,0.1);
+    cursor:pointer;
+    transition:0.3s;
 }
 
+/* color system */
 .skill:nth-child(1){color:var(--pink);}
-.skill:nth-child(2){color:var(--gold);}
-.skill:nth-child(3){color:var(--blue);}
-.skill:nth-child(4){color:var(--purple);}
+.skill:nth-child(2){color:var(--blue);}
+.skill:nth-child(3){color:var(--purple);}
+.skill:nth-child(4){color:var(--gold);}
+.skill:nth-child(5){color:var(--green);}
 
-.skill.active {
-    background: var(--blue);
-    color: #000;
+/* FILTER HIGHLIGHT */
+.skill.active{
+    background:var(--blue);
+    color:#000;
+    box-shadow:0 0 20px var(--blue);
 }
+
+/* DIM SYSTEM */
+.dim{
+    opacity:0.2;
+    filter:blur(1px);
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+}
+
+/* TILT CARD */
+.card:hover{
+    transform:rotateX(4deg) rotateY(4deg) translateY(-4px);
+}
+
 </style>
 </head>
 
@@ -192,127 +228,151 @@ body {
     <div>
         <div class="name">Sri Rajan</div>
         <div class="title">Artistic Director & Graphic Designer</div>
-        <p>Vancouver, Canada • sri.rajan@email.com</p>
+        <div>Vancouver • Creative Studio • Global Freelance</div>
+    </div>
+
+    <div class="photo">
+        <img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe" width="130">
     </div>
 </div>
 
 <!-- SUMMARY -->
 <div class="section">
-<div class="section-title">Creative Summary</div>
-<div class="card">
-    Visual storyteller specializing in cinematic branding, motion design direction, and high-impact visual identity systems.
+<div class="section-title">Professional Summary</div>
+<div class="content active">
+    <div class="card" data-skill="design">
+        Creative director specializing in brand identity systems, motion design, and high-impact visual storytelling.
+    </div>
 </div>
 </div>
 
-<!-- EXPERIENCE -->
+<!-- WORK -->
 <div class="section">
-<div class="section-title">Experience</div>
+<div class="section-title">Work Experience</div>
+<div class="content active">
 
-<div class="card" data-skill="branding design motion">
-    <strong>Art Director</strong> — Freelance Studio
-    <ul>
-        <li>Led brand identity systems for digital campaigns</li>
-        <li>Designed visual direction for UI/UX projects</li>
-    </ul>
-    <div class="drawer">Focused on cinematic design language systems.</div>
+<div class="card" data-skill="design">
+<b>Senior Artistic Director</b><br>NeonWave Studios
 </div>
 
-<div class="card" data-skill="graphic design illustration">
-    <strong>Graphic Designer</strong> — Creative Agency
-    <ul>
-        <li>Created brand visuals, posters, and digital assets</li>
-    </ul>
-    <div class="drawer">Specialized in modern minimal + neon hybrid aesthetics.</div>
+<div class="card" data-skill="branding">
+<b>Graphic Designer</b><br>PixelForge Agency
+</div>
+
+<div class="card" data-skill="motion">
+<b>Motion Designer</b><br>Freelance International
+</div>
+
+</div>
+</div>
+
+<!-- EDUCATION -->
+<div class="section">
+<div class="section-title">Education</div>
+<div class="content active">
+<div class="card">BFA Visual Communication — Emily Carr University</div>
+</div>
+</div>
+
+<!-- SKILLS -->
+<div class="section">
+<div class="section-title">Skills Matrix (Click to Filter)</div>
+<div class="content active">
+
+<div class="skills">
+<div class="skill" data-filter="design">Design Systems</div>
+<div class="skill" data-filter="branding">Branding</div>
+<div class="skill" data-filter="motion">Motion</div>
+<div class="skill" data-filter="ui">UI/UX</div>
+<div class="skill" data-filter="3d">3D Art</div>
+</div>
+
+</div>
+</div>
+
+<!-- QUALIFICATIONS -->
+<div class="section">
+<div class="section-title">Qualifications</div>
+<div class="content active">
+<div class="card">Adobe Certified Expert • Figma Advanced Systems • Cinema4D Workflow Specialist</div>
 </div>
 </div>
 
 <!-- ACHIEVEMENTS -->
 <div class="section">
 <div class="section-title">Achievements</div>
-
-<div class="card">
-<ul>
-<li>Featured in design showcase publications</li>
-<li>Created award-winning branding systems</li>
-<li>Led multiple viral visual campaigns</li>
-</ul>
+<div class="content active">
+<div class="card">Featured in Awwwards • Behance Top 1% Designer • 50+ Global Brand Projects</div>
 </div>
 </div>
 
-<!-- SKILLS -->
+<!-- REFERENCES -->
 <div class="section">
-<div class="section-title">Skills Matrix</div>
-
-<div class="card">
-<div class="skills">
-    <div class="skill" data-s="branding">Branding</div>
-    <div class="skill" data-s="design">Design</div>
-    <div class="skill" data-s="motion">Motion</div>
-    <div class="skill" data-s="illustration">Illustration</div>
-</div>
+<div class="section-title">References</div>
+<div class="content active">
+<div class="card">Available upon request from global creative directors & agencies</div>
 </div>
 </div>
 
 </div>
 
 <script>
-const cards = document.querySelectorAll(".card");
-const skills = document.querySelectorAll(".skill");
 
-/* 3D + SPOTLIGHT + RIPPLE */
-cards.forEach(card => {
+const resume = document.querySelector(".resume");
 
-card.addEventListener("mousemove", e => {
-    const r = card.getBoundingClientRect();
-    const x = e.clientX - r.left;
-    const y = e.clientY - r.top;
-
-    const rx = (x / r.width - 0.5) * 6;
-    const ry = (y / r.height - 0.5) * 6;
-
-    card.style.transform = `rotateX(${-ry}deg) rotateY(${rx}deg)`;
-    card.style.setProperty("--x", `${x}px`);
-    card.style.setProperty("--y", `${y}px`);
+/* RIPPLE CLICK SYSTEM */
+resume.addEventListener("click",(e)=>{
+    const ripple=document.createElement("div");
+    ripple.classList.add("ripple");
+    ripple.style.left=e.clientX+"px";
+    ripple.style.top=e.clientY+"px";
+    document.body.appendChild(ripple);
+    setTimeout(()=>ripple.remove(),700);
 });
 
-card.addEventListener("mouseleave", () => {
-    card.style.transform = "rotateX(0) rotateY(0)";
+/* COLLAPSE SYSTEM */
+document.querySelectorAll(".section-title").forEach(title=>{
+    title.addEventListener("click",()=>{
+        title.nextElementSibling.classList.toggle("active");
+    });
 });
 
-card.addEventListener("click", e => {
+/* SPOTLIGHT TRACKING */
+document.querySelectorAll(".card").forEach(card=>{
+    card.addEventListener("mousemove",(e)=>{
+        const r=card.getBoundingClientRect();
+        card.style.setProperty("--x",(e.clientX-r.left)+"px");
+        card.style.setProperty("--y",(e.clientY-r.top)+"px");
+    });
 
-const ripple = document.createElement("span");
-ripple.classList.add("ripple");
-ripple.style.left = e.offsetX + "px";
-ripple.style.top = e.offsetY + "px";
-card.appendChild(ripple);
-
-setTimeout(() => ripple.remove(), 600);
-
-card.classList.toggle("expanded");
-
-});
-});
-
-/* SKILL FILTER */
-skills.forEach(skill => {
-skill.addEventListener("click", () => {
-
-const val = skill.dataset.s;
-
-skills.forEach(s => s.classList.remove("active"));
-skill.classList.add("active");
-
-cards.forEach(c => {
-    if (!c.dataset.skill || !c.dataset.skill.includes(val)) {
-        c.classList.add("dim");
-    } else {
-        c.classList.remove("dim");
-    }
+    card.addEventListener("click",()=>{
+        card.classList.add("clicked");
+        setTimeout(()=>card.classList.remove("clicked"),600);
+    });
 });
 
+/* SKILL FILTER SYSTEM */
+const skills=document.querySelectorAll(".skill");
+const cards=document.querySelectorAll(".card");
+
+skills.forEach(skill=>{
+    skill.addEventListener("click",()=>{
+
+        let filter=skill.dataset.filter;
+
+        skills.forEach(s=>s.classList.remove("active"));
+        skill.classList.add("active");
+
+        cards.forEach(c=>{
+            if(c.dataset.skill===filter || filter==="all"){
+                c.classList.remove("dim");
+            }else{
+                c.classList.add("dim");
+            }
+        });
+    });
 });
-});
+
 </script>
 
 </body>
