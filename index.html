@@ -6,7 +6,7 @@
     <title>Aryabhata | Astronomer & Mathematician Portfolio</title>
     <style>
         :root {
-            --bg-color: #f4f6f9;
+            --bg-color: #f0f4f8;
             --header-gradient: linear-gradient(135deg, #1e293b, #3b4f6e);
             --primary-accent: #b45309; /* Elegant Golden Amber instead of neon green */
             --primary-accent-hover: #d97706;
@@ -15,6 +15,9 @@
             --card-bg: #ffffff;
             --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
             --border-radius: 16px;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
         }
 
         * {
@@ -40,7 +43,7 @@
             gap: 30px;
         }
 
-        /* --- Header Section --- */
+        /* --- Header Section with Glassmorphism --- */
         .profile-header {
             background: var(--header-gradient);
             border-radius: var(--border-radius);
@@ -54,22 +57,45 @@
             box-shadow: var(--shadow);
         }
 
+        /* Background blur decorative element inside header */
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
         .avatar-container {
             position: relative;
             width: 160px;
             height: 160px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             padding: 6px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
         }
 
-        .avatar-container img {
+        .avatar-container:hover {
+            transform: scale(1.06) rotate(2deg);
+        }
+
+        .avatar-container img.profile-img {
             width: 100%;
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            background: #fff; /* Placeholder fallback color */
+            background: #fff;
+            display: block;
         }
 
         .header-info h1 {
@@ -96,14 +122,18 @@
             letter-spacing: 1px;
             border-radius: 30px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 4px 12px rgba(180, 83, 9, 0.3);
         }
 
         .hire-btn:hover {
             background-color: var(--primary-accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(180, 83, 9, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(180, 83, 9, 0.55);
+        }
+        
+        .hire-btn:active {
+            transform: translateY(-1px);
         }
 
         /* --- Main Content Split Grid --- */
@@ -124,6 +154,12 @@
             border-radius: var(--border-radius);
             padding: 30px;
             box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.08);
         }
 
         .section-title {
@@ -165,6 +201,12 @@
             display: flex;
             justify-content: space-between;
             font-size: 0.95rem;
+            transition: background-color 0.2s ease;
+            border-radius: 4px;
+        }
+
+        .info-item:hover {
+            background-color: #f8fafc;
         }
 
         .info-item:last-child {
@@ -175,10 +217,12 @@
         .info-label {
             font-weight: 600;
             color: #1e293b;
+            padding-left: 4px;
         }
 
         .info-value {
             color: var(--text-muted);
+            padding-right: 4px;
         }
 
         /* --- Professional Skills Grid --- */
@@ -198,6 +242,13 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease;
+        }
+
+        .skill-item:hover {
+            background-color: #f8fafc;
         }
 
         .skill-label {
@@ -218,8 +269,12 @@
             height: 100%;
             background-color: #475569;
             border-radius: 4px;
-            width: 0; /* Animated dynamically below */
-            transition: width 1.5s ease-out;
+            width: 0; 
+            transition: width 1.5s cubic-bezier(0.1, 1, 0.1, 1), background-color 0.3s ease;
+        }
+
+        .skill-item:hover .skill-bar-fill {
+            background-color: var(--primary-accent);
         }
 
         /* --- Interactive Work Experience --- */
@@ -236,17 +291,18 @@
             box-shadow: var(--shadow);
             border-left: 5px solid #64748b;
             cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
         }
 
         .exp-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+            transform: translateY(-3px) scale(1.005);
+            box-shadow: 0 14px 24px rgba(0,0,0,0.07);
         }
 
         .exp-card.active {
             border-left-color: var(--primary-accent);
+            background: linear-gradient(to right, #ffffff, #fffdfa);
         }
 
         .exp-card.active .exp-role {
@@ -258,7 +314,7 @@
             font-weight: 700;
             color: #1e293b;
             margin-bottom: 6px;
-            transition: color 0.2s;
+            transition: color 0.2s ease;
         }
 
         .exp-meta {
@@ -293,18 +349,17 @@
             font-weight: bold;
         }
 
-        /* Click to Expand Styling */
         .exp-details-expand {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             margin-top: 0;
             border-top: 0px solid transparent;
             padding-top: 0;
         }
 
         .exp-card.active .exp-details-expand {
-            max-height: 200px; /* Adjust dynamically as needed */
+            max-height: 200px;
             margin-top: 14px;
             border-top: 1px solid #f1f5f9;
             padding-top: 14px;
@@ -335,7 +390,7 @@
             padding: 24px;
             color: white;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: var(--shadow);
             display: flex;
             flex-direction: column;
@@ -344,15 +399,14 @@
         }
 
         .achieve-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18);
         }
 
-        /* Distinct non-neon rich theme colors matching screen designs */
-        .achieve-1 { background: linear-gradient(135deg, #5b21b6, #7c3aed); }
-        .achieve-2 { background: linear-gradient(135deg, #065f46, #059669); }
-        .achieve-3 { background: linear-gradient(135deg, #9d174d, #db2777); }
-        .achieve-4 { background: linear-gradient(135deg, #9a3412, #ea580c); }
+        .achieve-1 { background: linear-gradient(135deg, #4c1d95, #6d28d9); }
+        .achieve-2 { background: linear-gradient(135deg, #064e3b, #047857); }
+        .achieve-3 { background: linear-gradient(135deg, #831843, #be185d); }
+        .achieve-4 { background: linear-gradient(135deg, #7c2d12, #c2410c); }
 
         .achieve-title {
             font-size: 1.25rem;
@@ -369,7 +423,7 @@
         .achieve-hidden-node {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
             font-size: 0.85rem;
             opacity: 0;
             margin-top: 0;
@@ -379,13 +433,13 @@
         }
 
         .achieve-card.expanded .achieve-hidden-node {
-            max-height: 100px;
+            max-height: 120px;
             opacity: 1;
-            margin-top: 10px;
-            padding-top: 10px;
+            margin-top: 12px;
+            padding-top: 12px;
         }
 
-        /* --- Footer Contact --- */
+        /* --- Footer Contact with Glass Effects --- */
         .footer-contact {
             background: #1e293b;
             border-radius: var(--border-radius);
@@ -393,6 +447,8 @@
             text-align: center;
             color: white;
             box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
         }
 
         .footer-contact h2 {
@@ -403,19 +459,28 @@
 
         .email-pill {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 12px 30px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 14px 36px;
             border-radius: 50px;
-            color: #cbd5e1;
+            color: #e2e8f0;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.2s ease;
-            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
         }
 
         .email-pill:hover {
             background: rgba(255, 255, 255, 0.2);
             color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .email-pill:active {
             transform: translateY(-1px);
         }
     </style>
@@ -426,10 +491,7 @@
         
         <header class="profile-header">
             <div class="avatar-container">
-                <svg viewBox="0 0 100 100" style="width:100%; height:100%; border-radius:50%; background:#2a3a54; padding:10px;">
-                    <circle cx="50" cy="40" r="22" fill="#e2e8f0"/>
-                    <path d="M15,90 C15,65 30,58 50,58 C70,58 85,65 85,90" fill="#e2e8f0"/>
-                </svg>
+                <img src="aryabhata.jpeg" alt="Aryabhata" class="profile-img">
             </div>
             <div class="header-info">
                 <h1>Aryabhata</h1>
@@ -505,7 +567,7 @@
                         <li>Supervised experimental projects examining shadows and gnomon measurements.</li>
                     </ul>
                     <div class="exp-details-expand">
-                        <p class="expansion-text">💡 Expanded Scope: Under this tenure, the school unified traditional Vedic arithmetic models with pure structural logic, providing students comprehensive algorithmic formulas to solve complex quadratic operations cleanly.</p>
+                        <p class="expansion-text">💡 Expanded Scope: Under this tenure, the school unified traditional Vedic arithmetic models with pure structural logic, providing students comprehensive algebraic formulas to solve complex quadratic operations cleanly.</p>
                     </div>
                 </div>
 
@@ -541,7 +603,7 @@
 
                 <div class="achieve-card achieve-2" onclick="toggleAchieve(this)">
                     <div>
-                        <div class="achieve-title">Helocentric Foundations</div>
+                        <div class="achieve-title">Heliocentric Foundations</div>
                         <div class="achieve-desc">Discovered that the Earth rotates daily on its axis and accurately mapped relative planetary speeds.</div>
                     </div>
                     <div class="achieve-hidden-node">
@@ -552,7 +614,7 @@
                 <div class="achieve-card achieve-3" onclick="toggleAchieve(this)">
                     <div>
                         <div class="achieve-title">Approximation of Pi (π)</div>
-                        <div class="achieve-desc">Calculated the value of Pi to four decimal decimal places (3.1416), recognizing it as an irrational ratio.</div>
+                        <div class="achieve-desc">Calculated the value of Pi to four decimal places (3.1416), recognizing it as an irrational ratio.</div>
                     </div>
                     <div class="achieve-hidden-node">
                         Deep Dive: Stated mathematically that the ratio of a circle's circumference to its diameter is uniquely non-terminating and incommensurable.
@@ -593,16 +655,12 @@
         // Toggle Work Experience accordion card expansions smoothly
         function toggleAccordion(element) {
             const allCards = document.querySelectorAll('.exp-card');
-            
-            // Check if clicked element is already active
             const isCurrentlyActive = element.classList.contains('active');
             
-            // Collapse all elements
             allCards.forEach(card => {
                 card.classList.remove('active');
             });
             
-            // If it wasn't active, expand it
             if (!isCurrentlyActive) {
                 element.classList.add('active');
             }
