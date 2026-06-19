@@ -1,627 +1,617 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aryabhata Portfolio</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    background:#ececec;
-    color:#333;
-}
-
-.container{
-    width:85%;
-    margin:auto;
-}
-
-/* HERO */
-
-.hero{
-    margin-top:20px;
-    background:linear-gradient(135deg,#0f2c8c,#4b67d1);
-    min-height:400px;
-    border-radius:10px;
-    padding:40px;
-    display:flex;
-    align-items:center;
-    gap:50px;
-    overflow:hidden;
-    position:relative;
-}
-
-.hero::before{
-    content:'';
-    position:absolute;
-    width:500px;
-    height:500px;
-    background:rgba(255,255,255,0.05);
-    border-radius:50%;
-    right:-150px;
-    top:-100px;
-}
-
-.profile-img{
-    width:280px;
-    height:280px;
-    border-radius:50%;
-    border:8px solid white;
-    overflow:hidden;
-    box-shadow:0 0 50px rgba(255,255,255,.35);
-    transition:.4s;
-}
-
-.profile-img:hover{
-    transform:scale(1.05);
-}
-
-.profile-img img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.hero-content{
-    color:white;
-}
-
-.hero-content h1{
-    font-size:4rem;
-    margin-bottom:10px;
-}
-
-.hero-content h3{
-    font-size:2rem;
-    font-weight:400;
-    margin-bottom:30px;
-}
-
-.btn{
-    display:inline-block;
-    padding:15px 40px;
-    border-radius:50px;
-    text-decoration:none;
-    font-weight:600;
-    transition:.3s;
-    margin-right:15px;
-}
-
-.btn-primary{
-    background:#2ed8a7;
-    color:white;
-}
-
-.btn-primary:hover{
-    transform:translateY(-5px);
-    box-shadow:0 10px 25px rgba(46,216,167,.4);
-}
-
-.btn-secondary{
-    background:white;
-    color:#1e3ea8;
-}
-
-.btn-secondary:hover{
-    transform:translateY(-5px);
-}
-
-/* SECTIONS */
-
-section{
-    padding:70px 0;
-}
-
-.section-title{
-    color:#1f66a8;
-    font-size:3rem;
-    margin-bottom:40px;
-    position:relative;
-}
-
-.section-title::after{
-    content:'';
-    width:150px;
-    height:5px;
-    background:#2ed8a7;
-    position:absolute;
-    left:0;
-    bottom:-10px;
-}
-
-/* ABOUT */
-
-.about{
-    display:grid;
-    grid-template-columns:2fr 1fr;
-    gap:50px;
-}
-
-.about-text{
-    font-size:1.4rem;
-    line-height:2;
-}
-
-.info-card{
-    background:white;
-    border-radius:20px;
-    padding:30px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-}
-
-.info-row{
-    display:flex;
-    justify-content:space-between;
-    padding:20px 0;
-    border-bottom:1px solid #ddd;
-}
-
-.info-row:last-child{
-    border:none;
-}
-
-.info-row strong{
-    color:#1f66a8;
-}
-
-/* SKILLS */
-
-.skills-box{
-    background:#f5f6f8;
-    padding:40px;
-    border-radius:30px;
-}
-
-.skills-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:30px 60px;
-}
-
-.skill h3{
-    margin-bottom:10px;
-    font-weight:500;
-}
-
-.bar{
-    height:18px;
-    background:#ddd;
-    border-radius:20px;
-    overflow:hidden;
-}
-
-.fill{
-    height:100%;
-    background:linear-gradient(to right,#1f66a8,#76aef1);
-    border-radius:20px;
-    transition:1s;
-}
-
-/* TIMELINE */
-
-.timeline-card{
-    background:white;
-    padding:40px;
-    border-radius:30px;
-    border-left:8px solid #1f66a8;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-    transition:.3s;
-}
-
-.timeline-card:hover{
-    transform:translateY(-10px);
-}
-
-.timeline-card h2{
-    color:#1f66a8;
-    margin-bottom:15px;
-}
-
-.timeline-card ul{
-    margin-top:20px;
-    margin-left:20px;
-}
-
-.timeline-card li{
-    margin-bottom:10px;
-}
-
-/* ACHIEVEMENTS */
-
-.achievement-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:35px;
-}
-
-.achievement{
-    color:white;
-    padding:35px;
-    border-radius:25px;
-    transition:.4s;
-    cursor:pointer;
-}
-
-.achievement:hover{
-    transform:translateY(-12px) scale(1.02);
-}
-
-.achievement h2{
-    margin-bottom:20px;
-}
-
-.card1{
-    background:linear-gradient(135deg,#6174e5,#7a4ab3);
-}
-
-.card2{
-    background:linear-gradient(135deg,#14a38b,#39dd79);
-}
-
-.card3{
-    background:linear-gradient(135deg,#8c54ea,#e54aa2);
-}
-
-.card4{
-    background:linear-gradient(135deg,#ff9f00,#ff5c3b);
-}
-
-/* EXPANDABLE */
-
-.accordion{
-    margin-bottom:20px;
-}
-
-.acc-btn{
-    width:100%;
-    background:white;
-    border:none;
-    text-align:left;
-    padding:22px;
-    font-size:1.2rem;
-    font-weight:600;
-    cursor:pointer;
-    border-radius:15px;
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
-    transition:.3s;
-}
-
-.acc-btn:hover{
-    background:#1f66a8;
-    color:white;
-}
-
-.acc-content{
-    max-height:0;
-    overflow:hidden;
-    background:white;
-    margin-top:8px;
-    border-radius:15px;
-    transition:max-height .5s ease;
-    padding:0 20px;
-}
-
-.acc-content p{
-    padding:20px 0;
-    line-height:1.8;
-}
-
-/* CONTACT */
-
-.contact{
-    background:linear-gradient(135deg,#132f83,#203ea7);
-    color:white;
-    text-align:center;
-    border-top:5px solid #2ed8a7;
-}
-
-.contact h1{
-    margin-bottom:25px;
-    font-size:3rem;
-}
-
-.contact-box{
-    display:inline-block;
-    background:rgba(255,255,255,.1);
-    padding:20px 40px;
-    border-radius:50px;
-    margin:10px;
-    transition:.3s;
-}
-
-.contact-box:hover{
-    transform:translateY(-5px);
-}
-
-footer{
-    text-align:center;
-    padding:25px;
-    background:#10256a;
-    color:white;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-.hero{
-    flex-direction:column;
-    text-align:center;
-}
-
-.hero-content h1{
-    font-size:2.8rem;
-}
-
-.about{
-    grid-template-columns:1fr;
-}
-
-.skills-grid{
-    grid-template-columns:1fr;
-}
-
-.achievement-grid{
-    grid-template-columns:1fr;
-}
-
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aryabhata | Astronomer & Mathematician Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #f4f6f9;
+            --header-gradient: linear-gradient(135deg, #1e293b, #3b4f6e);
+            --primary-accent: #b45309; /* Elegant Golden Amber instead of neon green */
+            --primary-accent-hover: #d97706;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --card-bg: #ffffff;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            --border-radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .portfolio-container {
+            width: 100%;
+            max-width: 950px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* --- Header Section --- */
+        .profile-header {
+            background: var(--header-gradient);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #fff; /* Placeholder fallback color */
+        }
+
+        .header-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header-info p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 20px;
+        }
+
+        .hire-btn {
+            background-color: var(--primary-accent);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(180, 83, 9, 0.3);
+        }
+
+        .hire-btn:hover {
+            background-color: var(--primary-accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(180, 83, 9, 0.4);
+        }
+
+        /* --- Main Content Split Grid --- */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #1e293b;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-accent);
+            border-radius: 2px;
+        }
+
+        .about-text {
+            color: var(--text-main);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* --- Quick Info Panel --- */
+        .info-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .info-item {
+            border-bottom: 1px dashed #e2e8f0;
+            padding-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .info-value {
+            color: var(--text-muted);
+        }
+
+        /* --- Professional Skills Grid --- */
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 600px) {
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .skill-label {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #1e293b;
+        }
+
+        .skill-bar-bg {
+            background: #e2e8f0;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background-color: #475569;
+            border-radius: 4px;
+            width: 0; /* Animated dynamically below */
+            transition: width 1.5s ease-out;
+        }
+
+        /* --- Interactive Work Experience --- */
+        .experience-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .exp-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid #64748b;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .exp-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+        }
+
+        .exp-card.active {
+            border-left-color: var(--primary-accent);
+        }
+
+        .exp-card.active .exp-role {
+            color: var(--primary-accent);
+        }
+
+        .exp-role {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 6px;
+            transition: color 0.2s;
+        }
+
+        .exp-meta {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .exp-bullets {
+            list-style-type: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .exp-bullets li {
+            position: relative;
+            padding-left: 18px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text-main);
+        }
+
+        .exp-bullets li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-accent);
+            font-weight: bold;
+        }
+
+        /* Click to Expand Styling */
+        .exp-details-expand {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            margin-top: 0;
+            border-top: 0px solid transparent;
+            padding-top: 0;
+        }
+
+        .exp-card.active .exp-details-expand {
+            max-height: 200px; /* Adjust dynamically as needed */
+            margin-top: 14px;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 14px;
+        }
+
+        .expansion-text {
+            font-size: 0.9rem;
+            color: #475569;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        /* --- Major Achievements Grid --- */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 650px) {
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .achieve-card {
+            border-radius: var(--border-radius);
+            padding: 24px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 160px;
+        }
+
+        .achieve-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        /* Distinct non-neon rich theme colors matching screen designs */
+        .achieve-1 { background: linear-gradient(135deg, #5b21b6, #7c3aed); }
+        .achieve-2 { background: linear-gradient(135deg, #065f46, #059669); }
+        .achieve-3 { background: linear-gradient(135deg, #9d174d, #db2777); }
+        .achieve-4 { background: linear-gradient(135deg, #9a3412, #ea580c); }
+
+        .achieve-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .achieve-desc {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .achieve-hidden-node {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            font-size: 0.85rem;
+            opacity: 0;
+            margin-top: 0;
+            line-height: 1.4;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 0;
+        }
+
+        .achieve-card.expanded .achieve-hidden-node {
+            max-height: 100px;
+            opacity: 1;
+            margin-top: 10px;
+            padding-top: 10px;
+        }
+
+        /* --- Footer Contact --- */
+        .footer-contact {
+            background: #1e293b;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            text-align: center;
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .footer-contact h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .email-pill {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px 30px;
+            border-radius: 50px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .email-pill:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            transform: translateY(-1px);
+        }
+    </style>
 </head>
 <body>
 
-<div class="container">
-
-<div class="hero">
-
-<div class="profile-img">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Aryabhata_Illustration.jpg/640px-Aryabhata_Illustration.jpg">
-</div>
-
-<div class="hero-content">
-<h1>Aryabhata</h1>
-<h3>Mathematician & Astronomer</h3>
-
-<a href="#about" class="btn btn-primary">Explore</a>
-<a href="#contact" class="btn btn-secondary">Contact</a>
-
-</div>
-
-</div>
-
-<section id="about">
-
-<h1 class="section-title">About Me</h1>
-
-<div class="about">
-
-<div class="about-text">
-Hello! I am Aryabhata, one of the earliest Indian mathematicians and astronomers. I authored the famous Aryabhatiya and made significant contributions to mathematics, astronomy, algebra, trigonometry, and numerical computation. My work influenced scientific thought for centuries and helped advance humanity's understanding of the universe.
-</div>
-
-<div class="info-card">
-
-<div class="info-row">
-<strong>Born</strong>
-<span>476 CE</span>
-</div>
-
-<div class="info-row">
-<strong>Field</strong>
-<span>Mathematics</span>
-</div>
-
-<div class="info-row">
-<strong>Speciality</strong>
-<span>Astronomy</span>
-</div>
-
-<div class="info-row">
-<strong>Known For</strong>
-<span>Aryabhatiya</span>
-</div>
-
-<div class="info-row">
-<strong>Nationality</strong>
-<span>Indian</span>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section>
-
-<h1 class="section-title">Professional Skills</h1>
-
-<div class="skills-box">
-
-<div class="skills-grid">
-
-<div class="skill">
-<h3>Mathematics</h3>
-<div class="bar"><div class="fill" style="width:98%"></div></div>
-</div>
-
-<div class="skill">
-<h3>Astronomy</h3>
-<div class="bar"><div class="fill" style="width:95%"></div></div>
-</div>
-
-<div class="skill">
-<h3>Algebra</h3>
-<div class="bar"><div class="fill" style="width:90%"></div></div>
-</div>
-
-<div class="skill">
-<h3>Trigonometry</h3>
-<div class="bar"><div class="fill" style="width:97%"></div></div>
-</div>
-
-<div class="skill">
-<h3>Number Theory</h3>
-<div class="bar"><div class="fill" style="width:88%"></div></div>
-</div>
-
-<div class="skill">
-<h3>Scientific Writing</h3>
-<div class="bar"><div class="fill" style="width:85%"></div></div>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section>
-
-<h1 class="section-title">Knowledge Archive</h1>
-
-<div class="accordion">
-<button class="acc-btn">Early Life</button>
-<div class="acc-content">
-<p>Aryabhata was born in 476 CE and became one of the most influential scholars of ancient India. He studied mathematics and astronomy and later composed the Aryabhatiya.</p>
-</div>
-</div>
-
-<div class="accordion">
-<button class="acc-btn">Contributions to Mathematics</button>
-<div class="acc-content">
-<p>Introduced methods for solving equations, advanced trigonometry, and produced one of the earliest accurate approximations of pi.</p>
-</div>
-</div>
-
-<div class="accordion">
-<button class="acc-btn">Contributions to Astronomy</button>
-<div class="acc-content">
-<p>Explained eclipses scientifically and proposed that Earth rotates on its axis, a remarkable idea for the time.</p>
-</div>
-</div>
-
-<div class="accordion">
-<button class="acc-btn">Legacy</button>
-<div class="acc-content">
-<p>His work influenced later Indian, Islamic, and global scientific developments for centuries.</p>
-</div>
-</div>
-
-</section>
-
-<section>
-
-<h1 class="section-title">Work Experience</h1>
-
-<div class="timeline-card">
-
-<h2>Author of Aryabhatiya</h2>
-
-<p>Kusumapura | Around 499 CE</p>
-
-<ul>
-<li>Developed advanced mathematical techniques.</li>
-<li>Created astronomical models and calculations.</li>
-<li>Introduced trigonometric concepts.</li>
-<li>Improved understanding of planetary motion.</li>
-</ul>
-
-</div>
-
-</section>
-
-<section>
-
-<h1 class="section-title">Major Achievements</h1>
-
-<div class="achievement-grid">
-
-<div class="achievement card1">
-<h2>Approximation of Pi</h2>
-<p>Calculated pi with remarkable accuracy for the era.</p>
-</div>
-
-<div class="achievement card2">
-<h2>Aryabhatiya</h2>
-<p>Authored one of the most influential scientific texts in ancient India.</p>
-</div>
-
-<div class="achievement card3">
-<h2>Place Value System</h2>
-<p>Advanced numerical methods that influenced modern mathematics.</p>
-</div>
-
-<div class="achievement card4">
-<h2>Eclipse Theory</h2>
-<p>Provided scientific explanations for solar and lunar eclipses.</p>
-</div>
-
-</div>
-
-</section>
-
-</div>
-
-<section id="contact" class="contact">
-
-<h1>Contact</h1>
-
-<div class="contact-box">
-Location: Kusumapura, Ancient India
-</div>
-
-<div class="contact-box">
-Field: Mathematics & Astronomy
-</div>
-
-<div class="contact-box">
-Work: Aryabhatiya
-</div>
-
-</section>
-
-<footer>
-© Aryabhata Professional Portfolio
-</footer>
-
-<script>
-
-const accordions=document.querySelectorAll('.acc-btn');
-
-accordions.forEach(button=>{
-
-button.addEventListener('click',()=>{
-
-const content=button.nextElementSibling;
-
-if(content.style.maxHeight){
-content.style.maxHeight=null;
-}
-else{
-content.style.maxHeight=content.scrollHeight+"px";
-}
-
-});
-
-});
-
-</script>
-
+    <div class="portfolio-container">
+        
+        <header class="profile-header">
+            <div class="avatar-container">
+                <svg viewBox="0 0 100 100" style="width:100%; height:100%; border-radius:50%; background:#2a3a54; padding:10px;">
+                    <circle cx="50" cy="40" r="22" fill="#e2e8f0"/>
+                    <path d="M15,90 C15,65 30,58 50,58 C70,58 85,65 85,90" fill="#e2e8f0"/>
+                </svg>
+            </div>
+            <div class="header-info">
+                <h1>Aryabhata</h1>
+                <p>Mathematician & Astronomer</p>
+                <button class="hire-btn" onclick="alert('Inquiry form initialized!')">Hire Me</button>
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <section class="card">
+                <h2 class="section-title">About Me</h2>
+                <p class="about-text">
+                    Greetings! I am Aryabhata. I am deeply dedicated to uncovering the deep, geometric, and numerical patterns ordering our cosmos. As a classical mathematician and theoretical astronomer, I pioneered early frameworks in structural algebra, refined trigonometric functions, and established foundational models detailing planetary configurations and diurnal stellar rotation.
+                </p>
+            </section>
+
+            <aside class="card info-panel">
+                <div class="info-item">
+                    <span class="info-label">Era</span>
+                    <span class="info-value">476 – 550 CE</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Email</span>
+                    <span class="info-value">aryabhata@cosmos.edu</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Location</span>
+                    <span class="info-value">Pataliputra, India</span>
+                </div>
+            </aside>
+        </div>
+
+        <section class="card">
+            <h2 class="section-title">Professional Skills</h2>
+            <div class="skills-container">
+                <div class="skill-item">
+                    <div class="skill-label">Mathematical Astronomy</div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="98%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">Trigonometry & Sine Tables</div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">Algebraic Algorithms</div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">Spherical Geometry</div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">Scientific Composition</div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label">Calendar Systems (Siddhantas)</div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="94%"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="experience-container">
+            <h2 class="section-title" style="margin-bottom: 25px;">Work Experience</h2>
+            <div class="experience-stack">
+                
+                <div class="exp-card active" onclick="toggleAccordion(this)">
+                    <div class="exp-role">Head of Nalanda Observatory</div>
+                    <div class="exp-meta">📍 Nalanda University | 499 CE – Academic Directorship</div>
+                    <ul class="exp-bullets">
+                        <li>Delivered higher lectures on analytical mathematics, geometric proofs, and advanced algorithms.</li>
+                        <li>Coordinated night sky observations to standardize tracking maps for planetary coordinate paths.</li>
+                        <li>Supervised experimental projects examining shadows and gnomon measurements.</li>
+                    </ul>
+                    <div class="exp-details-expand">
+                        <p class="expansion-text">💡 Expanded Scope: Under this tenure, the school unified traditional Vedic arithmetic models with pure structural logic, providing students comprehensive algorithmic formulas to solve complex quadratic operations cleanly.</p>
+                    </div>
+                </div>
+
+                <div class="exp-card" onclick="toggleAccordion(this)">
+                    <div class="exp-role">Chief Astro-Consultant</div>
+                    <div class="exp-meta">📍 Imperial Court of Magadha | 510 CE – 525 CE</div>
+                    <ul class="exp-bullets">
+                        <li>Refined civil and religious calendar systems based on exact astronomical measurements.</li>
+                        <li>Advised state institutions on eclipse cycles and agricultural timeline mappings.</li>
+                        <li>Standardized standardized weights, measures, and calculation baselines across regions.</li>
+                    </ul>
+                    <div class="exp-details-expand">
+                        <p class="expansion-text">💡 Expanded Scope: Implemented planetary tracking architectures that eliminated legacy discrepancies, leading to absolute reliability in predicting seasonal shifts across states.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title" style="margin-bottom: 25px;">Major Achievements</h2>
+            <div class="achievements-grid">
+                
+                <div class="achieve-card achieve-1" onclick="toggleAchieve(this)">
+                    <div>
+                        <div class="achieve-title">Aryabhatiya Treatise</div>
+                        <div class="achieve-desc">Compiled an epic masterwork summarizing mathematics, time divisions, and core astronomy in 121 verses.</div>
+                    </div>
+                    <div class="achieve-hidden-node">
+                        Deep Dive: Features 33 distinct mathematical verses covering square roots, cube roots, geometric progressions, and algebraic equations.
+                    </div>
+                </div>
+
+                <div class="achieve-card achieve-2" onclick="toggleAchieve(this)">
+                    <div>
+                        <div class="achieve-title">Helocentric Foundations</div>
+                        <div class="achieve-desc">Discovered that the Earth rotates daily on its axis and accurately mapped relative planetary speeds.</div>
+                    </div>
+                    <div class="achieve-hidden-node">
+                        Deep Dive: Derived precise geometric proofs proving that celestial bodies shine via reflected sunlight from a static, central star structure.
+                    </div>
+                </div>
+
+                <div class="achieve-card achieve-3" onclick="toggleAchieve(this)">
+                    <div>
+                        <div class="achieve-title">Approximation of Pi (π)</div>
+                        <div class="achieve-desc">Calculated the value of Pi to four decimal decimal places (3.1416), recognizing it as an irrational ratio.</div>
+                    </div>
+                    <div class="achieve-hidden-node">
+                        Deep Dive: Stated mathematically that the ratio of a circle's circumference to its diameter is uniquely non-terminating and incommensurable.
+                    </div>
+                </div>
+
+                <div class="achieve-card achieve-4" onclick="toggleAchieve(this)">
+                    <div>
+                        <div class="achieve-title">Trigonometric Systems</div>
+                        <div class="achieve-desc">Invented early sine and versine tables, transforming mathematical geometry and structural mapping.</div>
+                    </div>
+                    <div class="achieve-hidden-node">
+                        Deep Dive: Developed the concept of 'jya', which eventually formed the historical structural framework for modern global trigonometry frameworks.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer class="footer-contact">
+            <h2>Contact</h2>
+            <a href="mailto:aryabhata@cosmos.edu" class="email-pill">Email: aryabhata@cosmos.edu</a>
+        </footer>
+
+    </div>
+
+    <script>
+        // Trigger progressive skill bar animation on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const fills = document.querySelectorAll('.skill-bar-fill');
+            setTimeout(() => {
+                fills.forEach(fill => {
+                    fill.style.width = fill.getAttribute('data-width');
+                });
+            }, 150);
+        });
+
+        // Toggle Work Experience accordion card expansions smoothly
+        function toggleAccordion(element) {
+            const allCards = document.querySelectorAll('.exp-card');
+            
+            // Check if clicked element is already active
+            const isCurrentlyActive = element.classList.contains('active');
+            
+            // Collapse all elements
+            allCards.forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // If it wasn't active, expand it
+            if (!isCurrentlyActive) {
+                element.classList.add('active');
+            }
+        }
+
+        // Toggle Major Achievement boxes to reveal advanced technical deep dives
+        function toggleAchieve(element) {
+            element.classList.toggle('expanded');
+        }
+    </script>
 </body>
 </html>
