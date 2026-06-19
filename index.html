@@ -9,10 +9,10 @@
 
         :root {
             --bg-body: #090d16;        /* Ultra dark sleek matrix background */
-            --bg-card: #131a26;        /* Deep translucent neon card backing */
+            --bg-card: rgba(19, 26, 38, 0.7); /* Translucent backing for glassmorphism */
             --text-light: #f8fafc;     /* Clean bright text */
             --text-muted: #94a3b8;     /* Soft slate text */
-            --border-subtle: #1e293b;  /* Matrix grid lines */
+            --border-subtle: rgba(255, 255, 255, 0.08); /* Delicate glass border */
             
             /* Multi-Color Identity System */
             --cls-header: linear-gradient(135deg, #00dfd8, #7928ca, #ff007f);
@@ -28,19 +28,23 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--bg-body);
+            background: radial-gradient(circle at 50% 20%, #1a103c 0%, #090d16 60%);
             color: var(--text-muted);
             margin: 0;
             padding: 60px 20px;
             -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
         }
 
+        /* Glassmorphism Container */
         .resume {
             max-width: 880px;
             margin: 0 auto;
             background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             padding: 60px 70px;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5), 0 0 40px rgba(121, 40, 202, 0.1);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.1);
             border-radius: 24px;
             border: 1px solid var(--border-subtle);
         }
@@ -52,12 +56,16 @@
             gap: 50px;
             padding: 40px;
             margin-bottom: 45px;
-            background: linear-gradient(145deg, #161f30, #0d131f);
+            background: rgba(22, 31, 48, 0.5);
+            backdrop-filter: blur(8px);
             border-radius: 20px;
             border-left: 6px solid #00dfd8;
             box-shadow: inset 0 0 20px rgba(0, 223, 216, 0.05);
             position: relative;
             overflow: hidden;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .header::before {
@@ -83,7 +91,7 @@
             box-shadow: 0 0 20px rgba(0, 223, 216, 0.3);
             will-change: transform;
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.3s;
-            background: #151f32;
+            background: rgba(21, 31, 50, 0.6);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -140,6 +148,8 @@
         /* Colorful Section Containers */
         .section {
             margin-bottom: 50px;
+            transition: opacity 0.4s ease, transform 0.4s ease, filter 0.4s ease;
+            will-change: transform, filter, opacity;
         }
 
         .section-title {
@@ -163,40 +173,49 @@
             transform: translateX(8px);
         }
 
-        /* Customizing Section Color Rules */
-        .section:nth-of-type(1) .section-title { color: var(--color-summary); }
-        .section:nth-of-type(1) .section-title::after { background: linear-gradient(to right, var(--color-summary), transparent); }
+        /* Section Specific Styles & Dynamic Highlights */
+        .section.highlighted-section {
+            transform: scale(1.02);
+            filter: drop-shadow(0 0 15px var(--highlight-color, rgba(255, 255, 255, 0.1)));
+        }
+        .section.dimmed-section {
+            opacity: 0.25;
+            filter: blur(1px);
+        }
+
+        .section[data-category="summary"] .section-title { color: var(--color-summary); }
+        .section[data-category="summary"] .section-title::after { background: linear-gradient(to right, var(--color-summary), transparent); }
         
-        .section:nth-of-type(2) .section-title { color: var(--color-edu); }
-        .section:nth-of-type(2) .section-title::after { background: linear-gradient(to right, var(--color-edu), transparent); }
+        .section[data-category="education"] .section-title { color: var(--color-edu); }
+        .section[data-category="education"] .section-title::after { background: linear-gradient(to right, var(--color-edu), transparent); }
 
-        .section:nth-of-type(3) .section-title { color: var(--color-exp); }
-        .section:nth-of-type(3) .section-title::after { background: linear-gradient(to right, var(--color-exp), transparent); }
+        .section[data-category="experience"] .section-title { color: var(--color-exp); }
+        .section[data-category="experience"] .section-title::after { background: linear-gradient(to right, var(--color-exp), transparent); }
 
-        .section:nth-of-type(4) .section-title { color: var(--color-achieve); }
-        .section:nth-of-type(4) .section-title::after { background: linear-gradient(to right, var(--color-achieve), transparent); }
+        .section[data-category="achievements"] .section-title { color: var(--color-achieve); }
+        .section[data-category="achievements"] .section-title::after { background: linear-gradient(to right, var(--color-achieve), transparent); }
 
-        .section:nth-of-type(5) .section-title { color: var(--color-certs); }
-        .section:nth-of-type(5) .section-title::after { background: linear-gradient(to right, var(--color-certs), transparent); }
+        .section[data-category="certifications"] .section-title { color: var(--color-certs); }
+        .section[data-category="certifications"] .section-title::after { background: linear-gradient(to right, var(--color-certs), transparent); }
 
-        .section:nth-of-type(6) .section-title { color: var(--color-skills); }
-        .section:nth-of-type(6) .section-title::after { background: linear-gradient(to right, var(--color-skills), transparent); }
+        .section[data-category="skills"] .section-title { color: var(--color-skills); }
+        .section[data-category="skills"] .section-title::after { background: linear-gradient(to right, var(--color-skills), transparent); }
 
-        .section:nth-of-type(7) .section-title { color: var(--color-hobbies); }
-        .section:nth-of-type(7) .section-title::after { background: linear-gradient(to right, var(--color-hobbies), transparent); }
+        .section[data-category="hobbies"] .section-title { color: var(--color-hobbies); }
+        .section[data-category="hobbies"] .section-title::after { background: linear-gradient(to right, var(--color-hobbies), transparent); }
 
-        .section:nth-of-type(8) .section-title { color: var(--color-ref); }
-        .section:nth-of-type(8) .section-title::after { background: linear-gradient(to right, var(--color-ref), transparent); }
+        .section[data-category="references"] .section-title { color: var(--color-ref); }
+        .section[data-category="references"] .section-title::after { background: linear-gradient(to right, var(--color-ref), transparent); }
 
-        /* Dynamic Translucent Neon Cards */
+        /* Dynamic Translucent Neon Glass Cards */
         .content-box, .grid-box {
             position: relative;
-            background: linear-gradient(135deg, #151f32 0%, #101726 100%);
+            background: linear-gradient(135deg, rgba(21, 31, 50, 0.4) 0%, rgba(16, 23, 38, 0.4) 100%);
             border: 1px solid var(--border-subtle);
             border-radius: 16px;
             padding: 26px;
             margin-bottom: 24px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             transform-style: preserve-3d;
             will-change: transform;
             overflow: hidden;
@@ -255,7 +274,7 @@
         }
 
         .company {
-            color: #7928ca;
+            color: #b07eff;
             font-weight: 600;
             font-size: 1.02rem;
             margin-top: 3px;
@@ -309,6 +328,12 @@
             color: var(--text-light);
         }
 
+        /* Highlighting elements within highlighted boxes */
+        .highlighted-element {
+            color: var(--text-light) !important;
+            text-shadow: 0 0 8px var(--target-color);
+        }
+
         /* Layout Grid Architecture */
         .grid {
             display: grid;
@@ -349,7 +374,7 @@
         }
 
         .skill {
-            background: #1e293b;
+            background: rgba(30, 41, 59, 0.6);
             color: #ffffff;
             padding: 10px 20px;
             border-radius: 12px;
@@ -357,7 +382,7 @@
             font-weight: 700;
             border: 1px solid transparent;
             cursor: pointer;
-            will-change: transform;
+            will-change: transform, box-shadow, background-color, color;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -368,6 +393,14 @@
         .skill:nth-child(4) { border-color: #00ff66; color: #00ff66; }
         .skill:nth-child(5) { border-color: #00dfd8; color: #00dfd8; }
         .skill:nth-child(6) { border-color: #0076ff; color: #0076ff; }
+
+        /* Persistent Skill Selection Active Classes */
+        .skill.active-skill {
+            background-color: currentColor !important;
+            color: #090d16 !important;
+            box-shadow: 0 0 25px currentColor;
+            transform: scale(1.08);
+        }
 
         footer {
             text-align: center;
@@ -404,16 +437,16 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" data-category="summary">
             <h2 class="section-title">Qualifications</h2>
             <div class="content-box" data-glow="rgba(0, 223, 216, 0.2)">
                 <p>
-                    Dedicated ophthalmology-focused medical professional with clinical training in diagnostics, patient care, and surgical support. Specializing in advanced retinal analytics, pre-operative physiological metrics, and accurate slit lamp evaluations.
+                    Dedicated ophthalmology-focused medical professional with clinical training in <span data-match="Eye Exams Diagnostics Patient Care">diagnostics, patient care</span>, and surgical support. Specializing in advanced retinal analytics, pre-operative physiological metrics, and accurate <span data-match="Slit Lamp">slit lamp evaluations</span>.
                 </p>
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" data-category="education">
             <h2 class="section-title">Education</h2>
             
             <div class="content-box" data-glow="rgba(121, 40, 202, 0.25)">
@@ -425,7 +458,7 @@
                     <div class="date">2024 Grad</div>
                 </div>
                 <ul>
-                    <li>Awarded Clinical Excellence Recognition in Ophthalmology tracks</li>
+                    <li data-match="Diagnostics Patient Care">Awarded Clinical Excellence Recognition in Ophthalmology tracks</li>
                     <li>Maintained strict standing on the academic Dean's List</li>
                 </ul>
             </div>
@@ -444,7 +477,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" data-category="experience">
             <h2 class="section-title">Clinical Experience</h2>
             
             <div class="content-box" data-glow="rgba(255, 0, 127, 0.25)">
@@ -456,8 +489,8 @@
                     <div class="date">2023 – 2024</div>
                 </div>
                 <ul>
-                    <li>Executed detailed eye exams and precise slit lamp structural ocular assessments</li>
-                    <li>Conducted accurate visual acuity mapping and critical intraocular pressure testing array matrices</li>
+                    <li data-match="Eye Exams Slit Lamp">Executed detailed eye exams and precise slit lamp structural ocular assessments</li>
+                    <li data-match="Diagnostics">Conducted accurate visual acuity mapping and critical intraocular pressure testing array matrices</li>
                 </ul>
             </div>
 
@@ -470,64 +503,64 @@
                     <div class="date">2022 – 2023</div>
                 </div>
                 <ul>
-                    <li>Managed data processing workflows for deep-field retinal imaging analysis systems</li>
-                    <li>Contributed foundational analysis pipelines to advanced diabetic retinopathy clinical research</li>
+                    <li data-match="Diagnostics EMR Systems">Managed data processing workflows for deep-field retinal imaging analysis systems</li>
+                    <li data-match="Diagnostics">Contributed foundational analysis pipelines to advanced diabetic retinopathy clinical research</li>
                 </ul>
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" data-category="achievements">
             <h2 class="section-title">Key Achievements</h2>
             <div class="grid">
                 <div class="grid-box" data-glow="rgba(255, 159, 0, 0.3)">
                     <ul>
-                        <li>150+ Supervised Surgical Procedures</li>
+                        <li data-match="Patient Care">150+ Supervised Surgical Procedures</li>
                         <li>National Conference Presentation Lead</li>
                     </ul>
                 </div>
                 <div class="grid-box" data-glow="rgba(255, 159, 0, 0.3)">
                     <ul>
-                        <li>Clinical Excellence Distinction Unit</li>
+                        <li data-match="Diagnostics Patient Care">Clinical Excellence Distinction Unit</li>
                         <li>Published Clinical Research Asset Support</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" data-category="certifications">
             <h2 class="section-title">Certifications</h2>
             <div class="grid">
                 <div class="grid-box" data-glow="rgba(0, 255, 102, 0.25)">
                     <strong>BLS Provider</strong><br>
-                    Certified life support metrics via Canadian Red Cross architecture.
+                    <span data-match="Patient Care">Certified life support metrics via Canadian Red Cross architecture.</span>
                 </div>
                 <div class="grid-box" data-glow="rgba(0, 255, 102, 0.25)">
                     <strong>ACLS Operator</strong><br>
-                    Advanced Cardiovascular Life Support baseline verified via Heart & Stroke Foundation.
+                    <span data-match="Patient Care">Advanced Cardiovascular Life Support baseline verified via Heart & Stroke Foundation.</span>
                 </div>
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" data-category="skills">
             <h2 class="section-title">Skills & Abilities</h2>
             <div class="content-box" data-glow="rgba(255, 0, 255, 0.2)">
                 <div class="skills">
-                    <div class="skill">Eye Exams</div>
-                    <div class="skill">Slit Lamp</div>
-                    <div class="skill">Fundoscopy</div>
-                    <div class="skill">Patient Care</div>
-                    <div class="skill">EMR Systems</div>
-                    <div class="skill">Diagnostics</div>
+                    <div class="skill" data-target="Eye Exams">Eye Exams</div>
+                    <div class="skill" data-target="Slit Lamp">Slit Lamp</div>
+                    <div class="skill" data-target="Fundoscopy">Fundoscopy</div>
+                    <div class="skill" data-target="Patient Care">Patient Care</div>
+                    <div class="skill" data-target="EMR Systems">EMR Systems</div>
+                    <div class="skill" data-target="Diagnostics">Diagnostics</div>
                 </div>
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" data-category="hobbies">
             <h2 class="section-title">Hobbies & Interests</h2>
             <div class="grid">
                 <div class="grid-box" data-glow="rgba(0, 118, 255, 0.25)">
                     <strong>Ocular Photography</strong><br>
-                    Capturing high-resolution clinical aesthetic medical imaging.
+                    <span data-match="Eye Exams Slit Lamp Fundoscopy">Capturing high-resolution clinical aesthetic medical imaging.</span>
                 </div>
                 <div class="grid-box" data-glow="rgba(0, 118, 255, 0.25)">
                     <strong>Academic Literature</strong><br>
@@ -536,7 +569,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" data-category="references">
             <h2 class="section-title">References</h2>
             <div class="content-box" data-glow="rgba(203, 213, 225, 0.15)">
                 <p>
@@ -552,6 +585,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const structuralCards = document.querySelectorAll('.content-box, .grid-box');
             const skills = document.querySelectorAll('.skill');
+            const sections = document.querySelectorAll('.section');
             const avatar = document.querySelector('.photo');
 
             // 1. Sleek 3D Mechanical Tilt & Dynamic Multi-Color Laser Array
@@ -585,25 +619,93 @@
                 });
             });
 
-            // 2. Neon Pill Organic Angular Physics Explosion
+            // 2. Interactive Skill Matrix Highlight Architecture
             skills.forEach(pill => {
+                const skillName = pill.getAttribute('data-target');
+                const computedColor = window.getComputedStyle(pill).color;
+
+                // Handle Hover Physics
                 pill.addEventListener('mouseenter', () => {
-                    const randomRotation = (Math.random() * 8 - 4).toFixed(1);
-                    pill.style.transform = `scale(1.12) rotate(${randomRotation}deg)`;
-                    
-                    const computedColor = window.getComputedStyle(pill).color;
-                    pill.style.backgroundColor = computedColor;
-                    pill.style.color = '#090d16';
-                    pill.style.boxShadow = `0 0 20px ${computedColor}`;
-                    pill.style.transition = 'all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    if (!pill.classList.contains('active-skill')) {
+                        const randomRotation = (Math.random() * 8 - 4).toFixed(1);
+                        pill.style.transform = `scale(1.12) rotate(${randomRotation}deg)`;
+                        pill.style.backgroundColor = computedColor;
+                        pill.style.color = '#090d16';
+                        pill.style.boxShadow = `0 0 20px ${computedColor}`;
+                    }
                 });
 
                 pill.addEventListener('mouseleave', () => {
-                    pill.style.transform = 'scale(1) rotate(0deg)';
-                    pill.style.backgroundColor = '';
-                    pill.style.color = '';
-                    pill.style.boxShadow = '';
+                    if (!pill.classList.contains('active-skill')) {
+                        pill.style.transform = '';
+                        pill.style.backgroundColor = '';
+                        pill.style.color = '';
+                        pill.style.boxShadow = '';
+                    }
                 });
+
+                // Handle Toggle System on Click
+                pill.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isAlreadyActive = pill.classList.contains('active-skill');
+
+                    // Reset all elements first
+                    skills.forEach(p => {
+                        p.classList.remove('active-skill');
+                        p.style.backgroundColor = '';
+                        p.style.color = '';
+                        p.style.boxShadow = '';
+                        p.style.transform = '';
+                    });
+                    sections.forEach(s => {
+                        s.classList.remove('highlighted-section', 'dimmed-section');
+                        s.style.removeProperty('--highlight-color');
+                    });
+                    document.querySelectorAll('[data-match]').forEach(el => {
+                        el.classList.remove('highlighted-element');
+                        el.style.removeProperty('--target-color');
+                    });
+
+                    // If it wasn't active, activate it and filter sections
+                    if (!isAlreadyActive) {
+                        pill.classList.add('active-skill');
+                        pill.style.backgroundColor = computedColor;
+                        pill.style.color = '#090d16';
+                        pill.style.boxShadow = `0 0 25px ${computedColor}`;
+                        pill.style.transform = 'scale(1.08)';
+
+                        sections.forEach(section => {
+                            if (section.getAttribute('data-category') === 'skills') return; // Keep skills row clear
+
+                            // Check for structural text item matches
+                            const matchesWithinSection = section.querySelectorAll(`[data-match~="${skillName.replace(/\s+/g, '')}"]`);
+                            
+                            if (matchesWithinSection.length > 0) {
+                                section.classList.add('highlighted-section');
+                                section.style.setProperty('--highlight-color', computedColor);
+                                matchesWithinSection.forEach(el => {
+                                    el.classList.add('highlighted-element');
+                                    el.style.setProperty('--target-color', computedColor);
+                                });
+                            } else {
+                                section.classList.add('dimmed-section');
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Reset Matrix on clicking card background
+            document.addEventListener('click', () => {
+                skills.forEach(p => {
+                    p.classList.remove('active-skill');
+                    p.style.backgroundColor = '';
+                    p.style.color = '';
+                    p.style.boxShadow = '';
+                    p.style.transform = '';
+                });
+                sections.forEach(s => s.classList.remove('highlighted-section', 'dimmed-section'));
+                document.querySelectorAll('[data-match]').forEach(el => el.classList.remove('highlighted-element'));
             });
 
             // 3. Avatar Icon Scale Glow Shift
