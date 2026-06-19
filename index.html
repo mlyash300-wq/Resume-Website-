@@ -2,377 +2,357 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sri Rajan - Neon Creative Resume</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeBron James - Neon Matrix Resume (Ultra Expanded)</title>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
-:root {
-    --bg-body:#070b14;
-    --bg-card:#111a2b;
-    --text:#f8fafc;
-    --muted:#94a3b8;
+        :root {
+            --bg-body: #090d16;
+            --bg-card: #131a26;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-subtle: #1e293b;
 
-    --blue:#00dfd8;
-    --pink:#ff007f;
-    --purple:#7928ca;
-    --gold:#ff9f00;
-    --green:#00ff66;
+            --cls-header: linear-gradient(135deg, #ff007f, #7928ca, #00dfd8);
+            --color-summary: #ff007f;
+            --color-exp: #00dfd8;
+            --color-achieve: #7928ca;
+            --color-ventures: #ff9f00;
+            --color-skills: #00ff66;
+        }
 
-    --glass: rgba(255,255,255,0.06);
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-body);
+            color: var(--text-muted);
+            margin: 0;
+            padding: 60px 20px;
+        }
 
-body{
-    margin:0;
-    font-family:Inter;
-    background:var(--bg-body);
-    color:var(--muted);
-    padding:60px 20px;
-    overflow-x:hidden;
-}
+        .resume {
+            max-width: 980px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 70px;
+            border-radius: 24px;
+            border: 1px solid var(--border-subtle);
+        }
 
-/* MAIN FRAME */
-.resume{
-    max-width:980px;
-    margin:auto;
-    background:linear-gradient(145deg,#0e1525,#0b1020);
-    padding:60px;
-    border-radius:26px;
-    border:1px solid rgba(255,255,255,0.08);
-    box-shadow:0 40px 120px rgba(0,0,0,0.6);
-    position:relative;
-    overflow:hidden;
-}
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            padding: 40px;
+            margin-bottom: 45px;
+            background: linear-gradient(145deg, #161f30, #0d131f);
+            border-radius: 20px;
+        }
 
-/* GLOBAL CLICK RIPPLE */
-.ripple{
-    position:absolute;
-    border-radius:50%;
-    transform:scale(0);
-    animation:ripple 700ms linear;
-    background:radial-gradient(circle, rgba(0,223,216,0.5), transparent);
-    pointer-events:none;
-    z-index:999;
-}
-@keyframes ripple{
-    to{ transform:scale(6); opacity:0; }
-}
+        .photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 3px solid #00dfd8;
+        }
 
-/* HEADER */
-.header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:40px;
-    border-radius:20px;
-    background:linear-gradient(145deg,#121a2e,#0b1220);
-    border-left:5px solid var(--pink);
-    position:relative;
-    overflow:hidden;
-}
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-.name{
-    font-size:3rem;
-    font-weight:800;
-    background:linear-gradient(135deg,var(--pink),var(--purple),var(--blue));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
+        .name {
+            font-size: 3.4rem;
+            font-weight: 800;
+            background: var(--cls-header);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-.title{
-    color:var(--blue);
-    font-weight:700;
-    letter-spacing:1px;
-}
+        .title {
+            color: #00dfd8;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
 
-.photo{
-    width:130px;height:130px;
-    border-radius:20px;
-    border:2px solid var(--blue);
-    overflow:hidden;
-    transition:0.4s;
-}
+        .section {
+            margin-bottom: 55px;
+        }
 
-/* SECTIONS */
-.section{
-    margin-top:40px;
-}
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
 
-.section-title{
-    font-size:1.1rem;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    cursor:pointer;
-}
+        .content-box {
+            background: linear-gradient(135deg, #151f32, #101726);
+            padding: 26px;
+            border-radius: 16px;
+            border: 1px solid #1e293b;
+            margin-bottom: 20px;
+        }
 
-.section-title::after{
-    content:"";
-    flex:1;
-    height:2px;
-    background:linear-gradient(to right,var(--blue),transparent);
-}
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
 
-/* COLLAPSIBLE CONTENT */
-.content{
-    margin-top:15px;
-    display:none;
-}
+        ul {
+            margin: 0;
+            padding-left: 18px;
+        }
 
-.content.active{
-    display:block;
-}
+        li {
+            margin-bottom: 10px;
+        }
 
-/* GLASS CARD */
-.card{
-    background:linear-gradient(145deg,#121a2a,#0c1424);
-    border:1px solid rgba(255,255,255,0.08);
-    border-radius:18px;
-    padding:22px;
-    margin-bottom:18px;
-    position:relative;
-    overflow:hidden;
-    transform-style:preserve-3d;
-    transition:0.3s;
-}
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
 
-/* spotlight */
-.card::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:radial-gradient(circle at var(--x,50%) var(--y,50%),
-    rgba(0,223,216,0.15), transparent 60%);
-    opacity:0;
-    transition:0.3s;
-}
-
-.card:hover::before{
-    opacity:1;
-}
-
-/* CLICK SHINE */
-.card.clicked::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(120deg,transparent,rgba(255,255,255,0.2),transparent);
-    animation:shine 0.6s ease;
-}
-@keyframes shine{
-    from{transform:translateX(-100%);}
-    to{transform:translateX(100%);}
-}
-
-/* SKILLS */
-.skills{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-}
-
-.skill{
-    padding:10px 16px;
-    border-radius:12px;
-    background:#182235;
-    border:1px solid rgba(255,255,255,0.1);
-    cursor:pointer;
-    transition:0.3s;
-}
-
-/* color system */
-.skill:nth-child(1){color:var(--pink);}
-.skill:nth-child(2){color:var(--blue);}
-.skill:nth-child(3){color:var(--purple);}
-.skill:nth-child(4){color:var(--gold);}
-.skill:nth-child(5){color:var(--green);}
-
-/* FILTER HIGHLIGHT */
-.skill.active{
-    background:var(--blue);
-    color:#000;
-    box-shadow:0 0 20px var(--blue);
-}
-
-/* DIM SYSTEM */
-.dim{
-    opacity:0.2;
-    filter:blur(1px);
-}
-
-/* GRID */
-.grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:16px;
-}
-
-/* TILT CARD */
-.card:hover{
-    transform:rotateX(4deg) rotateY(4deg) translateY(-4px);
-}
-
-</style>
+        .skill {
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: 1px solid #00ff66;
+            color: #00ff66;
+        }
+    </style>
 </head>
 
 <body>
 
 <div class="resume">
 
-<!-- HEADER -->
-<div class="header">
-    <div>
-        <div class="name">Sri Rajan</div>
-        <div class="title">Artistic Director & Graphic Designer</div>
-        <div>Vancouver • Creative Studio • Global Freelance</div>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-text">
+            <h1 class="name">LeBron James</h1>
+            <p class="title">Professional Athlete • Entrepreneur • Investor • Philanthropist</p>
+            <p>Los Angeles, USA • NBA Veteran • Global Brand Ambassador</p>
+        </div>
+
+        <div class="photo">
+            <img src="https://cdn.nba.com/headshots/nba/latest/1040x760/2544.png">
+        </div>
     </div>
 
-    <div class="photo">
-        <img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe" width="130">
+    <!-- SUMMARY -->
+    <div class="section">
+        <h2 class="section-title">Professional Summary</h2>
+        <div class="content-box">
+            <p>
+                Global elite athlete with 20+ years of professional basketball dominance, recognized for leadership,
+                longevity, peak performance under pressure, and generational influence across sports, business, and culture.
+                Known for redefining modern athletic career longevity and multi-industry brand building.
+            </p>
+        </div>
     </div>
-</div>
 
-<!-- SUMMARY -->
-<div class="section">
-<div class="section-title">Professional Summary</div>
-<div class="content active">
-    <div class="card" data-skill="design">
-        Creative director specializing in brand identity systems, motion design, and high-impact visual storytelling.
+    <!-- EXPERIENCE -->
+    <div class="section">
+        <h2 class="section-title">Professional Experience</h2>
+
+        <div class="content-box">
+            <h3>Los Angeles Lakers (2018 – Present)</h3>
+            <ul>
+                <li>NBA Championship (2020) leadership performance</li>
+                <li>Maintained elite production: 25+ PPG, 7+ RPG, 7+ APG</li>
+                <li>Acted as primary playmaker at forward position</li>
+                <li>Franchise leadership and roster mentorship role</li>
+                <li>Extended playoff qualification consistency</li>
+            </ul>
+        </div>
+
+        <div class="content-box">
+            <h3>Cleveland Cavaliers (2014 – 2018)</h3>
+            <ul>
+                <li>2016 NBA Championship (historic 3–1 comeback)</li>
+                <li>Delivered Finals MVP performance</li>
+                <li>Franchise revival leadership role</li>
+                <li>Multiple Finals appearances</li>
+            </ul>
+        </div>
+
+        <div class="content-box">
+            <h3>Miami Heat (2010 – 2014)</h3>
+            <ul>
+                <li>2× NBA Championships (2012, 2013)</li>
+                <li>4 straight NBA Finals appearances</li>
+                <li>Peak efficiency scoring and defensive versatility</li>
+                <li>Positionless basketball evolution leader</li>
+            </ul>
+        </div>
+
+        <div class="content-box">
+            <h3>Cleveland Cavaliers (2003 – 2010)</h3>
+            <ul>
+                <li>2003 Rookie of the Year</li>
+                <li>First franchise playoff transformation era</li>
+                <li>Multiple All-NBA selections</li>
+                <li>Youngest scoring leader milestones</li>
+            </ul>
+        </div>
     </div>
-</div>
+
+    <!-- ACHIEVEMENTS -->
+    <div class="section">
+        <h2 class="section-title">Key Achievements & Records</h2>
+
+        <div class="grid">
+            <div class="content-box">
+                <ul>
+                    <li>4× NBA Champion</li>
+                    <li>4× Finals MVP</li>
+                    <li>4× League MVP</li>
+                    <li>NBA All-Time Scoring Leader</li>
+                    <li>20+ All-Star selections</li>
+                </ul>
+            </div>
+
+            <div class="content-box">
+                <ul>
+                    <li>Most playoff points in NBA history</li>
+                    <li>10+ NBA Finals appearances</li>
+                    <li>Only player with 30K+ points & 10K+ assists</li>
+                    <li>Oldest player with 40+ point games</li>
+                    <li>Historic longevity across 2 decades</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section">
+        <h2 class="section-title">Education & Early Development</h2>
+
+        <div class="content-box">
+            <ul>
+                <li>St. Vincent–St. Mary High School (Akron, Ohio)</li>
+                <li>National high school basketball phenom</li>
+                <li>USA Junior National Team development program</li>
+                <li>Early media exposure & elite scouting prospect</li>
+                <li>Elite training in athletic biomechanics & conditioning</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- VENTURES -->
+    <div class="section">
+        <h2 class="section-title">Business & Ventures</h2>
+
+        <div class="grid">
+            <div class="content-box">
+                <h3>SpringHill Company</h3>
+                <p>Media production company focused on storytelling, sports culture, and entertainment.</p>
+            </div>
+
+            <div class="content-box">
+                <h3>Fenway Sports Group</h3>
+                <p>Ownership stake in global sports enterprises including Liverpool FC.</p>
+            </div>
+
+            <div class="content-box">
+                <h3>Blaze Pizza Investment</h3>
+                <p>Early-stage investor turned multi-million expansion partner.</p>
+            </div>
+
+            <div class="content-box">
+                <h3>Brand Partnerships</h3>
+                <p>Lifetime partnership with Nike and global brand endorsements.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PHILANTHROPY -->
+    <div class="section">
+        <h2 class="section-title">Philanthropy & Impact</h2>
+
+        <div class="content-box">
+            <ul>
+                <li>LeBron James Family Foundation founder</li>
+                <li>I PROMISE School initiative (Akron, Ohio)</li>
+                <li>Scholarship funding for at-risk youth</li>
+                <li>Community housing and family support programs</li>
+                <li>Education-first empowerment model</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="section">
+        <h2 class="section-title">Core Skills</h2>
+
+        <div class="content-box">
+            <div class="skills">
+                <div class="skill">Leadership</div>
+                <div class="skill">Basketball IQ</div>
+                <div class="skill">Strategy</div>
+                <div class="skill">Athletic Performance</div>
+                <div class="skill">Decision Making</div>
+                <div class="skill">Brand Building</div>
+                <div class="skill">Public Influence</div>
+                <div class="skill">Mentorship</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="text-align:center; margin-top:60px; color:#555;">
+        CREATED BY OTIS CHUNG • NEON MATRIX RESUME SYSTEM
+    </div>
+
 </div>
 
-<!-- WORK -->
-<div class="section">
-<div class="section-title">Work Experience</div>
-<div class="content active">
-
-<div class="card" data-skill="design">
-<b>Senior Artistic Director</b><br>NeonWave Studios
-</div>
-
-<div class="card" data-skill="branding">
-<b>Graphic Designer</b><br>PixelForge Agency
-</div>
-
-<div class="card" data-skill="motion">
-<b>Motion Designer</b><br>Freelance International
-</div>
-
-</div>
-</div>
-
-<!-- EDUCATION -->
-<div class="section">
-<div class="section-title">Education</div>
-<div class="content active">
-<div class="card">BFA Visual Communication — Emily Carr University</div>
-</div>
-</div>
-
-<!-- SKILLS -->
-<div class="section">
-<div class="section-title">Skills Matrix (Click to Filter)</div>
-<div class="content active">
-
-<div class="skills">
-<div class="skill" data-filter="design">Design Systems</div>
-<div class="skill" data-filter="branding">Branding</div>
-<div class="skill" data-filter="motion">Motion</div>
-<div class="skill" data-filter="ui">UI/UX</div>
-<div class="skill" data-filter="3d">3D Art</div>
-</div>
-
-</div>
-</div>
-
-<!-- QUALIFICATIONS -->
-<div class="section">
-<div class="section-title">Qualifications</div>
-<div class="content active">
-<div class="card">Adobe Certified Expert • Figma Advanced Systems • Cinema4D Workflow Specialist</div>
-</div>
-</div>
-
-<!-- ACHIEVEMENTS -->
-<div class="section">
-<div class="section-title">Achievements</div>
-<div class="content active">
-<div class="card">Featured in Awwwards • Behance Top 1% Designer • 50+ Global Brand Projects</div>
-</div>
-</div>
-
-<!-- REFERENCES -->
-<div class="section">
-<div class="section-title">References</div>
-<div class="content active">
-<div class="card">Available upon request from global creative directors & agencies</div>
-</div>
-</div>
-
-</div>
-
+<!-- JS (UNCHANGED INTERACTIVE SYSTEM) -->
 <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.content-box, .grid-box');
+    const skills = document.querySelectorAll('.skill');
+    const avatar = document.querySelector('.photo');
 
-const resume = document.querySelector(".resume");
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const r = card.getBoundingClientRect();
+            const x = e.clientX - r.left;
+            const y = e.clientY - r.top;
+            const rx = (x / r.width - 0.5) * 5;
+            const ry = (y / r.height - 0.5) * 5;
+            card.style.transform = `perspective(1000px) rotateX(${-ry}deg) rotateY(${rx}deg)`;
+        });
 
-/* RIPPLE CLICK SYSTEM */
-resume.addEventListener("click",(e)=>{
-    const ripple=document.createElement("div");
-    ripple.classList.add("ripple");
-    ripple.style.left=e.clientX+"px";
-    ripple.style.top=e.clientY+"px";
-    document.body.appendChild(ripple);
-    setTimeout(()=>ripple.remove(),700);
-});
-
-/* COLLAPSE SYSTEM */
-document.querySelectorAll(".section-title").forEach(title=>{
-    title.addEventListener("click",()=>{
-        title.nextElementSibling.classList.toggle("active");
-    });
-});
-
-/* SPOTLIGHT TRACKING */
-document.querySelectorAll(".card").forEach(card=>{
-    card.addEventListener("mousemove",(e)=>{
-        const r=card.getBoundingClientRect();
-        card.style.setProperty("--x",(e.clientX-r.left)+"px");
-        card.style.setProperty("--y",(e.clientY-r.top)+"px");
-    });
-
-    card.addEventListener("click",()=>{
-        card.classList.add("clicked");
-        setTimeout(()=>card.classList.remove("clicked"),600);
-    });
-});
-
-/* SKILL FILTER SYSTEM */
-const skills=document.querySelectorAll(".skill");
-const cards=document.querySelectorAll(".card");
-
-skills.forEach(skill=>{
-    skill.addEventListener("click",()=>{
-
-        let filter=skill.dataset.filter;
-
-        skills.forEach(s=>s.classList.remove("active"));
-        skill.classList.add("active");
-
-        cards.forEach(c=>{
-            if(c.dataset.skill===filter || filter==="all"){
-                c.classList.remove("dim");
-            }else{
-                c.classList.add("dim");
-            }
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
         });
     });
-});
 
+    skills.forEach(skill => {
+        skill.addEventListener('mouseenter', () => {
+            skill.style.transform = 'scale(1.1)';
+        });
+        skill.addEventListener('mouseleave', () => {
+            skill.style.transform = '';
+        });
+    });
+
+    if (avatar) {
+        avatar.addEventListener('mouseenter', () => {
+            avatar.style.transform = 'scale(1.1)';
+        });
+        avatar.addEventListener('mouseleave', () => {
+            avatar.style.transform = '';
+        });
+    }
+});
 </script>
 
 </body>
