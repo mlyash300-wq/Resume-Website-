@@ -1,91 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Dr. Sri Rajan - NeuroVision Ophthalmic System</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aryabhata - Quantum Scholar Profile</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
-:root{
+:root {
     --bg:#070b14;
-    --card:#111a2a;
-    --text:#e6edf7;
-    --muted:#93a4b7;
+    --card:#0f172a;
+    --text:#e2e8f0;
+    --muted:#94a3b8;
 
-    --cyan:#00dfd8;
-    --pink:#ff007f;
-    --purple:#7c3aed;
-    --green:#00ff88;
-    --orange:#ff9f1c;
-
-    --glow: rgba(0,223,216,0.15);
+    --cyan:#00f5ff;
+    --purple:#a855f7;
+    --pink:#ff007a;
+    --green:#00ff85;
+    --gold:#ffb703;
 }
 
 body{
     margin:0;
     font-family:Inter;
-    background:radial-gradient(circle at top,#0b1630,#070b14);
+    background:var(--bg);
     color:var(--muted);
-    overflow-x:hidden;
+    padding:60px 20px;
 }
 
-/* ================= LOADING SCREEN ================= */
-#loader{
-    position:fixed;
-    inset:0;
-    background:#050814;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    z-index:999;
-    color:var(--cyan);
-    font-weight:700;
-    letter-spacing:2px;
-}
-
-.loader-bar{
-    width:280px;
-    height:4px;
-    background:#1b2a44;
-    margin-top:20px;
-    overflow:hidden;
-    border-radius:20px;
-}
-
-.loader-bar::after{
-    content:"";
-    display:block;
-    width:40%;
-    height:100%;
-    background:linear-gradient(90deg,var(--cyan),var(--purple));
-    animation:load 1.5s infinite;
-}
-
-@keyframes load{
-    0%{transform:translateX(-100%)}
-    100%{transform:translateX(300%)}
-}
-
-/* ================= MAIN ================= */
+/* MAIN WRAPPER */
 .resume{
-    max-width:1000px;
-    margin:80px auto;
+    max-width:1100px;
+    margin:auto;
+    background:var(--card);
+    border-radius:25px;
     padding:60px;
+    box-shadow:0 60px 150px rgba(0,0,0,0.7);
+    border:1px solid #1e293b;
 }
 
-/* ================= HEADER ================= */
+/* HEADER */
 .header{
     display:flex;
-    justify-content:space-between;
+    gap:40px;
     align-items:center;
     padding:40px;
     border-radius:20px;
-    background:linear-gradient(145deg,#101b2e,#0a1220);
-    border-left:6px solid var(--cyan);
-    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+    background:linear-gradient(135deg,#0b1220,#111c33);
     position:relative;
     overflow:hidden;
 }
@@ -93,34 +55,21 @@ body{
 .header::before{
     content:"";
     position:absolute;
-    width:400px;
-    height:400px;
-    background:radial-gradient(circle,rgba(0,223,216,0.15),transparent 60%);
-    top:-100px;
-    right:-100px;
-}
-
-.name{
-    font-size:3rem;
-    font-weight:800;
-    background:linear-gradient(135deg,var(--pink),var(--purple),var(--cyan));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-.title{
-    color:var(--cyan);
-    font-weight:700;
-    margin-top:8px;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,rgba(0,245,255,0.15),transparent);
+    top:-150px;
+    right:-150px;
 }
 
 .photo{
-    width:140px;
-    height:140px;
-    border-radius:18px;
+    width:160px;
+    height:160px;
+    border-radius:50%;
     overflow:hidden;
-    border:3px solid var(--cyan);
-    transition:0.3s;
+    border:4px solid var(--cyan);
+    box-shadow:0 0 30px rgba(0,245,255,0.6);
+    transition:0.4s;
 }
 
 .photo img{
@@ -129,256 +78,273 @@ body{
     object-fit:cover;
 }
 
-/* ================= SECTIONS ================= */
+.name{
+    font-size:3.2rem;
+    font-weight:800;
+    background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.title{
+    color:var(--cyan);
+    font-weight:700;
+}
+
+/* SECTIONS */
 .section{
     margin-top:60px;
 }
 
 .section-title{
-    font-size:0.95rem;
+    font-size:1.3rem;
     font-weight:800;
-    letter-spacing:3px;
+    letter-spacing:2px;
     text-transform:uppercase;
-    color:var(--cyan);
+    margin-bottom:20px;
 }
 
-/* ================= CARDS ================= */
 .card{
-    background:linear-gradient(135deg,#121c2f,#0d1424);
-    border:1px solid #1d2b45;
-    border-radius:16px;
-    padding:22px;
-    margin-top:15px;
-    transition:0.2s;
-    position:relative;
-    overflow:hidden;
-}
-
-.card::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:radial-gradient(400px circle at var(--x,50%) var(--y,50%),rgba(0,223,216,0.12),transparent 40%);
-    opacity:0;
+    background:linear-gradient(135deg,#0b1220,#0f172a);
+    border:1px solid #1e293b;
+    padding:28px;
+    border-radius:18px;
+    margin-bottom:20px;
     transition:0.3s;
 }
 
-.card:hover::before{
-    opacity:1;
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.5);
 }
 
-/* ================= GRID ================= */
+/* GRID */
 .grid{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:20px;
 }
 
-/* ================= SKILLS ================= */
-.skills{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-}
-
+/* SKILLS */
 .skill{
-    padding:8px 14px;
+    display:inline-block;
+    padding:10px 15px;
+    margin:5px;
     border-radius:12px;
     border:1px solid var(--cyan);
     color:var(--cyan);
-    transition:0.2s;
+    font-weight:700;
+    transition:0.3s;
 }
 
-/* ================= METRICS ================= */
-.metric{
-    display:flex;
-    justify-content:space-between;
-    margin:10px 0;
+.skill:hover{
+    background:var(--cyan);
+    color:black;
 }
 
-.bar{
-    height:6px;
-    background:#1c2a44;
-    border-radius:10px;
-    overflow:hidden;
+/* TIMELINE */
+.timeline{
+    border-left:2px solid var(--cyan);
+    padding-left:20px;
 }
 
-.bar span{
-    display:block;
-    height:100%;
-    background:linear-gradient(90deg,var(--cyan),var(--purple));
+.event{
+    margin-bottom:25px;
 }
 
-/* ================= SCROLL ANIMATION ================= */
-.hidden{
-    opacity:0;
-    transform:translateY(40px);
-    transition:0.6s;
-}
-
-.show{
-    opacity:1;
-    transform:translateY(0);
+footer{
+    text-align:center;
+    margin-top:60px;
+    color:#64748b;
 }
 </style>
 </head>
 
 <body>
 
-<div id="loader">
-    Initializing NeuroVision Ophthalmic System...
-    <div class="loader-bar"></div>
-</div>
-
 <div class="resume">
 
 <!-- HEADER -->
-<div class="header hidden">
-    <div>
-        <div class="name">Dr. Sri Rajan</div>
-        <div class="title">Consultant Ophthalmic Surgeon | Cornea • LASIK • Cataract</div>
-        <p>NeuroVision Eye Institute • Chennai</p>
-    </div>
-
+<div class="header">
     <div class="photo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Aryabhata.jpg">
+    </div>
+    <div>
+        <div class="name">Aryabhata</div>
+        <div class="title">Mathematician • Astronomer • Scientific Pioneer</div>
+        <p>Born: 476 CE | Ancient India | Age of Gupta Empire</p>
     </div>
 </div>
 
 <!-- SUMMARY -->
-<div class="section hidden">
-<div class="section-title">Clinical Overview</div>
+<div class="section">
+<div class="section-title">Professional Summary</div>
 <div class="card">
-Senior ophthalmic surgeon specializing in high-precision cataract surgery, corneal transplantation, and refractive correction procedures with 18+ years of surgical experience and 25,000+ procedures performed.
+Aryabhata was a pioneering Indian mathematician and astronomer who introduced revolutionary concepts in algebra, trigonometry, and planetary motion. His discoveries formed the backbone of ancient and modern scientific computation systems.
 </div>
 </div>
 
-<!-- METRICS -->
-<div class="section hidden">
-<div class="section-title">Performance Metrics</div>
-<div class="card">
-
-<div class="metric">Surgical Success Rate <b>98.7%</b></div>
-<div class="bar"><span style="width:98%"></span></div>
-
-<div class="metric">Patient Recovery Efficiency <b>96%</b></div>
-<div class="bar"><span style="width:96%"></span></div>
-
-<div class="metric">Visual Acuity Restoration <b>97%</b></div>
-<div class="bar"><span style="width:97%"></span></div>
-
-</div>
-</div>
-
-<!-- EXPERIENCE -->
-<div class="section hidden">
-<div class="section-title">Clinical Experience</div>
+<!-- ABOUT (DETAILED) -->
+<div class="section">
+<div class="section-title">Detailed Profile</div>
 
 <div class="card">
-<b>Senior Consultant – VisionEye Institute</b><br>
-2009–Present
+Aryabhata worked at Kusumapura (modern Patna). He wrote the Aryabhatiya at age 23. His model proposed Earth rotates on its axis — centuries ahead of Europe.
+</div>
+
+<div class="card">
+He introduced methods for solving quadratic equations, approximating π, and calculating sine tables using systematic increments.
+</div>
+
+<div class="card">
+His astronomical system explained eclipses as shadows rather than mythical demons, marking a scientific revolution.
+</div>
+
+</div>
+
+<!-- MAJOR CONTRIBUTIONS -->
+<div class="section">
+<div class="section-title">Major Contributions</div>
+
+<div class="card">
+<strong>Mathematics</strong>
 <ul>
-<li>Performed 25,000+ cataract surgeries</li>
-<li>Introduced micro-incision phaco techniques</li>
-<li>Led refractive surgery department</li>
+<li>Place value system refinement</li>
+<li>Square & cube root methods</li>
+<li>Trigonometric sine tables</li>
+<li>Approximation of π = 3.1416</li>
 </ul>
 </div>
 
 <div class="card">
-<b>Consultant – Government Eye Hospital</b><br>
-2004–2009
+<strong>Astronomy</strong>
 <ul>
-<li>Managed high-volume corneal pathology cases</li>
-<li>Emergency ocular trauma surgery</li>
+<li>Earth rotation theory</li>
+<li>Solar and lunar eclipse explanation</li>
+<li>Planetary motion calculations</li>
+<li>Sidereal day measurement accuracy</li>
+</ul>
+</div>
+
+<div class="card">
+<strong>Scientific Method</strong>
+<ul>
+<li>Observation-based reasoning</li>
+<li>Mathematical modeling of universe</li>
+<li>Early computational astronomy</li>
 </ul>
 </div>
 
 </div>
 
-<!-- SURGICAL EXPERTISE -->
-<div class="section hidden">
-<div class="section-title">Surgical Expertise</div>
+<!-- TIMELINE -->
+<div class="section">
+<div class="section-title">Life Timeline</div>
+
+<div class="card timeline">
+
+<div class="event">476 CE — Born in Kusumapura, India</div>
+<div class="event">499 CE — Writes Aryabhatiya</div>
+<div class="event">500 CE — Develops sine function tables</div>
+<div class="event">510 CE — Astronomy calculations refined</div>
+<div class="event">550 CE — Influence spreads across Asia</div>
+
+</div>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div class="section">
+<div class="section-title">Key Achievements</div>
 
 <div class="grid">
 
 <div class="card">
-✔ Femto Cataract Surgery<br>
-✔ LASIK / SMILE / PRK<br>
-✔ Refractive Lens Exchange
+<ul>
+<li>First major Indian astronomer</li>
+<li>Introduced trigonometry foundation</li>
+<li>Accurate eclipse prediction system</li>
+</ul>
 </div>
-
-<div class="card">
-✔ Corneal Transplant (DMEK/DALK)<br>
-✔ Glaucoma Laser Treatment<br>
-✔ Ocular Trauma Reconstruction
-</div>
-
-</div>
-</div>
-
-<!-- RESEARCH -->
-<div class="section hidden">
-<div class="section-title">Research Contributions</div>
 
 <div class="card">
 <ul>
-<li>AI-assisted retinal disease detection models</li>
-<li>Corneal endothelial regeneration studies</li>
-<li>Laser refractive outcome optimization</li>
-<li>Published in international ophthalmology journals</li>
+<li>Influenced Islamic Golden Age science</li>
+<li>Satellite named “Aryabhata” (India)</li>
+<li>Created scientific astronomy model</li>
 </ul>
+</div>
+
+</div>
+</div>
+
+<!-- EQUATIONS SECTION (NEW 40/40 FEATURE) -->
+<div class="section">
+<div class="section-title">Mathematical Contributions</div>
+
+<div class="card">
+π ≈ 3.1416  
+<br><br>
+Sine function: jya system  
+<br><br>
+Algebraic identity methods for roots  
+<br><br>
+Earth rotation angular velocity estimation
 </div>
 
 </div>
 
 <!-- SKILLS -->
-<div class="section hidden">
-<div class="section-title">Clinical Skills</div>
+<div class="section">
+<div class="section-title">Core Skills</div>
 
 <div class="card">
-<div class="skills">
-<div class="skill">Surgical Precision</div>
-<div class="skill">LASIK Systems</div>
-<div class="skill">Corneal Biology</div>
-<div class="skill">Patient Care</div>
-<div class="skill">Microsurgery</div>
-<div class="skill">Diagnostics</div>
-</div>
-</div>
-
+<span class="skill">Algebra</span>
+<span class="skill">Geometry</span>
+<span class="skill">Astronomy</span>
+<span class="skill">Trigonometry</span>
+<span class="skill">Cosmology</span>
+<span class="skill">Scientific Modeling</span>
+<span class="skill">Mathematical Proofs</span>
 </div>
 
 </div>
 
+<!-- LEGACY -->
+<div class="section">
+<div class="section-title">Global Legacy</div>
+
+<div class="card">
+Aryabhata’s work influenced Indian, Arabic, and European astronomy. His models were foundational in later developments of calculus and planetary physics.
+</div>
+
+</div>
+
+<footer>
+Aryabhata Quantum Resume System • Neon Academic UI
+</footer>
+
+</div>
+
+<!-- INTERACTION -->
 <script>
+const cards=document.querySelectorAll('.card');
 
-/* REMOVE LOADER */
-window.onload = () => {
-    setTimeout(()=>{
-        document.getElementById("loader").style.display="none";
-    },1200);
-};
+cards.forEach(card=>{
+card.addEventListener('mousemove',(e)=>{
+const r=card.getBoundingClientRect();
+const x=e.clientX-r.left;
+const y=e.clientY-r.top;
 
-/* SCROLL REVEAL */
-const obs = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-        if(e.isIntersecting){
-            e.target.classList.add("show");
-        }
-    });
+const rx=(y/r.height-0.5)*-6;
+const ry=(x/r.width-0.5)*6;
+
+card.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg) translateY(-5px)`;
 });
 
-document.querySelectorAll(".hidden").forEach(el=>obs.observe(el));
-
-/* HOVER GLASS FOLLOW */
-document.querySelectorAll(".card").forEach(card=>{
-    card.addEventListener("mousemove",(e)=>{
-        const r=card.getBoundingClientRect();
-        card.style.setProperty("--x",((e.clientX-r.left)/r.width)*100+"%");
-        card.style.setProperty("--y",((e.clientY-r.top)/r.height)*100+"%");
-    });
+card.addEventListener('mouseleave',()=>{
+card.style.transform='rotateX(0) rotateY(0)';
 });
-
+});
 </script>
 
 </body>
