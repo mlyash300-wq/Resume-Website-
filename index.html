@@ -3,16 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aryabhata - Quantum Scholar Profile</title>
+<title>Aryabhata - Ultra Scientific Matrix Profile</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
-:root {
-    --bg:#070b14;
+:root{
+    --bg:#05070f;
     --card:#0f172a;
-    --text:#e2e8f0;
-    --muted:#94a3b8;
+    --glass:rgba(255,255,255,0.04);
 
     --cyan:#00f5ff;
     --purple:#a855f7;
@@ -21,55 +20,80 @@
     --gold:#ffb703;
 }
 
-body{
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
     font-family:Inter;
-    background:var(--bg);
-    color:var(--muted);
-    padding:60px 20px;
+}
+
+body{
+    background:radial-gradient(circle at top,#0b1220,#05070f,#000);
+    color:#cbd5e1;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND GRID */
+.bg-grid{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:60px 60px;
+    z-index:-1;
+    animation:moveGrid 20s linear infinite;
+}
+
+@keyframes moveGrid{
+    from{transform:translateY(0);}
+    to{transform:translateY(-60px);}
 }
 
 /* MAIN WRAPPER */
-.resume{
-    max-width:1100px;
+.container{
+    max-width:1300px;
     margin:auto;
-    background:var(--card);
-    border-radius:25px;
-    padding:60px;
-    box-shadow:0 60px 150px rgba(0,0,0,0.7);
-    border:1px solid #1e293b;
+    padding:40px;
 }
 
-/* HEADER */
-.header{
+/* HERO */
+.hero{
     display:flex;
     gap:40px;
     align-items:center;
     padding:40px;
-    border-radius:20px;
-    background:linear-gradient(135deg,#0b1220,#111c33);
+    background:linear-gradient(145deg,#0b1220,#0f172a);
+    border:1px solid #1e293b;
+    border-radius:25px;
     position:relative;
     overflow:hidden;
 }
 
-.header::before{
+.hero::before{
     content:"";
     position:absolute;
-    width:500px;
-    height:500px;
+    width:600px;
+    height:600px;
     background:radial-gradient(circle,rgba(0,245,255,0.15),transparent);
-    top:-150px;
-    right:-150px;
+    top:-200px;
+    right:-200px;
 }
 
 .photo{
-    width:160px;
-    height:160px;
+    width:180px;
+    height:180px;
     border-radius:50%;
     overflow:hidden;
     border:4px solid var(--cyan);
-    box-shadow:0 0 30px rgba(0,245,255,0.6);
+    box-shadow:0 0 40px rgba(0,245,255,0.5);
+    cursor:pointer;
     transition:0.4s;
+}
+
+.photo:hover{
+    transform:scale(1.08) rotate(-2deg);
 }
 
 .photo img{
@@ -78,17 +102,12 @@ body{
     object-fit:cover;
 }
 
-.name{
-    font-size:3.2rem;
-    font-weight:800;
-    background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));
+.title{
+    font-size:3.5rem;
+    font-weight:900;
+    background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
-}
-
-.title{
-    color:var(--cyan);
-    font-weight:700;
 }
 
 /* SECTIONS */
@@ -97,44 +116,57 @@ body{
 }
 
 .section-title{
-    font-size:1.3rem;
-    font-weight:800;
+    font-size:1.4rem;
+    font-weight:900;
     letter-spacing:2px;
-    text-transform:uppercase;
     margin-bottom:20px;
+    color:var(--cyan);
 }
 
+/* CARDS */
 .card{
-    background:linear-gradient(135deg,#0b1220,#0f172a);
+    background:var(--glass);
     border:1px solid #1e293b;
-    padding:28px;
+    padding:25px;
     border-radius:18px;
     margin-bottom:20px;
     transition:0.3s;
+    backdrop-filter:blur(10px);
 }
 
 .card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 20px 40px rgba(0,0,0,0.5);
+    transform:translateY(-8px) scale(1.01);
+    box-shadow:0 25px 60px rgba(0,0,0,0.5);
+    border-color:rgba(0,245,255,0.4);
 }
 
-/* GRID */
+/* GRID SYSTEM */
 .grid{
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(2,1fr);
     gap:20px;
+}
+
+/* TIMELINE */
+.timeline{
+    border-left:3px solid var(--cyan);
+    padding-left:20px;
+}
+
+.event{
+    margin-bottom:18px;
 }
 
 /* SKILLS */
 .skill{
     display:inline-block;
-    padding:10px 15px;
+    padding:10px 14px;
     margin:5px;
-    border-radius:12px;
     border:1px solid var(--cyan);
     color:var(--cyan);
-    font-weight:700;
+    border-radius:10px;
     transition:0.3s;
+    font-weight:700;
 }
 
 .skill:hover{
@@ -142,114 +174,122 @@ body{
     color:black;
 }
 
-/* TIMELINE */
-.timeline{
-    border-left:2px solid var(--cyan);
-    padding-left:20px;
+/* MODAL */
+.modal{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.85);
+    display:none;
+    align-items:center;
+    justify-content:center;
 }
 
-.event{
-    margin-bottom:25px;
+.modal img{
+    width:500px;
+    border-radius:20px;
+    border:3px solid var(--cyan);
 }
 
-footer{
-    text-align:center;
-    margin-top:60px;
-    color:#64748b;
+/* FLOAT PARTICLES */
+.particle{
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:var(--cyan);
+    border-radius:50%;
+    opacity:0.5;
+    animation:float 6s infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-40px);}
+    100%{transform:translateY(0);}
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+.hero{flex-direction:column;}
+.grid{grid-template-columns:1fr;}
+.modal img{width:90%;}
 }
 </style>
 </head>
 
 <body>
 
-<div class="resume">
+<div class="bg-grid"></div>
 
-<!-- HEADER -->
-<div class="header">
-    <div class="photo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Aryabhata.jpg">
-    </div>
-    <div>
-        <div class="name">Aryabhata</div>
-        <div class="title">Mathematician • Astronomer • Scientific Pioneer</div>
-        <p>Born: 476 CE | Ancient India | Age of Gupta Empire</p>
-    </div>
+<div class="container">
+
+<!-- HERO -->
+<div class="hero">
+
+<div class="photo" onclick="openImg()">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Aryabhata.jpg">
+</div>
+
+<div>
+<div class="title">Aryabhata</div>
+<p>Mathematician • Astronomer • Scientific Revolutionary</p>
+<p>476 CE • Ancient India • Kusumapura Scholar</p>
+</div>
+
 </div>
 
 <!-- SUMMARY -->
 <div class="section">
 <div class="section-title">Professional Summary</div>
 <div class="card">
-Aryabhata was a pioneering Indian mathematician and astronomer who introduced revolutionary concepts in algebra, trigonometry, and planetary motion. His discoveries formed the backbone of ancient and modern scientific computation systems.
+Aryabhata developed early computational astronomy, trigonometric functions, and algebraic systems that influenced global mathematics for centuries.
 </div>
 </div>
 
-<!-- ABOUT (DETAILED) -->
+<!-- MATHEMATICS -->
 <div class="section">
-<div class="section-title">Detailed Profile</div>
+<div class="section-title">Mathematical Contributions</div>
+
+<div class="grid">
 
 <div class="card">
-Aryabhata worked at Kusumapura (modern Patna). He wrote the Aryabhatiya at age 23. His model proposed Earth rotates on its axis — centuries ahead of Europe.
+Algebra systems for quadratic equations<br>
+Square and cube root approximations<br>
+Place value refinement system
 </div>
 
 <div class="card">
-He introduced methods for solving quadratic equations, approximating π, and calculating sine tables using systematic increments.
-</div>
-
-<div class="card">
-His astronomical system explained eclipses as shadows rather than mythical demons, marking a scientific revolution.
+Sine table development (jya system)<br>
+π approximation (3.1416)<br>
+Trigonometric computation models
 </div>
 
 </div>
+</div>
 
-<!-- MAJOR CONTRIBUTIONS -->
+<!-- ASTRONOMY -->
 <div class="section">
-<div class="section-title">Major Contributions</div>
+<div class="section-title">Astronomical Discoveries</div>
 
 <div class="card">
-<strong>Mathematics</strong>
-<ul>
-<li>Place value system refinement</li>
-<li>Square & cube root methods</li>
-<li>Trigonometric sine tables</li>
-<li>Approximation of π = 3.1416</li>
-</ul>
+Earth rotation theory explaining day/night cycle<br>
+Eclipse explained as shadows not mythology<br>
+Planetary motion calculations using math models
 </div>
-
-<div class="card">
-<strong>Astronomy</strong>
-<ul>
-<li>Earth rotation theory</li>
-<li>Solar and lunar eclipse explanation</li>
-<li>Planetary motion calculations</li>
-<li>Sidereal day measurement accuracy</li>
-</ul>
-</div>
-
-<div class="card">
-<strong>Scientific Method</strong>
-<ul>
-<li>Observation-based reasoning</li>
-<li>Mathematical modeling of universe</li>
-<li>Early computational astronomy</li>
-</ul>
-</div>
-
 </div>
 
 <!-- TIMELINE -->
 <div class="section">
-<div class="section-title">Life Timeline</div>
+<div class="section-title">Timeline of Life</div>
 
 <div class="card timeline">
-
-<div class="event">476 CE — Born in Kusumapura, India</div>
+<div class="event">476 CE — Birth in India</div>
 <div class="event">499 CE — Writes Aryabhatiya</div>
-<div class="event">500 CE — Develops sine function tables</div>
-<div class="event">510 CE — Astronomy calculations refined</div>
-<div class="event">550 CE — Influence spreads across Asia</div>
-
+<div class="event">500 CE — Develops sine tables</div>
+<div class="event">510 CE — Astronomical models refined</div>
+<div class="event">550 CE — Influence spreads globally</div>
 </div>
+
 </div>
 
 <!-- ACHIEVEMENTS -->
@@ -259,38 +299,18 @@ His astronomical system explained eclipses as shadows rather than mythical demon
 <div class="grid">
 
 <div class="card">
-<ul>
-<li>First major Indian astronomer</li>
-<li>Introduced trigonometry foundation</li>
-<li>Accurate eclipse prediction system</li>
-</ul>
+Created foundation of trigonometry<br>
+First scientific explanation of eclipses<br>
+Developed early computational astronomy
 </div>
 
 <div class="card">
-<ul>
-<li>Influenced Islamic Golden Age science</li>
-<li>Satellite named “Aryabhata” (India)</li>
-<li>Created scientific astronomy model</li>
-</ul>
+Influenced Arabic mathematics<br>
+Inspired modern calculus systems<br>
+Satellite named “Aryabhata” by India
 </div>
 
 </div>
-</div>
-
-<!-- EQUATIONS SECTION (NEW 40/40 FEATURE) -->
-<div class="section">
-<div class="section-title">Mathematical Contributions</div>
-
-<div class="card">
-π ≈ 3.1416  
-<br><br>
-Sine function: jya system  
-<br><br>
-Algebraic identity methods for roots  
-<br><br>
-Earth rotation angular velocity estimation
-</div>
-
 </div>
 
 <!-- SKILLS -->
@@ -302,9 +322,8 @@ Earth rotation angular velocity estimation
 <span class="skill">Geometry</span>
 <span class="skill">Astronomy</span>
 <span class="skill">Trigonometry</span>
+<span class="skill">Scientific Logic</span>
 <span class="skill">Cosmology</span>
-<span class="skill">Scientific Modeling</span>
-<span class="skill">Mathematical Proofs</span>
 </div>
 
 </div>
@@ -314,37 +333,50 @@ Earth rotation angular velocity estimation
 <div class="section-title">Global Legacy</div>
 
 <div class="card">
-Aryabhata’s work influenced Indian, Arabic, and European astronomy. His models were foundational in later developments of calculus and planetary physics.
+Aryabhata influenced Indian, Islamic, and European science. His computational models shaped astronomy for over 1000 years.
 </div>
 
 </div>
 
-<footer>
-Aryabhata Quantum Resume System • Neon Academic UI
-</footer>
-
 </div>
 
-<!-- INTERACTION -->
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="closeImg()">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Aryabhata.jpg">
+</div>
+
 <script>
-const cards=document.querySelectorAll('.card');
 
-cards.forEach(card=>{
+/* IMAGE */
+function openImg(){
+document.getElementById("modal").style.display="flex";
+}
+function closeImg(){
+document.getElementById("modal").style.display="none";
+}
+
+/* HOVER 3D */
+document.querySelectorAll('.card').forEach(card=>{
 card.addEventListener('mousemove',(e)=>{
-const r=card.getBoundingClientRect();
-const x=e.clientX-r.left;
-const y=e.clientY-r.top;
-
-const rx=(y/r.height-0.5)*-6;
-const ry=(x/r.width-0.5)*6;
-
-card.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg) translateY(-5px)`;
+let r=card.getBoundingClientRect();
+let x=(e.clientX-r.left)/r.width-0.5;
+let y=(e.clientY-r.top)/r.height-0.5;
+card.style.transform=`rotateX(${y*-6}deg) rotateY(${x*6}deg)`;
 });
-
 card.addEventListener('mouseleave',()=>{
-card.style.transform='rotateX(0) rotateY(0)';
+card.style.transform="none";
 });
 });
+
+/* PARTICLES */
+for(let i=0;i<25;i++){
+let p=document.createElement("div");
+p.className="particle";
+p.style.left=Math.random()*100+"%";
+p.style.top=Math.random()*100+"%";
+document.body.appendChild(p);
+}
+
 </script>
 
 </body>
